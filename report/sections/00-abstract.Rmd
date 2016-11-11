@@ -1,0 +1,11 @@
+---
+title: "Statistics 159 Final Project Report"
+author: "Aoyi Shan, Yukun He, Siyu Chen, Shuotong WU"
+date: "11/20/2016"
+output: pdf_document
+header-includes: 
+- \usepackage{float}
+---
+
+# Abstract
+

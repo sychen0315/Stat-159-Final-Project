@@ -1,0 +1,9 @@
+---
+title: 'Stat159 Final Project'
+author: "Aoyi Shan, Yukun He, Siyu Chen, Shuotong Wu"
+date: "11/20/2016"
+output: 
+  ioslides_presentation:
+    incremental: true
+---
+
