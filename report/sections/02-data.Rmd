@@ -1,4 +1,5 @@
 
 # Data
- 
+
+The first step is our project is data cleaning. 
 
