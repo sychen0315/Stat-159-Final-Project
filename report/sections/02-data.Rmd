@@ -1,5 +1,17 @@
 
 # Data
 
-The first step is our project is data cleaning. 
+The first step in our project is data cleaning. The original dataset provided by College Scorecard is enormous so in order to fit the dataset into our analysis, we perform break down data cleaning into three parts:
+
+## Data Cleaning for Clustering
+
+In order to locate school with similar demographics and location, we perform clutering based on 3 criteria: region, located near population center or countryside and minority ratio. 
+
+The four main regions we identify are west, midwest, northeast and south.
+
+https://en.wikipedia.org/wiki/Western_United_States
+https://en.wikipedia.org/wiki/Midwestern_United_States
+https://en.wikipedia.org/wiki/Northeastern_United_States
+https://en.wikipedia.org/wiki/Southern_United_States
+
 
