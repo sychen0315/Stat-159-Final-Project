@@ -7,7 +7,22 @@ The first step in our project is data cleaning. The original dataset provided by
 
 In order to locate school with similar demographics and location, we perform clutering based on 3 criteria: region, located near population center or countryside and minority ratio. 
 
-The four main regions we identify are west, midwest, northeast and south.
+The four main regions we identify are west, midwest, northeast and south. We looked at region division listed on Wikipedia page to match each state with their perspective region. Then, we create a new data frame of each school's unitID, name and with four new column added, one for each region, with 1 representing the school belongs to this region and 0 if it doesn't.  
+
+Then, within each region, we look at whether a certain institution is located at a major city or countryside. We also use a Wikipedia page as a reference to obtain a list of 300 major cities in the U.S. and compare the listed city for each institution with our major city list. If the school is located 
+
+
+
+
+
+
+
+
+
+
+
+
+Website reference:
 
 https://en.wikipedia.org/wiki/Western_United_States
 https://en.wikipedia.org/wiki/Midwestern_United_States
