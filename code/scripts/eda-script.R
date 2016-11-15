@@ -35,8 +35,11 @@ for (i in quantitative_variables) {
   boxplot_generator(clean_data[,i], i)
 }
 
+
+matrix_variables <- c("UGDS","ADM_RATE","COSTT4_A","MD_EARN_WNE_P10",
+                      "C100_4","PCTFLOAN","CIP_SUM","MINORATIO","STU_APPLIED")
 png("images/eda-images/scatterplot-matrix/scatterplot-matrix.png")
-pairs(clean_data[, quantitative_variables])
+pairs(clean_data[, matrix_variables])
 dev.off()
 
 sink(file = anova_output_file)
