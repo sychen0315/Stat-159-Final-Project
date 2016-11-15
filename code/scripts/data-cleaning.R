@@ -12,7 +12,8 @@ CIP_colnames <- grep('^CIP', colnames(raw_data), value = TRUE)
 raw_data$CIP_SUM <- apply(raw_data[,CIP_colnames], 1, function(x) sum(as.numeric(x)))
 
 # Create a new df as clean_data
-clean_data <- raw_data[, c('UNITID', 'INSTNM', 'STABBR', 'CITY', minority, 'UGDS_WHITE', competitiveness)]
+clean_data <- raw_data[, c('UNITID', 'INSTNM', 'STABBR', 'CITY', minority, 
+                           'LONGITUDE', 'LATITUDE','UGDS_WHITE', competitiveness)]
 
 # Explore NULL in each column and save result
 col_null <- colSums(clean_data == 'NULL')

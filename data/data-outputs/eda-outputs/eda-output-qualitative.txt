@@ -1,0 +1,36 @@
+[1] "Summary Statistics for WEST"
+                              0           1
+Frequency          1367.0000000 212.0000000
+Relative Frequency    0.8657378   0.1342622
+[1] "Summary Statistics for MIDWEST"
+                             0          1
+Frequency          1169.000000 410.000000
+Relative Frequency    0.740342   0.259658
+[1] "Summary Statistics for NORTHEAST"
+                              0           1
+Frequency          1160.0000000 419.0000000
+Relative Frequency    0.7346422   0.2653578
+[1] "Summary Statistics for SOUTH"
+                              0           1
+Frequency          1065.0000000 514.0000000
+Relative Frequency    0.6744775   0.3255225
+[1] "Summary Statistics for MAJOR_CITY"
+                             0           1
+Frequency          956.0000000 623.0000000
+Relative Frequency   0.6054465   0.3945535
+[1] "Summary Statistics for MINOQ1"
+                             0          1
+Frequency          1201.000000 378.000000
+Relative Frequency    0.760608   0.239392
+[1] "Summary Statistics for MINOQ2"
+                              0           1
+Frequency          1180.0000000 399.0000000
+Relative Frequency    0.7473084   0.2526916
+[1] "Summary Statistics for MINOQ3"
+                              0           1
+Frequency          1173.0000000 406.0000000
+Relative Frequency    0.7428752   0.2571248
+[1] "Summary Statistics for MINOQ4"
+                              0           1
+Frequency          1183.0000000 396.0000000
+Relative Frequency    0.7492084   0.2507916

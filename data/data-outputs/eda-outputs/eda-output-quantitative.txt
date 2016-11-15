@@ -1,0 +1,228 @@
+Summary Statistics for UGDS_BLACK 
+
+Minimum       : 0.00 
+Maximum       : 1.00 
+Range         : 1.00 
+First Quantile: 0.04 
+Median        : 0.07 
+Third Quantile: 0.15 
+IQR           : 0.11 
+Mean          : 0.14 
+Std Dev       : 0.19 
+
+Summary Statistics for UGDS_HISP 
+
+Minimum       : 0.00 
+Maximum       : 1.00 
+Range         : 1.00 
+First Quantile: 0.03 
+Median        : 0.06 
+Third Quantile: 0.12 
+IQR           : 0.08 
+Mean          : 0.11 
+Std Dev       : 0.15 
+
+Summary Statistics for UGDS_ASIAN 
+
+Minimum       : 0.00 
+Maximum       : 0.44 
+Range         : 0.44 
+First Quantile: 0.01 
+Median        : 0.02 
+Third Quantile: 0.05 
+IQR           : 0.04 
+Mean          : 0.04 
+Std Dev       : 0.06 
+
+Summary Statistics for UGDS_ASIAN 
+
+Minimum       : 0.00 
+Maximum       : 0.44 
+Range         : 0.44 
+First Quantile: 0.01 
+Median        : 0.02 
+Third Quantile: 0.05 
+IQR           : 0.04 
+Mean          : 0.04 
+Std Dev       : 0.06 
+
+Summary Statistics for UGDS_AIAN 
+
+Minimum       : 0.00 
+Maximum       : 0.88 
+Range         : 0.88 
+First Quantile: 0.00 
+Median        : 0.00 
+Third Quantile: 0.01 
+IQR           : 0.00 
+Mean          : 0.01 
+Std Dev       : 0.03 
+
+Summary Statistics for UGDS_NHPI 
+
+Minimum       : 0.00 
+Maximum       : 0.30 
+Range         : 0.30 
+First Quantile: 0.00 
+Median        : 0.00 
+Third Quantile: 0.00 
+IQR           : 0.00 
+Mean          : 0.00 
+Std Dev       : 0.01 
+
+Summary Statistics for UGDS_2MOR 
+
+Minimum       : 0.00 
+Maximum       : 0.31 
+Range         : 0.31 
+First Quantile: 0.02 
+Median        : 0.03 
+Third Quantile: 0.04 
+IQR           : 0.02 
+Mean          : 0.03 
+Std Dev       : 0.02 
+
+Summary Statistics for UGDS_NRA 
+
+Minimum       : 0.00 
+Maximum       : 0.44 
+Range         : 0.44 
+First Quantile: 0.01 
+Median        : 0.02 
+Third Quantile: 0.05 
+IQR           : 0.04 
+Mean          : 0.04 
+Std Dev       : 0.05 
+
+Summary Statistics for UGDS_UNKN 
+
+Minimum       : 0.00 
+Maximum       : 0.64 
+Range         : 0.64 
+First Quantile: 0.01 
+Median        : 0.03 
+Third Quantile: 0.06 
+IQR           : 0.05 
+Mean          : 0.04 
+Std Dev       : 0.06 
+
+Summary Statistics for UGDS_WHITE 
+
+Minimum       : 0.00 
+Maximum       : 1.00 
+Range         : 1.00 
+First Quantile: 0.48 
+Median        : 0.65 
+Third Quantile: 0.76 
+IQR           : 0.29 
+Mean          : 0.59 
+Std Dev       : 0.23 
+
+Summary Statistics for UGDS 
+
+Minimum       : 94.00 
+Maximum       : 52280.00 
+Range         : 52186.00 
+First Quantile: 1100.50 
+Median        : 2161.00 
+Third Quantile: 5701.50 
+IQR           : 4601.00 
+Mean          : 5032.80 
+Std Dev       : 7007.36 
+
+Summary Statistics for ADM_RATE 
+
+Minimum       : 0.05 
+Maximum       : 1.00 
+Range         : 0.95 
+First Quantile: 0.54 
+Median        : 0.68 
+Third Quantile: 0.80 
+IQR           : 0.26 
+Mean          : 0.66 
+Std Dev       : 0.19 
+
+Summary Statistics for COSTT4_A 
+
+Minimum       : 5920.00 
+Maximum       : 64988.00 
+Range         : 59068.00 
+First Quantile: 21678.50 
+Median        : 31993.00 
+Third Quantile: 43261.00 
+IQR           : 21582.50 
+Mean          : 33418.03 
+Std Dev       : 13534.61 
+
+Summary Statistics for MD_EARN_WNE_P10 
+
+Minimum       : 12000.00 
+Maximum       : 118800.00 
+Range         : 106800.00 
+First Quantile: 35400.00 
+Median        : 40300.00 
+Third Quantile: 46450.00 
+IQR           : 11050.00 
+Mean          : 41593.29 
+Std Dev       : 10684.88 
+
+Summary Statistics for C100_4 
+
+Minimum       : 0.00 
+Maximum       : 1.00 
+Range         : 1.00 
+First Quantile: 0.21 
+Median        : 0.35 
+Third Quantile: 0.53 
+IQR           : 0.32 
+Mean          : 0.38 
+Std Dev       : 0.22 
+
+Summary Statistics for PCTFLOAN 
+
+Minimum       : 0.00 
+Maximum       : 0.98 
+Range         : 0.98 
+First Quantile: 0.49 
+Median        : 0.62 
+Third Quantile: 0.73 
+IQR           : 0.23 
+Mean          : 0.60 
+Std Dev       : 0.17 
+
+Summary Statistics for CIP_SUM 
+
+Minimum       : 1.00 
+Maximum       : 73.00 
+Range         : 72.00 
+First Quantile: 16.00 
+Median        : 20.00 
+Third Quantile: 26.00 
+IQR           : 10.00 
+Mean          : 20.96 
+Std Dev       : 9.70 
+
+Summary Statistics for MINORATIO 
+
+Minimum       : 0.00 
+Maximum       : 1.00 
+Range         : 1.00 
+First Quantile: 0.24 
+Median        : 0.35 
+Third Quantile: 0.52 
+IQR           : 0.29 
+Mean          : 0.41 
+Std Dev       : 0.23 
+
+Summary Statistics for STU_APPLIED 
+
+Minimum       : 105.00 
+Maximum       : 221057.35 
+Range         : 220952.35 
+First Quantile: 1653.17 
+Median        : 3521.05 
+Third Quantile: 10085.49 
+IQR           : 8432.32 
+Mean          : 9348.83 
+Std Dev       : 16626.87 
+
