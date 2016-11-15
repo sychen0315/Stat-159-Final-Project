@@ -4,9 +4,9 @@ output_quantitative_stats <- function(data, name, file) {
   data_min <- min(data)
   data_max <- max(data)
   data_range <- data_max - data_min
-  data_1stQ <- unname(quantile(data_set$Income)[2])
+  data_1stQ <- unname(quantile(clean_data[ ,name])[2])
   data_median <- median(data)
-  data_3rdQ <- unname(quantile(data_set$Income)[4])
+  data_3rdQ <- unname(quantile(clean_data[ ,name])[4])
   data_IQR <- data_3rdQ - data_1stQ
   data_avg <- mean(data)
   data_sd <- sd(data)
@@ -50,10 +50,10 @@ boxplot_generator <- function (data, var_name) {
 
 # Generate conditional boxplots and save in png format
 condition_boxplot_generator <- function (var_name) {
-  file_path <- paste("images/conditional-boxplot/Condition-boxplot-between-Balance-and-",var_name,".png", sep = "")
+  file_path <- paste("images/conditional-boxplot/Condition-boxplot-between-StudentApplied-and-",var_name,".png", sep = "")
   png(file_path)
-  boxplot( data_set$Balance ~ data_set[,var_name], 
-           main = paste("Conditional boxplot between Balance and", var_name), 
+  boxplot( clean_data$STU_APPLIED ~ clean_data[,var_name], 
+           main = paste("Conditional boxplot between StudentApplied and", var_name), 
            xlab = paste(var_name), col = "yellow")
   dev.off()
 }
