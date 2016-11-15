@@ -1,0 +1,11 @@
+Number of NULL values in each column we care
+         UNITID          INSTNM          STABBR            CITY 
+              0               0               0               0 
+     UGDS_BLACK       UGDS_HISP      UGDS_ASIAN       UGDS_AIAN 
+            713             713             713             713 
+      UGDS_NHPI       UGDS_2MOR        UGDS_NRA       UGDS_UNKN 
+            713             713             713             713 
+     UGDS_WHITE            UGDS        ADM_RATE        COSTT4_A 
+            713             713            5505            3673 
+MD_EARN_WNE_P10          C100_4        PCTFLOAN 
+           1169            5510             737 

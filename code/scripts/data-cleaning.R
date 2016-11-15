@@ -1,5 +1,4 @@
 # Read data
-
 raw_data <- read.csv("data/data-sets/original-data-set/Most-Recent-Cohorts-All-Data-Elements.csv")
 
 state_df <- read.csv("data/data-sets/original-data-set/state.csv")
@@ -8,16 +7,32 @@ minority <- c("UGDS_BLACK", "UGDS_HISP", "UGDS_ASIAN", "UGDS_AIAN", "UGDS_NHPI",
 competitiveness <- c("UGDS", "ADM_RATE", "COSTT4_A","MD_EARN_WNE_P10", 
                "C100_4","PCTFLOAN")
 
+# Calculate the sum of PCIP
+CIP_colnames <- grep('^CIP', colnames(raw_data), value = TRUE)
+raw_data$CIP_SUM <- apply(raw_data[,CIP_colnames], 1, function(x) sum(as.numeric(x)))
 
+# Create a new df as clean_data
 clean_data <- raw_data[, c('UNITID', 'INSTNM', 'STABBR', 'CITY', minority, 'UGDS_WHITE', competitiveness)]
 
+# Explore NULL in each column and save result
+col_null <- colSums(clean_data == 'NULL')
+sink(file = "data/data-outputs/col-NULL-num.txt")
+writeLines("Number of NULL values in each column we care")
+col_null
+sink()
+
+# Add CIP_SUM column to clean data
+clean_data$CIP_SUM <- raw_data$CIP_SUM
+
+# Delete all row which contains NULL or NA
+clean_data <- clean_data[!rowSums(clean_data=='NULL' | is.na(clean_data) ),]
 
 
 # Divide by regions
-wests_schools <-raw_data$STABBR %in% state_df$West
-midwest_schools <- raw_data$STABBR %in% state_df$Midwest
-northeast_schools <- raw_data$STABBR %in% state_df$Northeast
-south_schools <- raw_data$STABBR %in% state_df$South
+wests_schools <-clean_data$STABBR %in% state_df$West
+midwest_schools <- clean_data$STABBR %in% state_df$Midwest
+northeast_schools <- clean_data$STABBR %in% state_df$Northeast
+south_schools <- clean_data$STABBR %in% state_df$South
 
 
 # Add more columns
@@ -28,11 +43,12 @@ clean_data$SOUTH <- as.numeric(south_schools)
 
 
 
-# Divide by major cities
-whether_major_city <- raw_data$CITY %in% major_cities$City
+# Divide by major cities and add one colum
+whether_major_city <- clean_data$CITY %in% major_cities$City
 clean_data$MAJOR_CITY <- as.numeric(whether_major_city)
 
 
+# add four columns indicating minority
 clean_data$MINORATIO = as.numeric(as.character(clean_data$UGDS_BLACK)) + 
   as.numeric(as.character(clean_data$UGDS_HISP)) + 
   as.numeric(as.character(clean_data$UGDS_ASIAN)) + 
@@ -91,27 +107,12 @@ clean_data$MINOQ3 = Group3
 clean_data$MINOQ4 = Group4
 
 
-students_applied = as.numeric(as.character(raw_data[, "UGDS"]))/as.numeric(as.character(raw_data[, "ADM_RATE"]))
-clean_data$STU_APPLIED = students_applied
+# add a column shown number of students applied
+students_applied <- as.numeric(as.character(clean_data[, "UGDS"]))/as.numeric(as.character(clean_data[, "ADM_RATE"]))
+clean_data$STU_APPLIED <- students_applied
 
-
-test <- na.omit(clean_data)
-
-
-# Calculate the sum of PCIP
-CIP_colnames <- grep('^CIP', colnames(raw_data), value = TRUE)
-for (i in 1:7703) {
-  total <- 0
-  for (j in CIP_colnames) {
-    if (is.na(as.numeric(as.character(raw_data[i,j])))){
-      next()
-    }
-    total <- total + as.numeric(as.character(raw_data[i,j]))
-  }
-  raw_data[i, "CIP_SUM"] = total
-}
-
-
+# Delete row which MD_EARN_WNE_P10 is privacySuppresed
+clean_data <- clean_data[!clean_data$MD_EARN_WNE_P10 == 'PrivacySuppressed',]
 
 # Write result to a new csv
 write.csv(clean_data, file = "data/data-sets/cleaned-data-set/clean-data.csv")
