@@ -5,7 +5,9 @@ Number of NULL values in each column we care
             713             713             713             713 
       UGDS_NHPI       UGDS_2MOR        UGDS_NRA       UGDS_UNKN 
             713             713             713             713 
-     UGDS_WHITE            UGDS        ADM_RATE        COSTT4_A 
-            713             713            5505            3673 
-MD_EARN_WNE_P10          C100_4        PCTFLOAN 
-           1169            5510             737 
+      LONGITUDE        LATITUDE      UGDS_WHITE            UGDS 
+            421             421             713             713 
+       ADM_RATE        COSTT4_A MD_EARN_WNE_P10          C100_4 
+           5505            3673            1169            5510 
+       PCTFLOAN 
+            737 
