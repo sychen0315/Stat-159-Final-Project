@@ -6,6 +6,8 @@ qualitative_output_file <- "data/data-outputs/eda-outputs/eda-output-qualitative
 correlation_output_file <- "data/data-outputs/eda-outputs/eda-output-correlation.txt"
 anova_output_file <- "data/data-outputs/eda-outputs/eda-output-anova.txt"
 
+
+
 sink(file = quantitative_output_file)
 
 quantitative_variables <- c("UGDS_BLACK", "UGDS_HISP", "UGDS_ASIAN", "UGDS_ASIAN", "UGDS_AIAN", "UGDS_NHPI", 
@@ -56,3 +58,9 @@ condition_boxplot_generator("MINOQ1")
 condition_boxplot_generator("MINOQ2")
 condition_boxplot_generator("MINOQ3")
 condition_boxplot_generator("MINOQ4")
+
+
+sink(file = "data/data-outputs/eda-outputs/interesting-factors.txt")
+writeLines("Universities with more than 100000 students applied")
+as.character(clean_data[clean_data$STU_APPLIED> 100000, ][['INSTNM']])
+sink()
