@@ -11,6 +11,7 @@ NM = c()
 NN = c()
 SM = c()
 SN = c()
+cluster = c()
 
 length(summary(data$STABBR))
 for(i in 1:nrow(data)){
@@ -21,7 +22,8 @@ for(i in 1:nrow(data)){
   N <- row$NORTHEAST
   S <- row$SOUTH
   Major <- row$MAJOR_CITY
-
+  
+  
   if(W && Major){
     WM = c(WM, 1)
     WN = c(WN, 0)
@@ -31,6 +33,7 @@ for(i in 1:nrow(data)){
     NN = c(NN, 0)
     SM = c(SM, 0)
     SN = c(SN, 0)
+    cluster = c(cluster, 1)
   }
   if(W && !Major){
     WM = c(WM, 0)
@@ -41,6 +44,8 @@ for(i in 1:nrow(data)){
     NN = c(NN, 0)
     SM = c(SM, 0)
     SN = c(SN, 0)
+    cluster = c(cluster, 2)
+    
   }
   if(M && Major){
     WM = c(WM, 0)
@@ -51,6 +56,8 @@ for(i in 1:nrow(data)){
     NN = c(NN, 0)
     SM = c(SM, 0)
     SN = c(SN, 0)
+    cluster = c(cluster, 3)
+    
   }
   if(M && !Major){
     WM = c(WM, 0)
@@ -61,6 +68,8 @@ for(i in 1:nrow(data)){
     NN = c(NN, 0)
     SM = c(SM, 0)
     SN = c(SN, 0)
+    cluster = c(cluster, 4)
+    
   }
   if(N && Major){
     WM = c(WM, 0)
@@ -71,6 +80,8 @@ for(i in 1:nrow(data)){
     NN = c(NN, 0)
     SM = c(SM, 0)
     SN = c(SN, 0)
+    cluster = c(cluster, 5)
+    
   }
   if(N && !Major){
     WM = c(WM, 0)
@@ -81,6 +92,8 @@ for(i in 1:nrow(data)){
     NN = c(NN, 1)
     SM = c(SM, 0)
     SN = c(SN, 0)
+    cluster = c(cluster, 6)
+    
   }
   if(S && Major){
     WM = c(WM, 0)
@@ -91,6 +104,8 @@ for(i in 1:nrow(data)){
     NN = c(NN, 0)
     SM = c(SM, 1)
     SN = c(SN, 0)
+    cluster = c(cluster, 7)
+    
   }
   if(S && !Major){
     WM = c(WM, 0)
@@ -101,6 +116,8 @@ for(i in 1:nrow(data)){
     NN = c(NN, 0)
     SM = c(SM, 0)
     SN = c(SN, 1)
+    cluster = c(cluster, 8)
+    
   }
 }
 categorized_data$WM = WM
@@ -111,5 +128,6 @@ categorized_data$NM = NM
 categorized_data$NN = NN
 categorized_data$SM = SM
 categorized_data$SN = SN
+categorized_data$cluster = cluster
 
 write.csv(categorized_data, file = "data/data-sets/cleaned-data-set/categorized-data.csv")
