@@ -115,6 +115,7 @@ clean_data$STU_APPLIED <- students_applied
 # Delete row which MD_EARN_WNE_P10 is privacySuppresed
 clean_data <- clean_data[!clean_data$MD_EARN_WNE_P10 == 'PrivacySuppressed',]
 
+
 # Write result to a new csv
 write.csv(clean_data, file = "data/data-sets/cleaned-data-set/clean-data.csv")
 
