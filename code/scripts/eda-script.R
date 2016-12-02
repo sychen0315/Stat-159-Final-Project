@@ -67,11 +67,6 @@ as.character(clean_data[clean_data$STU_APPLIED> 100000, ][['INSTNM']])
 sink()
 
 
-NO_OF_SCHOOLS <- NULL
-for (i in 1:8) {
-  NO_OF_SCHOOLS[i] = sum(categorized_data$cluster==i)
-}
-
 regression_variables <- c("STU_APPLIED", "MD_EARN_WNE_P10", "C100_4",
 "PCTFLOAN",  "MAJOR_CITY", "MINORATIO", "WEST", "MIDWEST", "NORTHEAST")
 
@@ -82,3 +77,97 @@ for (i in 1:8) {
   }
 }
 sink()
+
+NUM_OF_SCHOOLS <- NULL
+STU_APPLIED_mean <- NULL
+STU_APPLIED_sd <- NULL
+STU_APPLIED_min <- NULL
+STU_APPLIED_max <- NULL
+MD_EARN_WNE_P10_mean <- NULL
+MD_EARN_WNE_P10_sd <- NULL
+MD_EARN_WNE_P10_min <- NULL
+MD_EARN_WNE_P10_max <- NULL
+C100_4_mean <- NULL
+C100_4_sd <- NULL
+C100_4_min <- NULL
+C100_4_max <- NULL
+PCTFLOAN_mean <- NULL
+PCTFLOAN_sd <- NULL
+PCTFLOAN_min <- NULL
+PCTFLOAN_max <- NULL
+MAJOR_CITY_mean <- NULL
+MAJOR_CITY_sd <- NULL
+MAJOR_CITY_min <- NULL
+MAJOR_CITY_max <- NULL
+MINORATIO_mean <- NULL
+MINORATIO_sd <- NULL
+MINORATIO_min <- NULL
+MINORATIO_max <- NULL
+WEST_mean <- NULL
+WEST_sd <- NULL
+WEST_min <- NULL
+WEST_max <- NULL
+MIDWEST_mean <- NULL
+MIDWEST_sd <- NULL
+MIDWEST_min <- NULL
+MIDWEST_max <- NULL
+NORTHEAST_mean <- NULL
+NORTHEAST_sd <- NULL
+NORTHEAST_min <- NULL
+NORTHEAST_max <- NULL
+
+for (i in 1:8) {
+  NUM_OF_SCHOOLS[i] = sum(categorized_data$cluster==i)
+  STU_APPLIED_mean[i] <- mean(categorized_data[categorized_data$cluster==i,]$STU_APPLIED)
+  STU_APPLIED_sd[i] <- sd(categorized_data[categorized_data$cluster==i,]$STU_APPLIED)
+  STU_APPLIED_min[i] <- min(categorized_data[categorized_data$cluster==i,]$STU_APPLIED)
+  STU_APPLIED_max[i] <- max(categorized_data[categorized_data$cluster==i,]$STU_APPLIED)
+  MD_EARN_WNE_P10_mean[i] <- mean(categorized_data[categorized_data$cluster==i,]$MD_EARN_WNE_P10)
+  MD_EARN_WNE_P10_sd[i] <- sd(categorized_data[categorized_data$cluster==i,]$MD_EARN_WNE_P10)
+  MD_EARN_WNE_P10_min[i] <- min(categorized_data[categorized_data$cluster==i,]$MD_EARN_WNE_P10)
+  MD_EARN_WNE_P10_max[i] <- max(categorized_data[categorized_data$cluster==i,]$MD_EARN_WNE_P10)
+  C100_4_mean[i] <- mean(categorized_data[categorized_data$cluster==i,]$C100_4)
+  C100_4_sd[i] <- sd(categorized_data[categorized_data$cluster==i,]$C100_4)
+  C100_4_min[i] <- min(categorized_data[categorized_data$cluster==i,]$C100_4)
+  C100_4_max[i] <- max(categorized_data[categorized_data$cluster==i,]$C100_4)
+  PCTFLOAN_mean[i] <- mean(categorized_data[categorized_data$cluster==i,]$PCTFLOAN)
+  PCTFLOAN_sd[i] <- sd(categorized_data[categorized_data$cluster==i,]$PCTFLOAN)
+  PCTFLOAN_min[i] <- min(categorized_data[categorized_data$cluster==i,]$PCTFLOAN)
+  PCTFLOAN_max[i] <- max(categorized_data[categorized_data$cluster==i,]$PCTFLOAN)
+  MAJOR_CITY_mean[i] <- mean(categorized_data[categorized_data$cluster==i,]$MAJOR_CITY)
+  MAJOR_CITY_sd[i] <- sd(categorized_data[categorized_data$cluster==i,]$MAJOR_CITY)
+  MAJOR_CITY_min[i] <- min(categorized_data[categorized_data$cluster==i,]$MAJOR_CITY)
+  MAJOR_CITY_max[i] <- max(categorized_data[categorized_data$cluster==i,]$MAJOR_CITY)
+  MINORATIO_mean[i] <- mean(categorized_data[categorized_data$cluster==i,]$MINORATIO)
+  MINORATIO_sd[i] <- sd(categorized_data[categorized_data$cluster==i,]$MINORATIO)
+  MINORATIO_min[i] <- min(categorized_data[categorized_data$cluster==i,]$MINORATIO)
+  MINORATIO_max[i] <- max(categorized_data[categorized_data$cluster==i,]$MINORATIO)
+  WEST_mean[i] <- mean(categorized_data[categorized_data$cluster==i,]$WEST)
+  WEST_sd[i] <- sd(categorized_data[categorized_data$cluster==i,]$WEST)
+  WEST_min[i] <- min(categorized_data[categorized_data$cluster==i,]$WEST)
+  WEST_max[i] <- max(categorized_data[categorized_data$cluster==i,]$WEST)
+  MIDWEST_mean[i] <- mean(categorized_data[categorized_data$cluster==i,]$MIDWEST)
+  MIDWEST_sd[i] <- sd(categorized_data[categorized_data$cluster==i,]$MIDWEST)
+  MIDWEST_min[i] <- min(categorized_data[categorized_data$cluster==i,]$MIDWEST)
+  MIDWEST_max[i] <- max(categorized_data[categorized_data$cluster==i,]$MIDWEST)
+  NORTHEAST_mean[i] <- mean(categorized_data[categorized_data$cluster==i,]$NORTHEAST)
+  NORTHEAST_sd[i] <- sd(categorized_data[categorized_data$cluster==i,]$NORTHEAST)
+  NORTHEAST_min[i] <- min(categorized_data[categorized_data$cluster==i,]$NORTHEAST)
+  NORTHEAST_max[i] <- max(categorized_data[categorized_data$cluster==i,]$NORTHEAST)
+}
+
+cluster_eda_stats = rbind(NUM_OF_SCHOOLS = NUM_OF_SCHOOLS, STU_APPLIED_mean = STU_APPLIED_mean, 
+                          STU_APPLIED_sd = STU_APPLIED_sd,STU_APPLIED_min = STU_APPLIED_min,
+                          STU_APPLIED_max = STU_APPLIED_max, MD_EARN_WNE_P10_mean = MD_EARN_WNE_P10_mean, MD_EARN_WNE_P10_sd = MD_EARN_WNE_P10_sd,
+                          MD_EARN_WNE_P10_min = MD_EARN_WNE_P10_min,
+                          MD_EARN_WNE_P10_max = MD_EARN_WNE_P10_max,C100_4_mean = C100_4_mean,C100_4_sd = C100_4_sd, C100_4_min = C100_4_min,C100_4_max = C100_4_max, 
+                          PCTFLOAN_mean = PCTFLOAN_mean,
+                          PCTFLOAN_sd =  PCTFLOAN_sd,PCTFLOAN_min = PCTFLOAN_min, PCTFLOAN_max = PCTFLOAN_max, MAJOR_CITY_mean = MAJOR_CITY_mean, MAJOR_CITY_sd = MAJOR_CITY_sd,
+                          MAJOR_CITY_min = MAJOR_CITY_min, MAJOR_CITY_max = MAJOR_CITY_max,MINORATIO_mean = MINORATIO_mean, MINORATIO_sd = MINORATIO_sd,MINORATIO_min = MINORATIO_min,
+                          MINORATIO_max = MINORATIO_max, WEST_mean = WEST_mean,WEST_sd = WEST_sd,WEST_min = WEST_min,WEST_max = WEST_max,MIDWEST_mean = MIDWEST_mean,
+                          MIDWEST_sd= MIDWEST_sd, MIDWEST_min = MIDWEST_min, MIDWEST_max =  MIDWEST_max, NORTHEAST_mean = NORTHEAST_mean, NORTHEAST_sd = NORTHEAST_sd,
+                          NORTHEAST_min = NORTHEAST_min,NORTHEAST_max=NORTHEAST_max)
+colnames(cluster_eda_stats) = c("cluster1", "cluster2","cluster3","cluster4","cluster5","cluster6",
+                                "cluster7","cluster8")
+  
+save(cluster_eda_stats, file = "data/data-outputs/eda-outputs/cluster-eda-stats.RData")
