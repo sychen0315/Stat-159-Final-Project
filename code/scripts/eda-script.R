@@ -1,11 +1,12 @@
 source("code/functions/eda-functions.R")
 
 clean_data <- read.csv("data/data-sets/cleaned-data-set/clean-data.csv")
+categorized_data <- read.csv("data/data-sets/cleaned-data-set/categorized-data.csv")
 quantitative_output_file <- "data/data-outputs/eda-outputs/eda-output-quantitative.txt"
 qualitative_output_file <- "data/data-outputs/eda-outputs/eda-output-qualitative.txt"
 correlation_output_file <- "data/data-outputs/eda-outputs/eda-output-correlation.txt"
 anova_output_file <- "data/data-outputs/eda-outputs/eda-output-anova.txt"
-
+cluster_output_file <- "data/data-outputs/eda-outputs/eda-output-cluster.txt"
 
 
 sink(file = quantitative_output_file)
@@ -63,4 +64,21 @@ condition_boxplot_generator("MINOQ4")
 sink(file = "data/data-outputs/eda-outputs/interesting-factors.txt")
 writeLines("Universities with more than 100000 students applied")
 as.character(clean_data[clean_data$STU_APPLIED> 100000, ][['INSTNM']])
+sink()
+
+
+NO_OF_SCHOOLS <- NULL
+for (i in 1:8) {
+  NO_OF_SCHOOLS[i] = sum(categorized_data$cluster==i)
+}
+
+regression_variables <- c("STU_APPLIED", "MD_EARN_WNE_P10", "C100_4",
+"PCTFLOAN",  "MAJOR_CITY", "MINORATIO", "WEST", "MIDWEST", "NORTHEAST")
+
+sink(file = cluster_output_file)
+for (i in 1:8) {
+  for (i in regression_variables) {
+    output_quantitative_stats(categorized_data[,i], i, cluster_output_file)
+  }
+}
 sink()
