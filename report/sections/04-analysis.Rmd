@@ -6,21 +6,21 @@ output: pdf_document
 
 ## Exploratory Data Analysis (EDA)
 
-The first step of conducting analysis is to understand the data by conducting exploratory data analysis. To conduct the EDA, we obtained descriptive statistics and summaries of all variables. For the quantitative variables, we wrote a function called output_quantitative_stats() to get minimum, maximum, range, median, first and third quartiles, IQR, Mean and Sd of all the quantitative variables including "UGDS_BLACK", "UGDS_HISP", "UGDS_ASIAN", "UGDS_ASIAN", "UGDS_AIAN", "UGDS_NHPI", "UGDS_2MOR","UGDS_NRA", "UGDS_UNKN","UGDS_WHITE", "UGDS", "ADM_RATE", "COSTT4_A", "MD_EARN_WNE_P10", "C100_4", "PCTFLOAN", "CIP_SUM", "MINORATIO", and "STU_APPLIED". 
+The first step of conducting analysis is to understand the data by conducting exploratory data analysis. To conduct the EDA, we obtained descriptive statistics and summaries of all variables. For the quantitative variables, we wrote a function called output_quantitative_stats() to get minimum, maximum, range, median, first and third quartiles, IQR, Mean and Sd of all the quantitative variables including "UGDS_BLACK", "UGDS_HISP", "UGDS_ASIAN", "UGDS_ASIAN", "UGDS_AIAN", "UGDS_NHPI", "UGDS_2MOR","UGDS_NRA", "UGDS_UNKN","UGDS_WHITE", "UGDS", "ADM_RATE", "COSTT4_A", "MD_EARN_WNE_P10", "C100_4", "PCTFLOAN", "CIP_SUM", "MINORATIO"$, and $"STU_APPLIED". 
 
-Similarly, we wrote a function called output_qualitative_stats() to generate a table with both the frequency and the relative frequency of the qualitative variables including "WEST", "MIDWEST", "NORTHEAST", "SOUTH", "MAJOR_CITY", "MINOQ1", "MINOQ2", "MINOQ3",and "MINOQ4". To understand the data better, we also want to generate some plots to visualize the data. We wrote the functions histogram_generator() and boxplot_generator() to generate histograms and boxplots of the quantitative variables and condition_boxplot_generator() to generate conditional boxplots between "STU_APPLIED" and the qualitative variables. To study the association between "STU_APPLIED" and the rest of predictors, we also obtained the correlation matrix of all quantitative variables using function cor(), the scatterplot matrix using function pairs(), the anova between "STU_APPLIED" and all the qualitative variables using function aov().
 
-To further analyze the data, we divided the data set into 8 separate clusters  
+To further analyze the data, we divided the data set into 8 separate clusters. Here is a summary table showing relevant statistics for each cluster. 
 
-```{r}
-library(xtable)
-library(Matrix)
-load("../../data/data-outputs/anova.RData")
+```{r echo = FALSE}
+
 ```
 
 After dividing our data set into 8 separate clusters, our first step is to perform an analysis of variance. ANOVA is designed to test whether there are any statistically significant differences between the means of independent groups. Since our measure of school competitiveness is the number of students applied, we will test whether the means of students applied is different among clusters to gauge whether our clustering criteria makes sense. 
 
 ```{r results= 'asis', echo = FALSE}
+library(xtable)
+library(Matrix)
+load("../../data/data-outputs/anova.RData")
 print(xtable(summary(aov_result), caption = 'ANOVA Test Result'), comment = FALSE)
 ```
 
@@ -33,7 +33,7 @@ Then, in order to develop strategies to improve competitiveness for each cluster
 
 To start with, we run an OLS regression for all variables that we believe have an impact on number of students applied. 
 
-$Students applied = Median_Earning + Completion_rate + Percentage_with_Student_Loans + Major_City + Minority_Ratio + West + Midwest + Northeast$
+Students applied = Median_Earning + Completion_rate + Percentage_with_Student_Loans + Major_City + Minority_Ratio + West + Midwest + Northeast
 
 The dependent variable is number of students applied in the fall term. It is calculated by dividing people admitted during fall term by the admission rate.
 
@@ -86,9 +86,31 @@ Since OLS is the most common and versatile method, it is our first choice. Howev
 ```{r results= 'asis', echo = FALSE}
 load("../../data/regression-data/overall-ridge-model.RData")
 load("../../data/regression-data/overall-lasso-model.RData")
-reg_coef_mat = cbind(ols_fitted_coef, as.numeric(ridge_fitted_coef), as.numeric(lasso_fitted_coef))
-colnames(reg_coef_mat) = c("ols", "ridge", "lasso")
-print(xtable(reg_coef_mat, caption = 'Regression Coefficients for 3 Regression Methods'), comment = FALSE)
+load("../../data/regression-data/overall-pcr-model.RData")
+load("../../data/regression-data/overall-plsr-model.RData")
+
+reg_coef_mat = cbind(ols_fitted_coef, as.numeric(ridge_fitted_coef), as.numeric(lasso_fitted_coef), c(NA,pcr_fitted_coef), c(NA,plsr_fitted_coef))
+reg_coef_mat = reg_coef_mat[-1,]
+colnames(reg_coef_mat) = c("ols", "ridge", "lasso", "pcr", "plsr")
+print(xtable(reg_coef_mat, caption = 'Regression Coefficients for 5 Regression Methods', digits = c(0,5,5,5,5,5)), comment = FALSE)
+
+MSE_val = as.matrix(c("ols" = MSE_ols, "ridge" = MSE_ridge, "lasso" = MSE_lasso, "pcr" = MSE_pcr, "plsr" = MSE_plsr))
+colnames(MSE_val) = "MSE"
+print(xtable(MSE_val, caption = 'MSE of 5 Regression Methods', digits = 5), comment = FALSE)
+
+par(mfrow = c(1,1))
+plot(reg_coef_mat[,1], xlab = "Coefficients", ylab = "Value", main = "Trend Lines of Coefficients for Different Regression Models")
+lines(reg_coef_mat[,1])
+points(reg_coef_mat[,2],col= "blue")
+lines(reg_coef_mat[,2],col = "blue")
+points(reg_coef_mat[,3], col = "red")
+lines(reg_coef_mat[,3],col = "red")
+points(reg_coef_mat[,4], col = "green")
+lines(reg_coef_mat[,4],col = "green")
+points(reg_coef_mat[,5], col = "yellow")
+lines(reg_coef_mat[,5],col = "yellow")
+legend(7.3,3,c('OLS','Ridge','Lasso','PCR','PLSR'), lty = c(1,1,1,1,1), lwd = c(2.5,2.5,2.5,2.5,2.5), col = c("black","blue","red","green","yellow"),merge = T)
+abline(h = 0, lty = 3)
 ```
 
 For Ridge and Lasso, because of the way the regression is set up, SE are not reliable measures. But comparing all the coefficients, we can see that the effect of earnings become smaller while the effect of locating at a major city significantly increase. 
