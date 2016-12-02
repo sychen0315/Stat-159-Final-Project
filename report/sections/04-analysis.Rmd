@@ -6,13 +6,17 @@ output: pdf_document
 
 ## Exploratory Data Analysis (EDA)
 
-The first step of conducting analysis is to understand the data by conducting exploratory data analysis. To conduct the EDA, we obtained descriptive statistics and summaries of all variables. For the quantitative variables, we wrote a function called output_quantitative_stats() to get minimum, maximum, range, median, first and third quartiles, IQR, Mean and Sd of all the quantitative variables including "UGDS_BLACK", "UGDS_HISP", "UGDS_ASIAN", "UGDS_ASIAN", "UGDS_AIAN", "UGDS_NHPI", "UGDS_2MOR","UGDS_NRA", "UGDS_UNKN","UGDS_WHITE", "UGDS", "ADM_RATE", "COSTT4_A", "MD_EARN_WNE_P10", "C100_4", "PCTFLOAN", "CIP_SUM", "MINORATIO"$, and $"STU_APPLIED". 
+The first step of conducting analysis is to understand the data by conducting exploratory data analysis. To conduct the EDA, we obtained descriptive statistics and summaries of all variables. For the quantitative variables, we wrote a function called output_quantitative_stats() to get minimum, maximum, range, median, first and third quartiles, IQR, Mean and Sd of all the quantitative variables including "UGDS_BLACK", "UGDS_HISP", "UGDS_ASIAN", "UGDS_ASIAN", "UGDS_AIAN", "UGDS_NHPI", "UGDS_2MOR","UGDS_NRA", "UGDS_UNKN","UGDS_WHITE", "UGDS", "ADM_RATE", "COSTT4_A", "MD_EARN_WNE_P10", "C100_4", "PCTFLOAN", "CIP_SUM", "MINORATIO", and "STU_APPLIED". 
 
+Similarly, we wrote a function called output_qualitative_stats() to generate a table with both the frequency and the relative frequency of the qualitative variables including "WEST", "MIDWEST", "NORTHEAST", "SOUTH", "MAJOR_CITY", "MINOQ1", "MINOQ2", "MINOQ3",and "MINOQ4". To understand the data better, we also want to generate some plots to visualize the data. We wrote the functions histogram_generator() and boxplot_generator() to generate histograms and boxplots of the quantitative variables and condition_boxplot_generator() to generate conditional boxplots between "STU_APPLIED" and the qualitative variables. To study the association between "STU_APPLIED" and the rest of predictors, we also obtained the correlation matrix of all quantitative variables using function cor(), the scatterplot matrix using function pairs(), the anova between "STU_APPLIED" and all the qualitative variables using function aov().
 
 To further analyze the data, we divided the data set into 8 separate clusters. Here is a summary table showing relevant statistics for each cluster. 
 
-```{r echo = FALSE}
-
+```{r results= 'asis', echo = FALSE}
+library(xtable)
+library(Matrix)
+load("../../data/data-outputs/eda-outputs/cluster-eda-stats.RData")
+print(xtable(cluster_eda_stats, caption = 'Cluster Statistics'), comment = FALSE)
 ```
 
 After dividing our data set into 8 separate clusters, our first step is to perform an analysis of variance. ANOVA is designed to test whether there are any statistically significant differences between the means of independent groups. Since our measure of school competitiveness is the number of students applied, we will test whether the means of students applied is different among clusters to gauge whether our clustering criteria makes sense. 
