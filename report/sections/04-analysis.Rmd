@@ -118,3 +118,4 @@ abline(h = 0, lty = 3)
 ```
 
 For Ridge and Lasso, because of the way the regression is set up, SE are not reliable measures. But comparing all the coefficients, we can see that the effect of earnings become smaller while the effect of locating at a major city significantly increase. 
+
