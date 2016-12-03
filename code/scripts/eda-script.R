@@ -133,7 +133,6 @@ cluster_eda_stats = rbind(Size = NUM_OF_SCHOOLS, STU_APP_avg = STU_APPLIED_mean,
                           PCTFLOAN_avg = PCTFLOAN_mean,
                           PCTFLOAN_sd =  PCTFLOAN_sd,PCTFLOAN_min = PCTFLOAN_min, PCTFLOAN_max = PCTFLOAN_max,MINORITY_avg = MINORATIO_mean, MINORITY_sd = MINORATIO_sd,MINORITY_min = MINORATIO_min,
                           MINORITY_max = MINORATIO_max)
-colnames(cluster_eda_stats) = c("WM", "WN","MM","MN","NM","NN",
-                                "SM","SN")
+colnames(cluster_eda_stats) = c("WM", "WN","MM","MN","NM","NN","SM","SN")
   
 save(cluster_eda_stats, file = "data/data-outputs/eda-outputs/cluster-eda-stats.RData")

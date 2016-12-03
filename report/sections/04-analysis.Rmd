@@ -133,22 +133,31 @@ Therefore, weighing all the pros and cons for each regression method, we decide 
 
 ```{r results= 'asis', echo = FALSE}
 load("../../data/regression-data/WM-ols-model.RData")
+print(xtable(summary(model)$coefficients, caption = 'Regression Coefficients WM Cluster'), comment = FALSE)
 load("../../data/regression-data/WN-ols-model.RData")
+print(xtable(summary(model)$coefficients, caption = 'Regression Coefficients WN Cluster'), comment = FALSE)
 load("../../data/regression-data/MM-ols-model.RData")
+print(xtable(summary(model)$coefficients, caption = 'Regression Coefficients MM Cluster'), comment = FALSE)
 load("../../data/regression-data/MN-ols-model.RData")
+print(xtable(summary(model)$coefficients, caption = 'Regression Coefficients MN Cluster'), comment = FALSE)
 load("../../data/regression-data/NM-ols-model.RData")
+print(xtable(summary(model)$coefficients, caption = 'Regression Coefficients NM Cluster'), comment = FALSE)
 load("../../data/regression-data/NN-ols-model.RData")
+print(xtable(summary(model)$coefficients, caption = 'Regression Coefficients NN Cluster'), comment = FALSE)
 load("../../data/regression-data/SM-ols-model.RData")
+print(xtable(summary(model)$coefficients, caption = 'Regression Coefficients SM Cluster'), comment = FALSE)
 load("../../data/regression-data/SN-ols-model.RData")
-
-print(xtable(summary(WM_model)$coefficients, caption = 'Regression Coefficients WM Cluster'), comment = FALSE)
-print(xtable(summary(WN_model)$coefficients, caption = 'Regression Coefficients WN Cluster'), comment = FALSE)
-print(xtable(summary(MM_model)$coefficients, caption = 'Regression Coefficients MM Cluster'), comment = FALSE)
-print(xtable(summary(MN_model)$coefficients, caption = 'Regression Coefficients MN Cluster'), comment = FALSE)
-print(xtable(summary(NM_model)$coefficients, caption = 'Regression Coefficients NM Cluster'), comment = FALSE)
-print(xtable(summary(NN_model)$coefficients, caption = 'Regression Coefficients NN Cluster'), comment = FALSE)
-print(xtable(summary(SM_model)$coefficients, caption = 'Regression Coefficients SM Cluster'), comment = FALSE)
-print(xtable(summary(SN_model)$coefficients, caption = 'Regression Coefficients SN Cluster'), comment = FALSE)
-
+print(xtable(summary(model)$coefficients, caption = 'Regression Coefficients SN Cluster'), comment = FALSE)
 
 ```
+
+Based on the regression results we have, we have different advice for institutions in different areas. 
+
+1. For schools located on the West and in major cities:
+
+All the coefficients are significant except minority ratio. This can be largely explained by the fact that this cluster has the highest average minority ratio among all clusters, meaning those institutions already have a very diverse student population. Therefore, furthur improving this aspect won't have a significant impact on the school's competitiveness.
+
+The most significant regressors is median earnings 10 years after graduation. 
+
+2. For schools located on the West cost countryside:
+
