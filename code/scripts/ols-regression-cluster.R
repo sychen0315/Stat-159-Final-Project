@@ -13,5 +13,3 @@ for (i in category) {
   save(name, file = paste("data/regression-data/", i,"-ols-model.RData", sep = ""))
 }
 
-save(summaries, file = summary_output_file)
-
