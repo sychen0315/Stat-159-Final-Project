@@ -153,11 +153,20 @@ print(xtable(summary(model)$coefficients, caption = 'Regression Coefficients SN 
 
 Based on the regression results we have, we have different advice for institutions in different areas. 
 
-1. For schools located on the West and in major cities:
+1. For schools located in the west major cities:
 
 All the coefficients are significant except minority ratio. This can be largely explained by the fact that this cluster has the highest average minority ratio among all clusters, meaning those institutions already have a very diverse student population. Therefore, furthur improving this aspect won't have a significant impact on the school's competitiveness.
 
-The most significant regressors is median earnings 10 years after graduation. 
+The most significant regressors is median earnings 10 years after graduation. Most cities on the West Coast are where well-paid technology companies and banking industry clutered. Therefore, there is a possibility that people decide to attend a university on the West Coast in order to get a job with high pay. So during the application process, it is reasonable if they pay extra attention to their future career development and the salary level of previous graduates serve as a plausible measure. 
 
 2. For schools located on the West cost countryside:
+
+This cluster is our smallest one, so the coefficient might not be as accurate as clusters with larger population. However, from the EDA stage, we notice that WN cluster has the lowest average percentage of students with loans. This perfectly explains the fact that a 1% increase in this percentage won't have a significant effect on school competitiveness because their current level of students with debt is very low. 
+
+The most significant factor here is similar to that of group WM, which is median earnings. And this finding shows that there exists similarities between schools within the same region, possibly due to local culture and regional economic development.
+
+3. For schools located in the midwest major cities and countryside
+
+Those two clusters generate very similar results with all the coefficients significant, especially MN cluster. According to the EDA, MN is the region with the lowest average number of students applied. Therefore, it makes sense for all the varaibles to show statistical significance since they have a lot of room for improvement. The most significant coefficient in both clusters, median earning, can be interpreted as if we can increase the earnings after graduation by 1%, we predict the students applied will increase by 2.13% and 3.51% in schools located in the midwest cities and countryside. 
+
 
