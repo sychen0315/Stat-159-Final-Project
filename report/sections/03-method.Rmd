@@ -21,3 +21,16 @@ The major difference between Lasso and Ridge is that Lasso method aims to minimi
 ### Comparison between Ridge and Lasso
 
 In general, lasso is expected to outperform ridge when we have a small amount of predictors having significant coefficients, and the rest close to 0. Ridge regression will perform between when the response is affected by many regressors with equal-sized coefficients. 
+
+
+## Dimension Reduction Methods
+
+Dimension reduction method involves a transformation of variables before we fit in the least squares model. Instead of estimating $p + 1$ coefficients $\beta_0, ..., \beta_p$ when we have p regressors, it transform the data to $Z1, ..., Z_m, M < p$ where $Z_m$ represent linear combinations of the original predictors, so that we only need to estimate $M + 1$ coefficients $\theta_0, \theta_1, ..., \theta_M$. 
+
+### Principal Components Regression
+
+In principal components regression, we first perform privipal components analysis on the original data which constructs M principal components, $Z_1, ..., Z_m$. Then, we use these components as the predictors and fit the least squares model to obtain coefficient estimates. The key assumption we hold in this regression model is that the directions in which $X_1, ..., X_p$ show the most variation are the directions that are associated with Y. If the assumption holds, then fitting a least squares model to $Z_1, ..., Z_m$ will lead to better results than fitting a least squares model to $X_1, ..., X_p$, since most or all of the information in the data that relates to the response is contained in $Z_1, ..., Z_m$. With fewer predictors, we can also reduce the risk of overfitting. PCR performs the best when the first few pricipal components are sufficient to capture most of the variation in the predictors and their relationship with the response.
+
+### Partial Least Squares
+
+In comparison to PCR regression, which uses unsupervised method to dentify the principal components, partial least squares method takes the advantage of a supervised learning process. It uses the response variable Y to identify new vectors that are not only similar to existing regressors, but also select the ones that are related to the response. Therefore, as indicated in the textbook, the PLS approach attempts to find directions that help explain both the response and the predictors. 

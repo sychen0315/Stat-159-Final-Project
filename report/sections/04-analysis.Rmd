@@ -10,7 +10,7 @@ The first step of conducting analysis is to understand the data by conducting ex
 
 Similarly, we wrote a function called output_qualitative_stats() to generate a table with both the frequency and the relative frequency of the qualitative variables including "WEST", "MIDWEST", "NORTHEAST", "SOUTH", "MAJOR_CITY", "MINOQ1", "MINOQ2", "MINOQ3",and "MINOQ4". To understand the data better, we also want to generate some plots to visualize the data. We wrote the functions histogram_generator() and boxplot_generator() to generate histograms and boxplots of the quantitative variables and condition_boxplot_generator() to generate conditional boxplots between "STU_APPLIED" and the qualitative variables. To study the association between "STU_APPLIED" and the rest of predictors, we also obtained the correlation matrix of all quantitative variables using function cor(), the scatterplot matrix using function pairs(), the anova between "STU_APPLIED" and all the qualitative variables using function aov().
 
-To further analyze the data, we divided the data set into 8 separate clusters. Here is a summary table showing relevant statistics for each cluster. 
+Then, we divide our data set into 8 separate clusters according to region and its proximity to major cities. In order to develop strategies to improve competitiveness for each cluster, we first tabulate some key statistics for each cluster.
 
 ```{r results= 'asis', echo = FALSE}
 library(xtable)
@@ -19,7 +19,9 @@ load("../../data/data-outputs/eda-outputs/cluster-eda-stats.RData")
 print(xtable(cluster_eda_stats, caption = 'Cluster Statistics'), comment = FALSE)
 ```
 
-After dividing our data set into 8 separate clusters, our first step is to perform an analysis of variance. ANOVA is designed to test whether there are any statistically significant differences between the means of independent groups. Since our measure of school competitiveness is the number of students applied, we will test whether the means of students applied is different among clusters to gauge whether our clustering criteria makes sense. 
+The table contains the number of institutions in each cluster, with Northeast region not located in major city cluster having the most instituions. And since we are interested in predicting students applied by variables such as earnings, graduation rate, minority ratio and percentage of students with loans, we look at the mean for this variable in each cluster first. 
+
+ANOVA is designed to test whether there are any statistically significant differences between the means of independent groups. Since our measure of school competitiveness is the number of students applied, we will test whether the means of students applied is different among clusters to gauge whether our clustering criteria makes sense. 
 
 ```{r results= 'asis', echo = FALSE}
 library(xtable)
@@ -30,10 +32,7 @@ print(xtable(summary(aov_result), caption = 'ANOVA Test Result'), comment = FALS
 
 The test result shows that we have a p-value smaller than 0.01, which means that we can reject the null hypothesis that the means are the same across all 8 clusters. 
 
-Then, in order to develop strategies to improve competitiveness for each cluster, we first tabulate some key statistics for each cluster.
-
-
-
+Then, after the premilinary EDA, we start to run regression and explore the relationship between variables. 
 
 To start with, we run an OLS regression for all variables that we believe have an impact on number of students applied. 
 
@@ -85,7 +84,14 @@ Based on the regression output, some findings match with our expectations:
 
 Those 6 coefficients are all very significant at 1% significance level with p-value close to 1. 
 
-Since OLS is the most common and versatile method, it is our first choice. However, in order to decide which method fits our data better, we also apply ridge and lasso regression method. 
+Since OLS is the most common and versatile method, it is our first choice. However, in order to decide which method fits our data better, we also apply Ridge regression (RR), Lasso regression (LR), Principal Components regression (PCR) and Partial Least Squares regression (PLSR) method. 
+
+In order to improve our accuracy on predicting MSE, we use cross validation. We used sample() function to get a 3:1 train test split of our original data and for reproducibility purpose, we set.seed() before running the simulation.
+
+For ridge and lasso regression method, we used cv.glmnet() in R package "glmnet" to conduct the ten-fold cross-validation on the train set. We then used the best fitted lambda we found from the train set to build a model and calculate MSE from the test set in order to gauge our performance.
+
+Similarly, for pcr and plsr regression method, we used function pcr() and plsr() in "pls" package to perform the 10-fold cross-validation. We also use the best fitted m from the train set to build the model and obtain the MSE from the test set. 
+
 
 ```{r results= 'asis', echo = FALSE}
 load("../../data/regression-data/overall-ridge-model.RData")
@@ -117,5 +123,32 @@ legend(7.3,3,c('OLS','Ridge','Lasso','PCR','PLSR'), lty = c(1,1,1,1,1), lwd = c(
 abline(h = 0, lty = 3)
 ```
 
-For Ridge and Lasso, because of the way the regression is set up, SE are not reliable measures. But comparing all the coefficients, we can see that the effect of earnings become smaller while the effect of locating at a major city significantly increase. 
+We notice that all regerssion methods have similar MSE with lasso resulting the smallest. However, the coefficients are rather different between OLS, pcr, plsr and ridge, lasso. After intepretating the coefficients, we decide to use ols on the regression that we will run for each cluster for two main reasons:
 
+1. lm() provides us with a p-value associated with each coefficient. This gives us information regarding to whether the impact of a certain varaible is significant which plays a vital role in determining our advice to schools in a certain cluster. In contrast, due to the way Ridge and Lasso regression are designed, although they give out better prediction, but the SE associated with each coefficient is unreliable, so we will lose this information if we go with those regression methods. 
+
+2. We notice that some of our regression variables are correlated. Therefore, ridge and lasso regression, aiming to reduce the dimension by eliminating unnecessary variables, can cause a problem. If both varaibles can affect the school competitiveness through the same channel, we don't want the regression randomly drop one since they explain the same portion of change in Y. Instead, we want to make the decision on our own based on the budget required for each change or whether it is practical to execute for a certain institution.  
+
+Therefore, weighing all the pros and cons for each regression method, we decide to use OLS to run the regression for each cluster. 
+
+```{r results= 'asis', echo = FALSE}
+load("../../data/regression-data/WM-ols-model.RData")
+load("../../data/regression-data/WN-ols-model.RData")
+load("../../data/regression-data/MM-ols-model.RData")
+load("../../data/regression-data/MN-ols-model.RData")
+load("../../data/regression-data/NM-ols-model.RData")
+load("../../data/regression-data/NN-ols-model.RData")
+load("../../data/regression-data/SM-ols-model.RData")
+load("../../data/regression-data/SN-ols-model.RData")
+
+print(xtable(summary(WM_model)$coefficients, caption = 'Regression Coefficients WM Cluster'), comment = FALSE)
+print(xtable(summary(WN_model)$coefficients, caption = 'Regression Coefficients WN Cluster'), comment = FALSE)
+print(xtable(summary(MM_model)$coefficients, caption = 'Regression Coefficients MM Cluster'), comment = FALSE)
+print(xtable(summary(MN_model)$coefficients, caption = 'Regression Coefficients MN Cluster'), comment = FALSE)
+print(xtable(summary(NM_model)$coefficients, caption = 'Regression Coefficients NM Cluster'), comment = FALSE)
+print(xtable(summary(NN_model)$coefficients, caption = 'Regression Coefficients NN Cluster'), comment = FALSE)
+print(xtable(summary(SM_model)$coefficients, caption = 'Regression Coefficients SM Cluster'), comment = FALSE)
+print(xtable(summary(SN_model)$coefficients, caption = 'Regression Coefficients SN Cluster'), comment = FALSE)
+
+
+```
