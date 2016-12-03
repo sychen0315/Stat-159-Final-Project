@@ -167,6 +167,16 @@ The most significant factor here is similar to that of group WM, which is median
 
 3. For schools located in the midwest major cities and countryside
 
-Those two clusters generate very similar results with all the coefficients significant, especially MN cluster. According to the EDA, MN is the region with the lowest average number of students applied. Therefore, it makes sense for all the varaibles to show statistical significance since they have a lot of room for improvement. The most significant coefficient in both clusters, median earning, can be interpreted as if we can increase the earnings after graduation by 1%, we predict the students applied will increase by 2.13% and 3.51% in schools located in the midwest cities and countryside. 
+Those two clusters generate very similar results with all the coefficients being significant, especially MN cluster. According to the EDA, MN is the region with the lowest average number of students applied. Therefore, it makes sense for all the varaibles to show statistical significance since they have a lot of room for improvement. The most significant coefficient in both clusters, median earning, can be interpreted as if we can increase the earnings after graduation by 1%, we predict the students applied will increase by 2.13% and 3.51% in schools located in the midwest cities and countryside. In addition, they have relative low minority ratio among all clusters, therefore boosting their minority ratio by 1% is expected to bring an additional 1.82% and 1% in MM and MN cluster respectively. 
+
+4. For schools located in the northeast major cities:
+
+All the coefficients are significant besides that of graduation rate. This cluster has the highest 4-year graduation rate, which explains why an additional boost in this rate won't bring as much increase in school competitiveness as other variables. Similarly to the West region, Northeast has prosperous economy and harbour millions of high-tech and finance related-companies. Therefore, it is not surprising to see that the effect of pay after graduation is has a t-value that is significantly higher than other factors, and we expect a 1% increase in graduation pay is associated with a 2.14% increase in number of students applied. 
+
+5. For schools located in the northeast countryside:
+
+With a relatively low minority ratio to start with, improving minority ratio will bring the largest increase in school competitiveness. For each 1% increase in minortity ratio, we expect the number of students applied will increase by 1.8%. 
+
+
 
 
