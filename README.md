@@ -34,19 +34,13 @@ stat159-fall2016-project2/
 	      ...
     images/
       README.md
-      boxplot/
+      eda-images/
         ...
-      conditional-boxplot/
-        ...
-      histogram/
-        ...
-      scatterplot-matrix/
-	      ...
       regression-plot/
-	      ...
-	  slides/
-	    slides.html
-	    slides.Rmd
+        ...
+    slides/
+      slides.html
+      slides.Rmd
     report/
       report.Rmd
       report.pdf
@@ -106,7 +100,7 @@ Yukun(Diane) He
 
 UC Berkeley Class of 2017
 
-Statistics, B.A. | Economics, B.A.
+Statistics, B.A.
 
 Email: yukunhe@berkeley.edu
 
