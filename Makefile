@@ -13,9 +13,9 @@ data_categorize_script = code/scripts/categorize-script.R
 categorized_data = data/data-sets/cleaned-data-set/categorized-data.csv
 
 train_test_split = code/scripts/train-test-split.R
-overall_train_set = "data/data-sets/train-test-data-set/overall-train-set.csv")
-overall_test_set = "data/data-sets/train-test-data-set/overall-test-set.csv")
-cluster_data = "data/data-sets/train-test-data-set/overall-data-set-regression.csv")
+overall_train_set = data/data-sets/train-test-data-set/overall-train-set.csv
+overall_test_set = data/data-sets/train-test-data-set/overall-test-set.csv
+cluster_data = data/data-sets/train-test-data-set/overall-data-set-regression.csv
 
 eda_script = code/scripts/eda-script.R
 
