@@ -1,7 +1,9 @@
 Number of NULL values in each column we care
-         UNITID          INSTNM          STABBR            CITY      UGDS_BLACK       UGDS_HISP      UGDS_ASIAN 
-              0               0               0               0             713             713             713 
-      UGDS_AIAN       UGDS_NHPI       UGDS_2MOR        UGDS_NRA       UGDS_UNKN       LONGITUDE        LATITUDE 
-            713             713             713             713             713             421             421 
-     UGDS_WHITE            UGDS        ADM_RATE        COSTT4_A MD_EARN_WNE_P10          C100_4        PCTFLOAN 
-            713             713            5505            3673            1169            5510             737 
+         UNITID          INSTNM          STABBR            CITY      UGDS_BLACK       UGDS_HISP 
+              0               0               0               0             713             713 
+     UGDS_ASIAN       UGDS_AIAN       UGDS_NHPI       UGDS_2MOR        UGDS_NRA       UGDS_UNKN 
+            713             713             713             713             713             713 
+      LONGITUDE        LATITUDE      UGDS_WHITE            UGDS        ADM_RATE        COSTT4_A 
+            421             421             713             713            5505            3673 
+MD_EARN_WNE_P10          C100_4        PCTFLOAN 
+           1169            5510             737 
