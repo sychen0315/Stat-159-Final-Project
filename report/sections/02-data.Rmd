@@ -1,4 +1,20 @@
 
 # Data
- 
 
+To conduct data cleaning, we first prepare the following datasets. The first is the states shown with abbreivations divided into four groups: West, MidWest, Northeast, and South based on location in United States. The second one contains the information of major cities in United States, including state, location, population density, etc.
+
+We first calculate the sum of CIP, which includes the precentage of degrees awared in each field of study and whether the insitituion offers the program.
+
+We then determine the way we assess a school's competitiveness. We select the following columns: Number of undergraduate student(UGDS), admission rate(ADM_RATE), average cost of attendence, tuition and fees(COSTT4_A), Mean and median earnings(MD_EARN_WNE_P10), completion rates for first-time, full-time students(C100_4) , percent of undergraduates receiving federal loans(PCTFLOAN).
+
+We look at null values in each column we need and save the result to see what can we do with null values and we decide to remove all the rows which contains at least one null values.
+
+We divide the schools by regions: west, midwest, northeat and south and divide by whehter the schools is in major cities or not.
+
+As for minority, we basically calculate the sum of percentages of different minorty groups. By looking at the result summary, we divide the schools into 4 groups: less than 1st quartile , 1st quartile to median, median to 3rd quartile and larger than 3rd quartile.
+
+We also calculate the number of students applied by dividing number of undergrads by admission rate.
+
+We combine all the columns mentioned above and discard other columns that we do not need to construct the clean dataset for modeling.
+
+One more thing about this dataset is that if some data is protected for privacy purpose, it's shown as PrivacySuppresed and we also eliminate columns which contains it.
