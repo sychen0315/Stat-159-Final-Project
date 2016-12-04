@@ -1,6 +1,6 @@
 # Run "make" to reproduce report
 
-.PHONY: all data data_clean data_categorize train_test_split eda ols ridge lasso pcr plsr ols_cluster regressions report slides session clean tests
+.PHONY: all data_clean data_categorize train_test_split eda ols ridge lasso pcr plsr ols_cluster regressions report slides session clean tests
 
 # Set variables
 data_set = data/data-sets/original-data-set/Most-Recent-Cohorts-All-Data-Elements.csv

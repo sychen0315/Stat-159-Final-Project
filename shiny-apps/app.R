@@ -2,6 +2,7 @@ library(shiny)
 library(leaflet)
 library(RColorBrewer)
 library(dplyr)
+library(lattice)
 
 clean_data <- read.csv("../data/data-sets/cleaned-data-set/clean-data.csv")
 clean_data$STU_APPLIED <- round(clean_data$STU_APPLIED)
@@ -13,7 +14,6 @@ clean_data$ln_MD_EARN_WNE_P10 <- log(clean_data$MD_EARN_WNE_P10)
 clean_data$ln_PCTFLOAN <- log(clean_data$PCTFLOAN)
 clean_data$ln_C100_4 <- log(clean_data$C100_4)
 clean_data$ln_COSTT4_A <- log(clean_data$COSTT4_A)
-
 
 
 vars <- c(

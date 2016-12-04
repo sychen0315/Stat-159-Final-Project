@@ -1,36 +1,36 @@
 [1] "Summary Statistics for WEST"
-                            0          1
-Frequency          41.0000000 53.0000000
-Relative Frequency  0.4361702  0.5638298
+                         0       1
+Frequency          42.0000 54.0000
+Relative Frequency  0.4375  0.5625
 [1] "Summary Statistics for MIDWEST"
                     0
-Frequency          94
+Frequency          96
 Relative Frequency  1
 [1] "Summary Statistics for NORTHEAST"
                     0
-Frequency          94
+Frequency          96
 Relative Frequency  1
 [1] "Summary Statistics for SOUTH"
-                            0          1
-Frequency          53.0000000 41.0000000
-Relative Frequency  0.5638298  0.4361702
+                         0       1
+Frequency          54.0000 42.0000
+Relative Frequency  0.5625  0.4375
 [1] "Summary Statistics for MAJOR_CITY"
                             0          1
-Frequency          46.0000000 48.0000000
-Relative Frequency  0.4893617  0.5106383
+Frequency          46.0000000 50.0000000
+Relative Frequency  0.4791667  0.5208333
 [1] "Summary Statistics for MINOQ1"
-                            0          1
-Frequency          70.0000000 24.0000000
-Relative Frequency  0.7446809  0.2553191
+                       0     1
+Frequency          72.00 24.00
+Relative Frequency  0.75  0.25
 [1] "Summary Statistics for MINOQ2"
-                            0          1
-Frequency          70.0000000 24.0000000
-Relative Frequency  0.7446809  0.2553191
+                       0     1
+Frequency          72.00 24.00
+Relative Frequency  0.75  0.25
 [1] "Summary Statistics for MINOQ3"
-                            0          1
-Frequency          72.0000000 22.0000000
-Relative Frequency  0.7659574  0.2340426
+                       0     1
+Frequency          72.00 24.00
+Relative Frequency  0.75  0.25
 [1] "Summary Statistics for MINOQ4"
-                            0          1
-Frequency          70.0000000 24.0000000
-Relative Frequency  0.7446809  0.2553191
+                       0     1
+Frequency          72.00 24.00
+Relative Frequency  0.75  0.25
