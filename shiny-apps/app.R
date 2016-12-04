@@ -89,7 +89,6 @@ server <- function(input, output, session) {
                  main = "log meadian earnings versus student applied"))
   })
   
-  
   # Incremental changes to the map (in this case, replacing the
   # circles when a new color is chosen) should be performed in
   # an observer. Each independent set of things that can change
@@ -100,7 +99,7 @@ server <- function(input, output, session) {
     colorData <- clean_data[[colorBy]]
     pal <- colorBin("Spectral", colorData, 7, pretty = FALSE)
     radius <- clean_data[[sizeBy]] / max(clean_data[[sizeBy]]) * 30000
-  
+    dt <- filteredData2()
     leafletProxy("map", data = filteredData()) %>%
       clearShapes() %>%
       addCircles(~LONGITUDE,~LATITUDE,radius = radius, stroke=FALSE, fillOpacity=0.4, fillColor=pal(colorData), 
@@ -122,14 +121,14 @@ server <- function(input, output, session) {
     proxy <- leafletProxy("map", data = filteredData2())
     proxy %>%
       fitBounds(~min(LONGITUDE)-2 , ~min(LATITUDE)-1, ~max(LONGITUDE), ~max(LATITUDE))
-      
+    
   })
-  
   
   observe({
     colorData <- clean_data[[input$color]]
     pal <- colorBin("Spectral", colorData, 7, pretty = FALSE)
     proxy <- leafletProxy("map", data = filteredData())
+    dt <- filteredData2()
     # Remove any existing legend, and only if the legend is
     # enabled, create a new one.
     proxy %>% clearControls()
@@ -141,10 +140,6 @@ server <- function(input, output, session) {
       )
     }
   })
-  
-  
- 
-  
   
 }
 
