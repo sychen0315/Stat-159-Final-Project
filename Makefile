@@ -28,7 +28,7 @@ plsr_script = code/scripts/plsr-regression-overall.R
 ols_cluster = code/scripts/ols-regression-cluster.R
 
 # All target
-all: data data_clean data_categorize eda regressions session report slides
+all: data_clean data_categorize eda regressions session report slides
 
 # Data target: Download data from the url
 data:
@@ -51,23 +51,23 @@ eda: $(eda_script) $(clean_data) $(categorized_data)
 	Rscript $<
 
 # ols target: Run ols regression and generate ols estimators
-ols: $(ols_script) $(overall_train_set) $(overall_test_set)
+ols: $(ols_script) $(overall_train_set) $(overall_test_set) $(cluster_data)
 	Rscript $<
 
 # ridge target: Run ridge regression and generate ridge estimators
-ridge: $(ridge_script) $(overall_train_set) $(overall_test_set)
+ridge: $(ridge_script) $(overall_train_set) $(overall_test_set) $(cluster_data)
 	Rscript $<
 
 # lasso target: Run lasso regression and generate lasso estimators
-lasso: $(lasso_script) $(overall_train_set) $(overall_test_set)
+lasso: $(lasso_script) $(overall_train_set) $(overall_test_set) $(cluster_data)
 	Rscript $<
 
 # pcr target: Run pcr regression and generate pcr estimators
-pcr: $(pcr_script) $(overall_train_set) $(overall_test_set)
+pcr: $(pcr_script) $(overall_train_set) $(overall_test_set) $(cluster_data)
 	Rscript $<
 
 # plsr target: Run plsr regression and generate plsr estimators
-plsr: $(plsr_script) $(overall_train_set) $(overall_test_set)
+plsr: $(plsr_script) $(overall_train_set) $(overall_test_set) $(cluster_data)
 	Rscript $<
 
 #ols targe" run ols regression over clustered data
