@@ -32,4 +32,8 @@ The scripts folder contains all of 13 scripts used in this project.
 
   `train-test-split.R` contains code for spliting data into train set and test set.
 
+  `ols-regression-cluster.R` contains code for fitting ols regression model for data of each cluster.
+
+  `data-visualization.R` contains code for 
+
 The test folder contains unit test for `test-regression.R`. 
