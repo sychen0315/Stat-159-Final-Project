@@ -7,3 +7,15 @@ output:
     incremental: true
 ---
 
+## Introduction
+
+## Data
+
+- The data we used in this project is provided by _**College Scorecard**_
+- The data set can be downloaded from <https://collegescorecard.ed.gov/data/>
+- Pre-modeling Data Processing:
+     - Dummy out categorical variables
+     - Mean centering and standardizing
+- Divide the data into training set and test set:
+     - Randomly select 300 entries to be the train set
+     - The remaining 100 entries is the test set
