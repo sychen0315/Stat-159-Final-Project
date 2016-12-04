@@ -1,3 +1,73 @@
+
+---
+title: "Statistics 159 Final Project Report"
+author: "Aoyi Shan, Yukun He, Siyu Chen, Shuotong WU"
+date: "11/20/2016"
+output: pdf_document
+header-includes: 
+- \usepackage{float}
+---
+
+# Abstract
+
+
+# Introduction
+
+
+# Data
+
+To conduct data cleaning, we first prepare the following datasets. The first is the states shown with abbreivations divided into four groups: West, MidWest, Northeast, and South based on location in United States. The second one contains the information of major cities in United States, including state, location, population density, etc.
+
+We first calculate the sum of CIP, which includes the precentage of degrees awared in each field of study and whether the insitituion offers the program.
+
+We then determine the way we assess a school's competitiveness. We select the following columns: Number of undergraduate student(UGDS), admission rate(ADM_RATE), average cost of attendence, tuition and fees(COSTT4_A), Mean and median earnings(MD_EARN_WNE_P10), completion rates for first-time, full-time students(C100_4) , percent of undergraduates receiving federal loans(PCTFLOAN).
+
+We look at null values in each column we need and save the result to see what can we do with null values and we decide to remove all the rows which contains at least one null values.
+
+We divide the schools by regions: west, midwest, northeat and south and divide by whehter the schools is in major cities or not.
+
+As for minority, we basically calculate the sum of percentages of different minorty groups. By looking at the result summary, we divide the schools into 4 groups: less than 1st quartile , 1st quartile to median, median to 3rd quartile and larger than 3rd quartile.
+
+We also calculate the number of students applied by dividing number of undergrads by admission rate.
+
+We combine all the columns mentioned above and discard other columns that we do not need to construct the clean dataset for modeling.
+
+One more thing about this dataset is that if some data is protected for privacy purpose, it's shown as PrivacySuppresed and we also eliminate columns which contains it.# Methods
+
+## Least Squares Method
+
+OLS estimators are considered as our base case in this project. OLS estimators are obtained by minimizing the sum of squares $RSS = \sum_{i=1}^n(y_i - \beta_0 - \sum_{j=1}^p(\beta_{j}x_{ij}))^2$ where $\beta_0, ..., \beta_p$ are our coefficient estimates. This is the most common regression method, and it works the best when we have homoskedastic and uncorrelated errors within the data.
+
+## Shrinkage Method
+
+Similar to the OLS method, shrinkage method also fits a model containg all independent variables but with a focus on constrains the coefficient estimates toward 0. By shrinking the coefficient estimates, the variance in estimators is significantly reduced compared to that of OLS. 
+
+### Ridge Regression 
+
+Instead of minimizing RSS, Ridge regression minimizes $RSS + \lambda \sum bj^2$. This regression abandons the requirement of an unbiased estimator in order to obtain a more precise prediction intervals. The addition term is a shrinkage penalty and since it's a sum of coefficient estimators, it will be small when $\beta$s are all close to 0. Here, $\lambda$ is called a tuning parameter and it controls how much RSS and shrinkage panelty affects the regression model. When $\lambda = 0$, ridge regression is the same as the least squares models. Becuase each $\lambda$ corresponds to a different set of coefficient estimates, we usually try a wide range of $\lambda$s and pick the best tuning parameter with the smallest MSE. 
+
+One of the main feature of ridge regression is the bias-variance trade-off. When $\lambda = 0$, which is the least square model, the variance is high the estimators are unbiased. As lambda increases, variance decreases significantly but bias only sightly increase. Since $MSE = variance + squared bias$ along with the relative effect of the change, when $\lambda$ is smaller than 10, the variance drops rapidly, with very little increase in bias, so MSE decreases. 
+
+### Lasso Regression
+
+The major difference between Lasso and Ridge is that Lasso method aims to minimize $RSS$ + $\lambda \sum |{\beta_j}|$. This is to compensate for the fact that ridge regression with always generate a model with all predictors since it doesn't involve a process of variable reduction. Therefore, lasso improves on this by allowing some of the coefficient estimates to be exactly 0 if the tunning parameter is sufficiently large. Therefore, this variable selection process makes the model much easier to interpret with a reduced amount of predictors. 
+
+### Comparison between Ridge and Lasso
+
+In general, lasso is expected to outperform ridge when we have a small amount of predictors having significant coefficients, and the rest close to 0. Ridge regression will perform between when the response is affected by many regressors with equal-sized coefficients. 
+
+
+## Dimension Reduction Methods
+
+Dimension reduction method involves a transformation of variables before we fit in the least squares model. Instead of estimating $p + 1$ coefficients $\beta_0, ..., \beta_p$ when we have p regressors, it transform the data to $Z1, ..., Z_m, M < p$ where $Z_m$ represent linear combinations of the original predictors, so that we only need to estimate $M + 1$ coefficients $\theta_0, \theta_1, ..., \theta_M$. 
+
+### Principal Components Regression
+
+In principal components regression, we first perform privipal components analysis on the original data which constructs M principal components, $Z_1, ..., Z_m$. Then, we use these components as the predictors and fit the least squares model to obtain coefficient estimates. The key assumption we hold in this regression model is that the directions in which $X_1, ..., X_p$ show the most variation are the directions that are associated with Y. If the assumption holds, then fitting a least squares model to $Z_1, ..., Z_m$ will lead to better results than fitting a least squares model to $X_1, ..., X_p$, since most or all of the information in the data that relates to the response is contained in $Z_1, ..., Z_m$. With fewer predictors, we can also reduce the risk of overfitting. PCR performs the best when the first few pricipal components are sufficient to capture most of the variation in the predictors and their relationship with the response.
+
+### Partial Least Squares
+
+In comparison to PCR regression, which uses unsupervised method to dentify the principal components, partial least squares method takes the advantage of a supervised learning process. It uses the response variable Y to identify new vectors that are not only similar to existing regressors, but also select the ones that are related to the response. Therefore, as indicated in the textbook, the PLS approach attempts to find directions that help explain both the response and the predictors. 
 ---
 output: pdf_document
 ---
@@ -206,4 +276,22 @@ This cluster has the lowest average of number of students applied and median ear
 
 
 
+
+
+---
+output: pdf_document
+---
+
+# Results
+
+Those regression results and intepretations give us great insights to develop strategies to increaes the number of students applied, therefore improving school competitivenss. 
+
+Combining all the findings we had from analysis section, we conclude 5 main sugguestions:
+
+1. For all 1555 institutions that we analyze, median earnings, completion rate in 4 years, its proximity to major city and minority ratio all have a positive impact on the number of students applied, while percentage of students with loans and cost of attendence negatively correlated to number of applications received. 
+
+2. 
+
+
+# Conclusion
 

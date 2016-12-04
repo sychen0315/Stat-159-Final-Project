@@ -5,4 +5,11 @@ output: pdf_document
 
 # Results
 
+Those regression results and intepretations give us great insights to develop strategies to increaes the number of students applied, therefore improving school competitivenss. 
+
+Combining all the findings we had from analysis section, we conclude 5 main sugguestions:
+
+1. For all 1555 institutions that we analyze, median earnings, completion rate in 4 years, its proximity to major city and minority ratio all have a positive impact on the number of students applied, while percentage of students with loans and cost of attendence negatively correlated to number of applications received. 
+
+2. 
 

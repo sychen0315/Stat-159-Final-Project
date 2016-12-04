@@ -9,11 +9,11 @@ data_source = https://ed-public-download.apps.cloud.gov/downloads/Most-Recent-Co
 data_cleaning = code/scripts/data-cleaning.R
 clean_data = data/data-sets/cleaned-data-set/clean-data.csv
 
-data_categorize = code/scripts/categrozie-script.R
+data_categorize_script = code/scripts/categorize-script.R
 categorized_data = data/data-sets/cleaned-data-set/categorized-data.csv
+regression_data = data/data-sets/train-test-data-set/overall-data-set-regression.csv
 
 train_test_split = code/scripts/train-test-split.R
-
 
 eda_script = code/scripts/eda-script.R
 
@@ -37,7 +37,7 @@ data_clean:  $(data_cleaning) $(data_set)
 	Rscript $<
 
 # data_categorize: Categorzie data into 8 groups based on region and major city.
-data_categorize: $(data_categorize) $(categorized_data)
+data_categorize: $(data_categorize_script) $(categorized_data)
 	Rscript $<
 
 # train_test_split: separate into test and train set
@@ -49,7 +49,7 @@ eda: $(eda_script) $(clean_data) $(categorized_data)
 	Rscript $<
 
 # ols target: Run ols regression and generate ols estimators
-ols: $(ols_script)
+ols: $(ols_script) $(regression_data)
 	Rscript $<
 
 # ridge target: Run ridge regression and generate ridge estimators
@@ -84,7 +84,6 @@ regressions:
 report: report/sections/*.Rmd
 	cat report/sections/*.Rmd > report/report.Rmd
 	cd report && Rscript -e "library(rmarkdown); render('report.Rmd', 'pdf_document')"
-
 
 # slides target: Generate slides
 slides:
