@@ -49,26 +49,26 @@ eda: $(eda_script) $(clean_data) $(categorized_data)
 	Rscript $<
 
 # ols target: Run ols regression and generate ols estimators
-ols: $(ols_script) $(data_set)
+ols: $(ols_script)
 	Rscript $<
 
 # ridge target: Run ridge regression and generate ridge estimators
-ridge: $(ridge_script) $(data_set)
+ridge: $(ridge_script)
 	Rscript $<
 
 # lasso target: Run lasso regression and generate lasso estimators
-lasso: $(lasso_script) $(data_set)
+lasso: $(lasso_script)
 	Rscript $<
 
 # pcr target: Run pcr regression and generate pcr estimators
-pcr: $(pcr_script) $(data_set)
+pcr: $(pcr_script)
 	Rscript $<
 
 # plsr target: Run plsr regression and generate plsr estimators
-plsr: $(plsr_script) $(data_set)
+plsr: $(plsr_script)
 	Rscript $<
 
-ols_cluster: $(ols_cluster) $(categorized_data)
+ols_cluster: $(ols_cluster)
 	Rscript $<
 
 # regressions target: Run all 6 regressions
