@@ -4,10 +4,22 @@ library(RColorBrewer)
 library(dplyr)
 
 clean_data <- read.csv("../data/data-sets/cleaned-data-set/clean-data.csv")
+clean_data$STU_APPLIED <- round(clean_data$STU_APPLIED)
+clean_data$PCTFLOAN <- round(clean_data$PCTFLOAN, 2)
+clean_data$C100_4 <- round(clean_data$C100_4, 2)
+clean_data$MINORATIO <- round(clean_data$MINORATIO, 2)
+clean_data$ln_STU_APPLIED <- log(clean_data$STU_APPLIED)
+clean_data$ln_MD_EARN_WNE_P10 <- log(clean_data$MD_EARN_WNE_P10)
+clean_data$ln_PCTFLOAN <- log(clean_data$PCTFLOAN)
+clean_data$ln_C100_4 <- log(clean_data$C100_4)
+clean_data$ln_COSTT4_A <- log(clean_data$COSTT4_A)
+
+
+
 vars <- c(
   "Number of students applied" = "STU_APPLIED",
   "Median earnings" = "MD_EARN_WNE_P10",
-  "Percentage of loaa" = "PCTFLOAN",
+  "Percentage of loan" = "PCTFLOAN",
   "Completion rate" = "C100_4",
   "Cost of attendence" = "COSTT4_A",
   "Major city" = "MAJOR_CITY",
@@ -21,7 +33,9 @@ parameters <- list("STU_APPLIED", "MD_EARN_WNE_P10", "PCTFLOAN", "C100_4", "COST
 ui <- bootstrapPage(
   tags$style(type = "text/css", "html, body {width:100%;height:100%}"),
   leafletOutput("map", width = "100%", height = "100%"),
-  absolutePanel(top = 10, right = 10,
+  absolutePanel(fixed = TRUE,
+                draggable = TRUE, top = 60, left = 20, right = 'auto', bottom = "auto",
+                width = 330, height = "auto",
                 textInput(inputId = "state", "State", value = "CA"),
                 #selectInput("var", "Parameter", parameters),
                 #sliderInput("range", "Percentile", 0, 100,
@@ -32,17 +46,16 @@ ui <- bootstrapPage(
                 #selectInput("colors", "Color Scheme",
                 #            rownames(subset(brewer.pal.info, category %in% c("seq", "div")))
                 #),
-                checkboxInput("legend", "Show legend", TRUE)
+                checkboxInput("legend", "Show legend", TRUE),
+                plotOutput("scatterStuIncome", height = 200)
   )
 )
 
 server <- function(input, output, session) {
-  
-  
   # Reactive expression for the data subsetted to what the user selected
   filteredData <- reactive({
     #clean_data[clean_data[, input$var] >= min_value & clean_data[, input$var] <= max_value , ]
-    clean_data[, c(input$color, input$size)]
+    clean_data
     })
   
   filteredData2 <- reactive(clean_data[clean_data$STABBR==input$state, ])
@@ -62,8 +75,20 @@ server <- function(input, output, session) {
     leaflet(filteredData2()) %>%  addTiles(
       urlTemplate = "//{s}.tiles.mapbox.com/v3/jcheng.map-5ebohr46/{z}/{x}/{y}.png",
       attribution = 'Maps by <a href="http://www.mapbox.com/">Mapbox</a>'
-    )
+    ) 
   })
+  
+  output$scatterStuIncome <- renderPlot({
+    # If no zipcodes are in view, don't plot
+    if (nrow(filteredData2()) == 0)
+      return(NULL)
+    
+    print(xyplot(ln_STU_APPLIED ~ ln_MD_EARN_WNE_P10, data = filteredData2(), 
+                 xlim = range(clean_data$ln_MD_EARN_WNE_P10), ylim = range(clean_data$ln_STU_APPLIED),
+                 type = c("p", "r"),col.line = "darkorange", lwd = 3,
+                 main = "log meadian earnings versus student applied"))
+  })
+  
   
   # Incremental changes to the map (in this case, replacing the
   # circles when a new color is chosen) should be performed in
@@ -75,27 +100,36 @@ server <- function(input, output, session) {
     colorData <- clean_data[[colorBy]]
     pal <- colorBin("Spectral", colorData, 7, pretty = FALSE)
     radius <- clean_data[[sizeBy]] / max(clean_data[[sizeBy]]) * 30000
-    
-    
-    #pal <- colorpal()
-    dt <- filteredData()
-    dt <- clean_data[clean_data$STABBR==input$state, ]
-    leafletProxy("map", data = clean_data) %>%
+  
+    leafletProxy("map", data = filteredData()) %>%
       clearShapes() %>%
       addCircles(~LONGITUDE,~LATITUDE,radius = radius, stroke=FALSE, fillOpacity=0.4, fillColor=pal(colorData), 
-                 popup = ~paste("Minority ratio:", MINORATIO) 
-      )  %>%
-      fitBounds(min(dt$LONGITUDE), min(dt$LATITUDE), max(dt$LONGITUDE), max(dt$LATITUDE))
+                 popup = ~paste("<strong>University: </strong>", INSTNM,
+                                "<br><strong>City, State: </strong>", CITY, STABBR,
+                                "<br><strong>Major City: </strong>", MAJOR_CITY,
+                                "<br><strong>Student applied: </strong>", STU_APPLIED,
+                                "<br><strong>Percent load: </strong>", PCTFLOAN,
+                                "<br><strong>Minority ratio: </strong>", MINORATIO,
+                                "<br><strong>Completion rate: </strong>", C100_4,
+                                "<br><strong>Cost: </strong>", COSTT4_A,
+                                "<br><strong>Median earnings: </strong>", MD_EARN_WNE_P10
+                                
+                   ) 
+      ) 
   })
   
-
-  # Use a separate observer to recreate the legend as needed.
+  observe({
+    proxy <- leafletProxy("map", data = filteredData2())
+    proxy %>%
+      fitBounds(~min(LONGITUDE)-2 , ~min(LATITUDE)-1, ~max(LONGITUDE), ~max(LATITUDE))
+      
+  })
+  
+  
   observe({
     colorData <- clean_data[[input$color]]
     pal <- colorBin("Spectral", colorData, 7, pretty = FALSE)
-    
-    proxy <- leafletProxy("map", data = clean_data)
-    
+    proxy <- leafletProxy("map", data = filteredData())
     # Remove any existing legend, and only if the legend is
     # enabled, create a new one.
     proxy %>% clearControls()
@@ -107,6 +141,10 @@ server <- function(input, output, session) {
       )
     }
   })
+  
+  
+ 
+  
   
 }
 

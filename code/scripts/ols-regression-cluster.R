@@ -6,7 +6,6 @@ models <- c()
 for (i in category) {
   filtered_data <- overall_data_set_regresssion[overall_data_set_regresssion[,i] == 1, ]
   model <- lm(ln_STU_APPLIED ~ ln_MD_EARN_WNE_P10 + ln_PCTFLOAN + ln_C100_4 + 
-           ln_COSTT4_A + MINORATIO, data = filtered_data)
+                ln_COSTT4_A + MINORATIO, data = filtered_data)
   save(model, file = paste("data/regression-data/", i,"-ols-model.RData", sep = ""))
 }
-
