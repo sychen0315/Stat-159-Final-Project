@@ -1,3 +1,11 @@
 Universities with more than 100000 students applied
-[1] "University of California-Berkeley"   
-[2] "University of California-Los Angeles"
+ [1] "University of California-Berkeley"          
+ [2] "University of California-Los Angeles"       
+ [3] "University of Southern California"          
+ [4] "University of Central Florida"              
+ [5] "Harvard University"                         
+ [6] "Columbia University in the City of New York"
+ [7] "Cornell University"                         
+ [8] "University of Pennsylvania"                 
+ [9] "Liberty University"                         
+[10] "Stanford University"                        

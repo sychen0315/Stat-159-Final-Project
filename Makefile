@@ -1,6 +1,6 @@
 # Run "make" to reproduce report
 
-.PHONY: all data_clean data_categorize train_test_split eda ols ridge lasso pcr plsr ols_cluster regressions report slides session clean tests
+.PHONY: all data data_clean data_categorize train_test_split eda ols ridge lasso pcr plsr ols_cluster regressions report slides session clean tests
 
 # Set variables
 data_set = data/data-sets/original-data-set/Most-Recent-Cohorts-All-Data-Elements.csv
@@ -28,7 +28,7 @@ plsr_script = code/scripts/plsr-regression-overall.R
 ols_cluster = code/scripts/ols-regression-cluster.R
 
 # All target
-all: data_clean data_categorize eda regressions session report slides
+all: data data_clean data_categorize eda regressions session report slides
 
 # Data target: Download data from the url
 data:
