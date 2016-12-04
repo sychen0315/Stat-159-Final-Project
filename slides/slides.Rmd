@@ -7,3 +7,168 @@ output:
     incremental: true
 ---
 
+## Introduction
+
+## Data
+
+- The data we used in this project is provided by _**College Scorecard**_
+- The data set can be downloaded from <https://collegescorecard.ed.gov/data/>
+- Data Cleaning:
+     - 1. Select the following columns: Number of undergraduate student(UGDS), admission rate(ADM_RATE), average cost of attendence, tuition and fees(COSTT4_A), Mean and median earnings(MD_EARN_WNE_P10), completion rates for first-time, full-time students(C100_4) , percent of undergraduates receiving federal loans(PCTFLOAN), minority ratio(calculated by the sum of percentages of different minorty groups), students applied(calculated by dividing number of undergrads by admission rate)
+     - 2. Remove all the rows which contains at least one null values
+     - 3. Divide the schools by regions: west, midwest, northeat and south and divide by whehter the schools is in major cities or not
+     - 4. Eliminate columns which contains PrivacySuppresed
+
+- Categorization:
+     - Data is first divided by region then further grouped by whether it's in major cities or not
+     - Categorize data into 8 groups: 
+     West schools in Major city, West schools not in major city, Midwest schools in Major city, Midwest schools not in major city, North schools in Major city, North schools not in major city, South schools in Major city, South schools not in major city
+     
+- Train Test Split & Method Determination:
+     - 1555 valid entries remained after data cleaning
+     - Use 3:1 train test split ratio for the overall dataset and try to find the best regression method
+     - Take log of STU_APPLIED, MD_EARN_WNE_P10, PCTFLOAN, C100_4, COSTT4_A to perform regression and replace 0 in those columns with 0.001 
+     
+
+## Model Building Process
+
+- Use 10-fold cross validation in building each regression model
+- Use the overall train set to fit the model
+- Calculate MSE in the overall test set 
+- Fit the model we select to the entire data set
+
+```{r results= 'asis', echo = FALSE}
+library(xtable)
+library(Matrix)
+load("../../data/data-outputs/eda-outputs/cluster-eda-stats.RData")
+print(xtable(cluster_eda_stats, caption = 'Cluster Statistics'), comment = FALSE)
+```
+     
+     
+## Results | OLS Regression Coefficient Estimates 
+
+```{r results= 'asis', echo = FALSE}
+library(xtable)
+library(Matrix)
+options(xtable.comment = FALSE,
+        xtable.table.placement = "H")
+load("../data/regression-data/ols-model-stats.RData")
+load("../data/regression-data/ols-regression.RData")
+print(xtable(ols.summary$coefficients,digits = c(0,5,5,5,5)), comment = FALSE, type = "html")
+```
+
+## Results | OLS Regression Analysis
+
+- Some coefficients come with a big p-value, which means that they are not statistically significant
+- We can conclude that the constant term, Education, Gender, Marital Status and Ethinicity don't belong to this regression
+- Among the statistically significant regressors, some has very small coefficients, so the main factors influencing Balance are Income, Limit and Rating
+
+## Results | Ridge Regression Coefficient Estimates 
+
+```{r results= 'asis', echo = FALSE}
+load("../data/regression-data/ridge-model-stats.RData")
+load("../data/regression-data/ridge-regression.RData")
+ridge_coeff <- as.matrix(ridge.fitted.coef)
+colnames(ridge_coeff) <- "Estimate"
+print(xtable(ridge_coeff, digits = c(0,5)), comment = FALSE, type = 'html')
+```
+
+## Results | Ridge Regression Analysis
+
+- With Ridge regression, the $\lambda$ we found that results in the smallest validation error is $\lambda$ = `r best.lambda.ridge`
+- As we have a relatively small $\lambda$, we expect to see that the estimation with ridge is very similar to that of OLS but a little bit smaller due to the shrinkage effect 
+
+## Results | Lasso Regression Coefficient Estimates 
+
+```{r results= 'asis', echo = FALSE}
+load("../data/regression-data/lasso-model-stats.RData")
+load("../data/regression-data/lasso-regression.RData")
+lasso_coeff <- as.matrix(lasso.fitted.coef)
+colnames(lasso_coeff) <- "Estimate"
+print(xtable(lasso_coeff, digits = c(0,5)), comment = FALSE,type = 'html')
+```
+
+## Results | Lasso Regression Analysis
+
+- The $\lambda$ we found that results in the smallest validation error is $\lambda$ = `r best.lambda.lasso`
+- We can see that a significant improvement is that we have a number of regressors with a coefficient of 0 which makes the intepretation much easier
+
+## Results | PCR Coefficient Estimates  
+
+```{r results= 'asis', echo = FALSE}
+load("../data/regression-data/pcr-model-stats.RData")
+load("../data/regression-data/pcr-regression.RData")
+pcr_coeff <- as.matrix(pcr.fitted.coef)
+dimnames(pcr_coeff) <- list(rownames(pcr_coeff, do.NULL = FALSE, prefix = "row"),
+                            colnames(pcr_coeff, do.NULL = FALSE, prefix = "col"))
+colnames(pcr_coeff) <- "Estimate"
+rownames(pcr_coeff) <- c("Income", "Limit", "Rating", "Cards", "Age", "Education", "GenderFemale", "StudentYes", "MarriedYes", "EthnicityAsian", "EthnicityCaucasian")
+print(xtable(pcr_coeff, digits = c(0,5)), comment = FALSE, type= 'html')
+```
+
+## Results | PCR Analysis
+
+- With PCR, we mainly focus on dimension reduction by unsupervised learning. 
+- By comparing validation errors for different Ms, we decide that the best M to use here is `r best.m.pcr`
+- Since we only have 11 predictors in this multiple regression, it is not a huge change, so that explains why PCR is very close to OLS
+- The dimension of predictors for this regression almost cannot be reduced, there doesn't exist major principal components dominating the change in the response variable
+- PCR doesn't help to improve that much on the OLS estimation 
+
+## Results | PLSR Coefficient Estimates 
+
+```{r results= 'asis', echo = FALSE}
+load("../data/regression-data/plsr-model-stats.RData")
+load("../data/regression-data/plsr-regression.RData")
+plsr_coeff <- as.matrix(plsr.fitted.coef)
+dimnames(plsr_coeff) <- list(rownames(plsr_coeff, do.NULL = FALSE, prefix = "row"),
+                             colnames(plsr_coeff, do.NULL = FALSE, prefix = "col"))
+colnames(plsr_coeff) <- "Estimate"
+rownames(plsr_coeff) <- c("Income", "Limit", "Rating", "Cards", "Age", "Education", "GenderFemale", "StudentYes", "MarriedYes", "EthnicityAsian", "EthnicityCaucasian")
+print(xtable(plsr_coeff, digits = c(0,5)), comment = FALSE, type = "html")
+```
+
+## Results | PLSR Analysis 
+
+- Similarly, PLS regression is also trying to reduce the dimension of predictors, but in an supervised way
+- By comparing validation errors for different Ms, we decide that the best M to use here is `r best.m.plsr`
+- This method successfully find the major principal components dominating the change in Y, and therefore reduce the risk of overfitting and therefore obtain a better fit
+
+## Comparing the Coefficient Estimates for 5 Regression Models 
+
+```{r results= 'asis', echo = FALSE}
+reg.coef.mat = cbind(ols.fitted.coef, as.numeric(ridge.fitted.coef), as.numeric(lasso.fitted.coef), c(0,pcr.fitted.coef), c(0,plsr.fitted.coef))
+colnames(reg.coef.mat) = c("ols", "ridge", "lasso", "pcr", "plsr")
+print(xtable(reg.coef.mat, digits = c(0,5,5,5,5,5)), comment = FALSE, type = "html")
+```
+
+## Comparing the MSE of 5 Regression Models 
+
+```{r results= 'asis', echo = FALSE}
+MSE.val = as.matrix(c("ols" = MSE.ols, "ridge" = MSE.ridge, "lasso" = MSE.lasso, "pcr" = MSE.pcr, "plsr" = MSE.plsr))
+colnames(MSE.val) = "MSE"
+print(xtable(MSE.val, digits = 5), comment = FALSE, type = "html")
+```
+
+## Trend Lines of Coefficient Estimates of 5 Regression Models 
+
+```{r results= 'asis', echo = FALSE}
+par(mfrow = c(1,1))
+plot(reg.coef.mat[,1], xlab = "Coefficients", ylab = "Value", main = "Trend Lines of Coefficients for Different Regression Models")
+lines(reg.coef.mat[,1])
+points(reg.coef.mat[,2],col= "blue")
+lines(reg.coef.mat[,2],col = "blue")
+points(reg.coef.mat[,3], col = "red")
+lines(reg.coef.mat[,3],col = "red")
+points(reg.coef.mat[,4], col = "green")
+lines(reg.coef.mat[,4],col = "green")
+points(reg.coef.mat[,5], col = "yellow")
+lines(reg.coef.mat[,5],col = "yellow")
+legend(10,0.9,c('OLS','Ridge','Lasso','PCR','PLSR'), lty = c(1,1,1,1,1), lwd = c(2.5,2.5,2.5,2.5,2.5), col = c("black","blue","red","green","yellow"),merge = T)
+abline(h = 0, lty = 3)
+```
+
+## Conclusion
+
+- Combining the coefficients from all five regression models, we notice that only the coefficients for Limit, Rating and StudentYes vary a lot and a number of regressors have coefficients close to 0
+- Each model has its own feature and can lead to the optimal regression model under different circumstances
+- For the data set we work on in this project, both our analysis and MSE shows that Lasso Regression model fits the best, followed by OLS and PlS, and appropriate models lead to more accurate prediction
