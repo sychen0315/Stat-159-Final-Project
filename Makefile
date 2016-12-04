@@ -1,6 +1,6 @@
 # Run "make" to reproduce report
 
-.PHONY: all data data_clean data_categorize train_test_split eda ols ridge lasso pcr plsr ols_cluster regressions report slides session clean
+.PHONY: all data data_clean data_categorize train_test_split eda ols ridge lasso pcr plsr ols_cluster regressions report slides session clean tests
 
 # Set variables
 data_set = data/data-sets/original-data-set/Most-Recent-Cohorts-All-Data-Elements.csv
@@ -11,9 +11,11 @@ clean_data = data/data-sets/cleaned-data-set/clean-data.csv
 
 data_categorize_script = code/scripts/categorize-script.R
 categorized_data = data/data-sets/cleaned-data-set/categorized-data.csv
-regression_data = data/data-sets/train-test-data-set/overall-data-set-regression.csv
 
 train_test_split = code/scripts/train-test-split.R
+overall_train_set = "data/data-sets/train-test-data-set/overall-train-set.csv")
+overall_test_set = "data/data-sets/train-test-data-set/overall-test-set.csv")
+cluster_data = "data/data-sets/train-test-data-set/overall-data-set-regression.csv")
 
 eda_script = code/scripts/eda-script.R
 
@@ -26,7 +28,7 @@ plsr_script = code/scripts/plsr-regression-overall.R
 ols_cluster = code/scripts/ols-regression-cluster.R
 
 # All target
-all: data data_clean eda session regressions report slides
+all: data data_clean data_categorize eda regressions session report slides
 
 # Data target: Download data from the url
 data:
@@ -37,11 +39,11 @@ data_clean:  $(data_cleaning) $(data_set)
 	Rscript $<
 
 # data_categorize: Categorzie data into 8 groups based on region and major city.
-data_categorize: $(data_categorize_script) $(categorized_data)
+data_categorize: $(data_categorize_script) $(clean_data)
 	Rscript $<
 
 # train_test_split: separate into test and train set
-train_test_split: $(train_test_split)
+train_test_split: $(train_test_split) $(categorized_data)
 	Rscript $<
 
 # Eda target: Run eda script to calculate summary statistics
@@ -49,26 +51,27 @@ eda: $(eda_script) $(clean_data) $(categorized_data)
 	Rscript $<
 
 # ols target: Run ols regression and generate ols estimators
-ols: $(ols_script) $(regression_data)
+ols: $(ols_script) $(overall_train_set) $(overall_test_set)
 	Rscript $<
 
 # ridge target: Run ridge regression and generate ridge estimators
-ridge: $(ridge_script)
+ridge: $(ridge_script) $(overall_train_set) $(overall_test_set)
 	Rscript $<
 
 # lasso target: Run lasso regression and generate lasso estimators
-lasso: $(lasso_script)
+lasso: $(lasso_script) $(overall_train_set) $(overall_test_set)
 	Rscript $<
 
 # pcr target: Run pcr regression and generate pcr estimators
-pcr: $(pcr_script)
+pcr: $(pcr_script) $(overall_train_set) $(overall_test_set)
 	Rscript $<
 
 # plsr target: Run plsr regression and generate plsr estimators
-plsr: $(plsr_script)
+plsr: $(plsr_script) $(overall_train_set) $(overall_test_set)
 	Rscript $<
 
-ols_cluster: $(ols_cluster)
+#ols targe" run ols regression over clustered data
+ols_cluster: $(ols_cluster) $(cluster_data)
 	Rscript $<
 
 # regressions target: Run all 6 regressions
