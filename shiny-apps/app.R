@@ -15,6 +15,14 @@ clean_data$ln_C100_4 <- log(clean_data$C100_4)
 clean_data$ln_COSTT4_A <- log(clean_data$COSTT4_A)
 
 
+vars2 <- c(
+  "Number of students applied" = "STU_APPLIED",
+  "Median earnings" = "MD_EARN_WNE_P10",
+  "Percentage of loan" = "PCTFLOAN",
+  "Completion rate" = "C100_4",
+  "Cost of attendence" = "COSTT4_A",
+  "Minority ratio" = "MINORATIO"
+)
 
 vars <- c(
   "Number of students applied" = "STU_APPLIED",
@@ -23,7 +31,7 @@ vars <- c(
   "Completion rate" = "C100_4",
   "Cost of attendence" = "COSTT4_A",
   "Major city" = "MAJOR_CITY",
-  "Minority ratior" = "MINORATIO"
+  "Minority ratio" = "MINORATIO"
 )
 
 
@@ -42,7 +50,7 @@ ui <- bootstrapPage(
                 #            value = range(seq(0,100,1)), step = 1
                 #),
                 selectInput("color", "Color", vars),
-                selectInput("size", "Size", vars, selected = "STU_APPLIED"),
+                selectInput("size", "Size", vars2, selected = "STU_APPLIED"),
                 #selectInput("colors", "Color Scheme",
                 #            rownames(subset(brewer.pal.info, category %in% c("seq", "div")))
                 #),
