@@ -1,4 +1,5 @@
 
+
 \section{Conclusion}
 
 Those regression results and intepretations give us great insights in developing strategies to boost the number of students applied, therefore improving school competitivenss. 
