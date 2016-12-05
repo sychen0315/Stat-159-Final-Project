@@ -13,13 +13,13 @@ This program built for i386-apple-darwin11.3.0
 
 Git Version
 -----------
-git version 2.10.0
+git version 2.9.3
 
 
 pandoc Version
 --------------
-pandoc 1.17.2
-Compiled with texmath 0.8.6.4, highlighting-kate 0.6.2.1.
+pandoc 1.17.1
+Compiled with texmath 0.8.6.3, highlighting-kate 0.6.2.
 Syntax highlighting is supported for the following languages:
     abc, actionscript, ada, agda, apache, asn1, asp, awk, bash, bibtex, boo, c,
     changelog, clojure, cmake, coffee, coldfusion, commonlisp, cpp, cs, css,
@@ -34,7 +34,7 @@ Syntax highlighting is supported for the following languages:
     relaxng, relaxngcompact, rest, rhtml, roff, ruby, rust, scala, scheme, sci,
     sed, sgml, sql, sqlmysql, sqlpostgresql, tcl, tcsh, texinfo, verilog, vhdl,
     xml, xorg, xslt, xul, yacc, yaml, zsh
-Default user data directory: /Users/aoyi/.pandoc
+Default user data directory: /Users/seeuchan/.pandoc
 Copyright (C) 2006-2016 John MacFarlane
 Web:  http://pandoc.org
 This is free software; see the source for copying conditions.
@@ -42,52 +42,107 @@ There is no warranty, not even for merchantability or fitness
 for a particular purpose.
 
 
+Latex Version
+--------------
+pdfTeX 3.14159265-2.6-1.40.16 (TeX Live 2015)
+kpathsea version 6.2.1
+Copyright 2015 Peter Breitenlohner (eTeX)/Han The Thanh (pdfTeX).
+There is NO warranty.  Redistribution of this software is
+covered by the terms of both the pdfTeX copyright and
+the Lesser GNU General Public License.
+For more information about these matters, see the file
+named COPYING and the pdfTeX source.
+Primary author of pdfTeX: Peter Breitenlohner (eTeX)/Han The Thanh (pdfTeX).
+Compiled with libpng 1.6.17; using libpng 1.6.17
+Compiled with zlib 1.2.8; using zlib 1.2.8
+Compiled with xpdf version 3.04
+
+
 R Version
 ---------
 Session Information
 
 R version 3.3.1 (2016-06-21)
-Platform: x86_64-apple-darwin13.4.0 (64-bit)
+Platform: x86_64-apple-darwin16.0.0 (64-bit)
 Running under: OS X 10.12.1 (Sierra)
 
 locale:
 [1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
 
 attached base packages:
-[1] stats     graphics  grDevices utils     datasets  base     
+[1] methods   stats     graphics  grDevices utils     datasets  base     
 
 other attached packages:
-[1] knitr_1.15.1    devtools_1.12.0 testthat_1.0.2  xtable_1.8-2   
-[5] glmnet_2.0-5    foreach_1.4.3   Matrix_1.2-6    pls_2.5-0      
+ [1] dplyr_0.5.0        RColorBrewer_1.1-2 leaflet_1.0.1      lattice_0.20-34   
+ [5] ggmap_2.6.1        ggplot2_2.1.0      shiny_0.14.2       knitr_1.14        
+ [9] devtools_1.12.0    testthat_1.0.2     xtable_1.8-2       glmnet_2.0-5      
+[13] foreach_1.4.3      Matrix_1.2-7.1     pls_2.5-0         
 
 loaded via a namespace (and not attached):
- [1] lattice_0.20-33  codetools_0.2-14 digest_0.6.10    crayon_1.3.2    
- [5] withr_1.0.2      grid_3.3.1       R6_2.2.0         magrittr_1.5    
- [9] tools_3.3.1      iterators_1.0.8  memoise_1.0.0    methods_3.3.1   
+ [1] Rcpp_0.12.7       plyr_1.8.4        iterators_1.0.8   tools_3.3.1      
+ [5] digest_0.6.10     tibble_1.2        memoise_1.0.0     gtable_0.2.0     
+ [9] png_0.1-7         DBI_0.5-1         mapproj_1.2-4     proto_1.0.0      
+[13] withr_1.0.2       stringr_1.1.0     htmlwidgets_0.8   RgoogleMaps_1.4.1
+[17] maps_3.1.1        grid_3.3.1        R6_2.2.0          jpeg_0.1-8       
+[21] sp_1.2-3          reshape2_1.4.1    magrittr_1.5      scales_0.4.0     
+[25] codetools_0.2-15  htmltools_0.3.5   assertthat_0.1    mime_0.5         
+[29] colorspace_1.2-7  geosphere_1.5-5   httpuv_1.3.3      stringi_1.1.2    
+[33] munsell_0.4.3     rjson_0.2.15      crayon_1.3.2     
  setting  value                       
  version  R version 3.3.1 (2016-06-21)
- system   x86_64, darwin13.4.0        
- ui       X11                         
+ system   x86_64, darwin16.0.0        
+ ui       unknown                     
  language (EN)                        
  collate  en_US.UTF-8                 
  tz       America/Los_Angeles         
  date     2016-12-04                  
 
- package   * version date       source        
- codetools   0.2-14  2015-07-15 CRAN (R 3.3.1)
- crayon      1.3.2   2016-06-28 CRAN (R 3.3.0)
- devtools  * 1.12.0  2016-06-24 CRAN (R 3.3.0)
- digest      0.6.10  2016-08-02 CRAN (R 3.3.0)
- foreach   * 1.4.3   2015-10-13 CRAN (R 3.3.0)
- glmnet    * 2.0-5   2016-03-17 CRAN (R 3.3.0)
- iterators   1.0.8   2015-10-13 CRAN (R 3.3.0)
- knitr     * 1.15.1  2016-11-22 CRAN (R 3.3.2)
- lattice     0.20-33 2015-07-14 CRAN (R 3.3.1)
- magrittr    1.5     2014-11-22 CRAN (R 3.3.0)
- Matrix    * 1.2-6   2016-05-02 CRAN (R 3.3.1)
- memoise     1.0.0   2016-01-29 CRAN (R 3.3.0)
- pls       * 2.5-0   2015-08-22 CRAN (R 3.3.0)
- R6          2.2.0   2016-10-05 CRAN (R 3.3.0)
- testthat  * 1.0.2   2016-04-23 CRAN (R 3.3.0)
- withr       1.0.2   2016-06-20 CRAN (R 3.3.0)
- xtable    * 1.8-2   2016-02-05 CRAN (R 3.3.0)
+ package      * version date       source        
+ assertthat     0.1     2013-12-06 CRAN (R 3.3.1)
+ codetools      0.2-15  2016-10-05 CRAN (R 3.3.1)
+ colorspace     1.2-7   2016-10-11 CRAN (R 3.3.1)
+ crayon         1.3.2   2016-06-28 CRAN (R 3.3.1)
+ DBI            0.5-1   2016-09-10 CRAN (R 3.3.1)
+ devtools     * 1.12.0  2016-06-24 CRAN (R 3.3.1)
+ digest         0.6.10  2016-08-02 CRAN (R 3.3.1)
+ dplyr        * 0.5.0   2016-06-24 CRAN (R 3.3.1)
+ foreach      * 1.4.3   2015-10-13 CRAN (R 3.3.1)
+ geosphere      1.5-5   2016-06-15 CRAN (R 3.3.1)
+ ggmap        * 2.6.1   2016-01-23 CRAN (R 3.3.1)
+ ggplot2      * 2.1.0   2016-03-01 CRAN (R 3.3.1)
+ glmnet       * 2.0-5   2016-03-17 CRAN (R 3.3.1)
+ gtable         0.2.0   2016-02-26 CRAN (R 3.3.1)
+ htmltools      0.3.5   2016-03-21 CRAN (R 3.3.1)
+ htmlwidgets    0.8     2016-11-09 CRAN (R 3.3.1)
+ httpuv         1.3.3   2015-08-04 CRAN (R 3.3.1)
+ iterators      1.0.8   2015-10-13 CRAN (R 3.3.1)
+ jpeg           0.1-8   2014-01-23 CRAN (R 3.3.1)
+ knitr        * 1.14    2016-08-13 CRAN (R 3.3.1)
+ lattice      * 0.20-34 2016-09-06 CRAN (R 3.3.1)
+ leaflet      * 1.0.1   2016-02-27 CRAN (R 3.3.1)
+ magrittr       1.5     2014-11-22 CRAN (R 3.3.1)
+ mapproj        1.2-4   2015-08-03 CRAN (R 3.3.1)
+ maps           3.1.1   2016-07-27 CRAN (R 3.3.1)
+ Matrix       * 1.2-7.1 2016-09-01 CRAN (R 3.3.1)
+ memoise        1.0.0   2016-01-29 CRAN (R 3.3.1)
+ mime           0.5     2016-07-07 CRAN (R 3.3.1)
+ munsell        0.4.3   2016-02-13 CRAN (R 3.3.1)
+ pls          * 2.5-0   2015-08-22 CRAN (R 3.3.1)
+ plyr           1.8.4   2016-06-08 CRAN (R 3.3.1)
+ png            0.1-7   2013-12-03 CRAN (R 3.3.1)
+ proto          1.0.0   2016-10-29 CRAN (R 3.3.1)
+ R6             2.2.0   2016-10-05 CRAN (R 3.3.1)
+ RColorBrewer * 1.1-2   2014-12-07 CRAN (R 3.3.1)
+ Rcpp           0.12.7  2016-09-05 CRAN (R 3.3.1)
+ reshape2       1.4.1   2014-12-06 CRAN (R 3.3.1)
+ RgoogleMaps    1.4.1   2016-09-18 CRAN (R 3.3.1)
+ rjson          0.2.15  2014-11-03 CRAN (R 3.3.1)
+ scales         0.4.0   2016-02-26 CRAN (R 3.3.1)
+ shiny        * 0.14.2  2016-11-01 CRAN (R 3.3.1)
+ sp             1.2-3   2016-04-14 CRAN (R 3.3.1)
+ stringi        1.1.2   2016-10-01 CRAN (R 3.3.1)
+ stringr        1.1.0   2016-08-19 CRAN (R 3.3.1)
+ testthat     * 1.0.2   2016-04-23 CRAN (R 3.3.1)
+ tibble         1.2     2016-08-26 CRAN (R 3.3.1)
+ withr          1.0.2   2016-06-20 CRAN (R 3.3.1)
+ xtable       * 1.8-2   2016-02-05 CRAN (R 3.3.1)
