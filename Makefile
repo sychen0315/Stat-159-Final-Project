@@ -86,7 +86,7 @@ regressions:
 # Report target: Produce reports by compiling Rmarkdown to pdf
 report: report/sections/*.Rnw
 	cat report/sections/*.Rnw > report/report.Rnw
-	cd report && Rscript -e "library(knitr); knit2pdf('report.Rnw', output = 'report.tex')"
+	cd report && Rscript -e "library(knitr); Sweave2knitr('report.Rnw', output = 'report.tex')"
 	
 # slides target: Generate slides
 slides:
