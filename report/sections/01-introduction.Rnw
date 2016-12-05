@@ -1,0 +1,21 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{graphicx}
+
+\title{Final Project Report}
+\author{Aoyi Shan}
+\date{December 4th, 2016}
+
+\begin{document}
+<<format, include=FALSE, cache=FALSE, echo=FALSE>>=
+library(knitr)
+opts_chunk$set(fig.align='center', fig.show='hold')
+options(formatR.arrow=TRUE,width=90)
+@
+\SweaveOpts{concordance=TRUE}
+
+\maketitle
+
+\section{Introduction}
+
+In this project, our objective is to explore the differences between similar schools in terms of demographics and programs offered and how those differences contribute to school competitiveness based on the dataset available on College Scorecard https://collegescorecard.ed.gov/data/. The client of our consulting project is a group of school administrators, and our data analysis is aimed to provide them with suggestions regarding what factors should they focus on and how to maximize their returns on investment in order to improve their school competitiveness. The requirement for this project can be found at https://github.com/ucb-stat159/stat159-fall-2016/blob/master/projects/proj03/stat159-final-project.pdf.
