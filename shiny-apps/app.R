@@ -2,6 +2,7 @@ library(shiny)
 library(leaflet)
 library(RColorBrewer)
 library(dplyr)
+library(lattice)
 
 clean_data <- read.csv("../data/data-sets/cleaned-data-set/clean-data.csv")
 clean_data$STU_APPLIED <- round(clean_data$STU_APPLIED)
@@ -59,6 +60,7 @@ ui <- bootstrapPage(
   )
 )
 
+
 server <- function(input, output, session) {
   # Reactive expression for the data subsetted to what the user selected
   filteredData <- reactive({
@@ -115,7 +117,7 @@ server <- function(input, output, session) {
                                 "<br><strong>City, State: </strong>", CITY, STABBR,
                                 "<br><strong>Major City: </strong>", MAJOR_CITY,
                                 "<br><strong>Student applied: </strong>", STU_APPLIED,
-                                "<br><strong>Percent load: </strong>", PCTFLOAN,
+                                "<br><strong>Percent of students with loan: </strong>", PCTFLOAN,
                                 "<br><strong>Minority ratio: </strong>", MINORATIO,
                                 "<br><strong>Completion rate: </strong>", C100_4,
                                 "<br><strong>Cost: </strong>", COSTT4_A,
