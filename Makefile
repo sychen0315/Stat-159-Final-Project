@@ -94,7 +94,7 @@ slides:
 
 # Shiny target: Run the shiny app
 shiny: $(clean_data)
-	R -e "shiny::runApp('shiny-apps')"
+	R -e "shiny::runApp('shiny-apps/', launch.browser=TRUE)"
 
 # Session target: Run sessioninfo script
 session:
