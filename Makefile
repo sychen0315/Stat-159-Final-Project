@@ -88,9 +88,13 @@ report: report/sections/*.Rnw
 	cat report/sections/*.Rnw > report/report.Rnw
 	cd report && Rscript -e "library(knitr); knit2pdf('report.Rnw', output = 'report.tex')"
 	
-# slides target: Generate slides
+# Slides target: Generate slides
 slides:
 	Rscript -e "library(rmarkdown); render('slides/slides.Rmd', 'ioslides_presentation')"
+
+# Shiny target: Run the shiny app
+shiny: $(clean_data)
+	R -e "shiny::runApp('shiny-apps')"
 
 # Session target: Run sessioninfo script
 session:
