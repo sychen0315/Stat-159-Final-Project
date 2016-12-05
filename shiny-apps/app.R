@@ -15,7 +15,6 @@ clean_data$ln_PCTFLOAN <- log(clean_data$PCTFLOAN)
 clean_data$ln_C100_4 <- log(clean_data$C100_4)
 clean_data$ln_COSTT4_A <- log(clean_data$COSTT4_A)
 
-
 vars2 <- c(
   "Number of students applied" = "STU_APPLIED",
   "Median earnings" = "MD_EARN_WNE_P10",

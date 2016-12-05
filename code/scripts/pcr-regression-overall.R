@@ -21,9 +21,9 @@ validationplot(pcr_mod, val.type = "MSEP", main = "PCR Regression Plot")
 dev.off()
 
 # Use the best fitted m on testset to calculate MSE
-ind_var <- c(24, 25, 26, 28, 29, 45, 46, 47, 48)
+ind_var <- c("ln_MD_EARN_WNE_P10", "ln_PCTFLOAN", "ln_C100_4", "ln_COSTT4_A", "MAJOR_CITY", "MINORATIO", "WEST", "MIDWEST", "NORTHEAST")
 pcr_test_predict <- predict(pcr_mod, overall_test_set[ind_var], ncomp = best_m_pcr)
-MSE_pcr <- mean((pcr_test_predict - overall_test_set[,44])^2)
+MSE_pcr <- mean((pcr_test_predict - overall_test_set[,"ln_STU_APPLIED"])^2)
 
 # Fit the model in the original dataset to find estimated coefficients
 pcr_full_log_fit <- pcr(ln_STU_APPLIED ~ ln_MD_EARN_WNE_P10 + ln_PCTFLOAN + ln_C100_4 + 

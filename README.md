@@ -55,9 +55,19 @@ Install R packages used in this project:
 
 ```
 install.packages("xtable")
+install.packages("pls")
+install.packages("glmnet")
+install.packages("Matrix")
 install.packages("testthat")
 install.packages("devtools")
 install.packages("knitr")
+install.packages("ggplot2")
+install.packages("ggmap")
+install.packages("shiny")
+install.packages("leaflet")
+install.packages("RColorBrewer")
+install.packages("dplyr")
+install.packages("lattice")
 ````
 
 To reproduce the analysis:

@@ -1,50 +1,50 @@
 Summary Statistics for STU_APPLIED 
 
-Minimum       : 170.00 
-Maximum       : 169325.84 
-Range         : 169155.84 
-First Quantile: 2218.18 
-Median        : 6938.60 
-Third Quantile: 27618.07 
-IQR           : 25399.89 
-Mean          : 19614.28 
-Std Dev       : 30244.75 
+Minimum       : 105.00 
+Maximum       : 221057.35 
+Range         : 220952.35 
+First Quantile: 1653.17 
+Median        : 3524.05 
+Third Quantile: 10085.49 
+IQR           : 8432.32 
+Mean          : 9411.67 
+Std Dev       : 16729.05 
 
 Summary Statistics for MD_EARN_WNE_P10 
 
-Minimum       : 19900.00 
-Maximum       : 79400.00 
-Range         : 59500.00 
-First Quantile: 34275.00 
-Median        : 40500.00 
-Third Quantile: 46500.00 
-IQR           : 12225.00 
-Mean          : 42093.62 
-Std Dev       : 10801.06 
+Minimum       : 12000.00 
+Maximum       : 118800.00 
+Range         : 106800.00 
+First Quantile: 35400.00 
+Median        : 40400.00 
+Third Quantile: 46450.00 
+IQR           : 11050.00 
+Mean          : 41940.51 
+Std Dev       : 10385.56 
 
 Summary Statistics for C100_4 
 
-Minimum       : 0.05 
-Maximum       : 0.85 
-Range         : 0.80 
-First Quantile: 0.15 
-Median        : 0.32 
-Third Quantile: 0.50 
-IQR           : 0.35 
-Mean          : 0.34 
-Std Dev       : 0.21 
+Minimum       : 0.00 
+Maximum       : 1.00 
+Range         : 1.00 
+First Quantile: 0.21 
+Median        : 0.36 
+Third Quantile: 0.53 
+IQR           : 0.32 
+Mean          : 0.38 
+Std Dev       : 0.22 
 
 Summary Statistics for PCTFLOAN 
 
-Minimum       : 0.09 
-Maximum       : 0.93 
-Range         : 0.84 
-First Quantile: 0.41 
-Median        : 0.54 
-Third Quantile: 0.66 
-IQR           : 0.24 
-Mean          : 0.54 
-Std Dev       : 0.16 
+Minimum       : 0.00 
+Maximum       : 0.98 
+Range         : 0.98 
+First Quantile: 0.49 
+Median        : 0.62 
+Third Quantile: 0.73 
+IQR           : 0.23 
+Mean          : 0.60 
+Std Dev       : 0.17 
 
 Summary Statistics for MAJOR_CITY 
 
@@ -52,23 +52,23 @@ Minimum       : 0.00
 Maximum       : 1.00 
 Range         : 1.00 
 First Quantile: 0.00 
-Median        : 1.00 
+Median        : 0.00 
 Third Quantile: 1.00 
 IQR           : 1.00 
-Mean          : 0.51 
-Std Dev       : 0.50 
+Mean          : 0.40 
+Std Dev       : 0.49 
 
 Summary Statistics for MINORATIO 
 
-Minimum       : 0.15 
+Minimum       : 0.00 
 Maximum       : 1.00 
-Range         : 0.85 
-First Quantile: 0.34 
-Median        : 0.52 
-Third Quantile: 0.74 
-IQR           : 0.39 
-Mean          : 0.54 
-Std Dev       : 0.24 
+Range         : 1.00 
+First Quantile: 0.24 
+Median        : 0.35 
+Third Quantile: 0.52 
+IQR           : 0.29 
+Mean          : 0.40 
+Std Dev       : 0.22 
 
 Summary Statistics for WEST 
 
@@ -76,83 +76,83 @@ Minimum       : 0.00
 Maximum       : 1.00 
 Range         : 1.00 
 First Quantile: 0.00 
-Median        : 1.00 
-Third Quantile: 1.00 
-IQR           : 1.00 
-Mean          : 0.56 
-Std Dev       : 0.50 
+Median        : 0.00 
+Third Quantile: 0.00 
+IQR           : 0.00 
+Mean          : 0.14 
+Std Dev       : 0.34 
 
 Summary Statistics for MIDWEST 
 
 Minimum       : 0.00 
-Maximum       : 0.00 
-Range         : 0.00 
+Maximum       : 1.00 
+Range         : 1.00 
 First Quantile: 0.00 
 Median        : 0.00 
-Third Quantile: 0.00 
-IQR           : 0.00 
-Mean          : 0.00 
-Std Dev       : 0.00 
+Third Quantile: 1.00 
+IQR           : 1.00 
+Mean          : 0.26 
+Std Dev       : 0.44 
 
 Summary Statistics for NORTHEAST 
 
 Minimum       : 0.00 
-Maximum       : 0.00 
-Range         : 0.00 
+Maximum       : 1.00 
+Range         : 1.00 
 First Quantile: 0.00 
 Median        : 0.00 
-Third Quantile: 0.00 
-IQR           : 0.00 
-Mean          : 0.00 
-Std Dev       : 0.00 
+Third Quantile: 1.00 
+IQR           : 1.00 
+Mean          : 0.27 
+Std Dev       : 0.44 
 
 Summary Statistics for STU_APPLIED 
 
-Minimum       : 170.00 
-Maximum       : 169325.84 
-Range         : 169155.84 
-First Quantile: 2218.18 
-Median        : 6938.60 
-Third Quantile: 27618.07 
-IQR           : 25399.89 
-Mean          : 19614.28 
-Std Dev       : 30244.75 
+Minimum       : 105.00 
+Maximum       : 221057.35 
+Range         : 220952.35 
+First Quantile: 1653.17 
+Median        : 3524.05 
+Third Quantile: 10085.49 
+IQR           : 8432.32 
+Mean          : 9411.67 
+Std Dev       : 16729.05 
 
 Summary Statistics for MD_EARN_WNE_P10 
 
-Minimum       : 19900.00 
-Maximum       : 79400.00 
-Range         : 59500.00 
-First Quantile: 34275.00 
-Median        : 40500.00 
-Third Quantile: 46500.00 
-IQR           : 12225.00 
-Mean          : 42093.62 
-Std Dev       : 10801.06 
+Minimum       : 12000.00 
+Maximum       : 118800.00 
+Range         : 106800.00 
+First Quantile: 35400.00 
+Median        : 40400.00 
+Third Quantile: 46450.00 
+IQR           : 11050.00 
+Mean          : 41940.51 
+Std Dev       : 10385.56 
 
 Summary Statistics for C100_4 
 
-Minimum       : 0.05 
-Maximum       : 0.85 
-Range         : 0.80 
-First Quantile: 0.15 
-Median        : 0.32 
-Third Quantile: 0.50 
-IQR           : 0.35 
-Mean          : 0.34 
-Std Dev       : 0.21 
+Minimum       : 0.00 
+Maximum       : 1.00 
+Range         : 1.00 
+First Quantile: 0.21 
+Median        : 0.36 
+Third Quantile: 0.53 
+IQR           : 0.32 
+Mean          : 0.38 
+Std Dev       : 0.22 
 
 Summary Statistics for PCTFLOAN 
 
-Minimum       : 0.09 
-Maximum       : 0.93 
-Range         : 0.84 
-First Quantile: 0.41 
-Median        : 0.54 
-Third Quantile: 0.66 
-IQR           : 0.24 
-Mean          : 0.54 
-Std Dev       : 0.16 
+Minimum       : 0.00 
+Maximum       : 0.98 
+Range         : 0.98 
+First Quantile: 0.49 
+Median        : 0.62 
+Third Quantile: 0.73 
+IQR           : 0.23 
+Mean          : 0.60 
+Std Dev       : 0.17 
 
 Summary Statistics for MAJOR_CITY 
 
@@ -160,23 +160,23 @@ Minimum       : 0.00
 Maximum       : 1.00 
 Range         : 1.00 
 First Quantile: 0.00 
-Median        : 1.00 
+Median        : 0.00 
 Third Quantile: 1.00 
 IQR           : 1.00 
-Mean          : 0.51 
-Std Dev       : 0.50 
+Mean          : 0.40 
+Std Dev       : 0.49 
 
 Summary Statistics for MINORATIO 
 
-Minimum       : 0.15 
+Minimum       : 0.00 
 Maximum       : 1.00 
-Range         : 0.85 
-First Quantile: 0.34 
-Median        : 0.52 
-Third Quantile: 0.74 
-IQR           : 0.39 
-Mean          : 0.54 
-Std Dev       : 0.24 
+Range         : 1.00 
+First Quantile: 0.24 
+Median        : 0.35 
+Third Quantile: 0.52 
+IQR           : 0.29 
+Mean          : 0.40 
+Std Dev       : 0.22 
 
 Summary Statistics for WEST 
 
@@ -184,83 +184,83 @@ Minimum       : 0.00
 Maximum       : 1.00 
 Range         : 1.00 
 First Quantile: 0.00 
-Median        : 1.00 
-Third Quantile: 1.00 
-IQR           : 1.00 
-Mean          : 0.56 
-Std Dev       : 0.50 
+Median        : 0.00 
+Third Quantile: 0.00 
+IQR           : 0.00 
+Mean          : 0.14 
+Std Dev       : 0.34 
 
 Summary Statistics for MIDWEST 
 
 Minimum       : 0.00 
-Maximum       : 0.00 
-Range         : 0.00 
+Maximum       : 1.00 
+Range         : 1.00 
 First Quantile: 0.00 
 Median        : 0.00 
-Third Quantile: 0.00 
-IQR           : 0.00 
-Mean          : 0.00 
-Std Dev       : 0.00 
+Third Quantile: 1.00 
+IQR           : 1.00 
+Mean          : 0.26 
+Std Dev       : 0.44 
 
 Summary Statistics for NORTHEAST 
 
 Minimum       : 0.00 
-Maximum       : 0.00 
-Range         : 0.00 
+Maximum       : 1.00 
+Range         : 1.00 
 First Quantile: 0.00 
 Median        : 0.00 
-Third Quantile: 0.00 
-IQR           : 0.00 
-Mean          : 0.00 
-Std Dev       : 0.00 
+Third Quantile: 1.00 
+IQR           : 1.00 
+Mean          : 0.27 
+Std Dev       : 0.44 
 
 Summary Statistics for STU_APPLIED 
 
-Minimum       : 170.00 
-Maximum       : 169325.84 
-Range         : 169155.84 
-First Quantile: 2218.18 
-Median        : 6938.60 
-Third Quantile: 27618.07 
-IQR           : 25399.89 
-Mean          : 19614.28 
-Std Dev       : 30244.75 
+Minimum       : 105.00 
+Maximum       : 221057.35 
+Range         : 220952.35 
+First Quantile: 1653.17 
+Median        : 3524.05 
+Third Quantile: 10085.49 
+IQR           : 8432.32 
+Mean          : 9411.67 
+Std Dev       : 16729.05 
 
 Summary Statistics for MD_EARN_WNE_P10 
 
-Minimum       : 19900.00 
-Maximum       : 79400.00 
-Range         : 59500.00 
-First Quantile: 34275.00 
-Median        : 40500.00 
-Third Quantile: 46500.00 
-IQR           : 12225.00 
-Mean          : 42093.62 
-Std Dev       : 10801.06 
+Minimum       : 12000.00 
+Maximum       : 118800.00 
+Range         : 106800.00 
+First Quantile: 35400.00 
+Median        : 40400.00 
+Third Quantile: 46450.00 
+IQR           : 11050.00 
+Mean          : 41940.51 
+Std Dev       : 10385.56 
 
 Summary Statistics for C100_4 
 
-Minimum       : 0.05 
-Maximum       : 0.85 
-Range         : 0.80 
-First Quantile: 0.15 
-Median        : 0.32 
-Third Quantile: 0.50 
-IQR           : 0.35 
-Mean          : 0.34 
-Std Dev       : 0.21 
+Minimum       : 0.00 
+Maximum       : 1.00 
+Range         : 1.00 
+First Quantile: 0.21 
+Median        : 0.36 
+Third Quantile: 0.53 
+IQR           : 0.32 
+Mean          : 0.38 
+Std Dev       : 0.22 
 
 Summary Statistics for PCTFLOAN 
 
-Minimum       : 0.09 
-Maximum       : 0.93 
-Range         : 0.84 
-First Quantile: 0.41 
-Median        : 0.54 
-Third Quantile: 0.66 
-IQR           : 0.24 
-Mean          : 0.54 
-Std Dev       : 0.16 
+Minimum       : 0.00 
+Maximum       : 0.98 
+Range         : 0.98 
+First Quantile: 0.49 
+Median        : 0.62 
+Third Quantile: 0.73 
+IQR           : 0.23 
+Mean          : 0.60 
+Std Dev       : 0.17 
 
 Summary Statistics for MAJOR_CITY 
 
@@ -268,23 +268,23 @@ Minimum       : 0.00
 Maximum       : 1.00 
 Range         : 1.00 
 First Quantile: 0.00 
-Median        : 1.00 
+Median        : 0.00 
 Third Quantile: 1.00 
 IQR           : 1.00 
-Mean          : 0.51 
-Std Dev       : 0.50 
+Mean          : 0.40 
+Std Dev       : 0.49 
 
 Summary Statistics for MINORATIO 
 
-Minimum       : 0.15 
+Minimum       : 0.00 
 Maximum       : 1.00 
-Range         : 0.85 
-First Quantile: 0.34 
-Median        : 0.52 
-Third Quantile: 0.74 
-IQR           : 0.39 
-Mean          : 0.54 
-Std Dev       : 0.24 
+Range         : 1.00 
+First Quantile: 0.24 
+Median        : 0.35 
+Third Quantile: 0.52 
+IQR           : 0.29 
+Mean          : 0.40 
+Std Dev       : 0.22 
 
 Summary Statistics for WEST 
 
@@ -292,83 +292,83 @@ Minimum       : 0.00
 Maximum       : 1.00 
 Range         : 1.00 
 First Quantile: 0.00 
-Median        : 1.00 
-Third Quantile: 1.00 
-IQR           : 1.00 
-Mean          : 0.56 
-Std Dev       : 0.50 
+Median        : 0.00 
+Third Quantile: 0.00 
+IQR           : 0.00 
+Mean          : 0.14 
+Std Dev       : 0.34 
 
 Summary Statistics for MIDWEST 
 
 Minimum       : 0.00 
-Maximum       : 0.00 
-Range         : 0.00 
+Maximum       : 1.00 
+Range         : 1.00 
 First Quantile: 0.00 
 Median        : 0.00 
-Third Quantile: 0.00 
-IQR           : 0.00 
-Mean          : 0.00 
-Std Dev       : 0.00 
+Third Quantile: 1.00 
+IQR           : 1.00 
+Mean          : 0.26 
+Std Dev       : 0.44 
 
 Summary Statistics for NORTHEAST 
 
 Minimum       : 0.00 
-Maximum       : 0.00 
-Range         : 0.00 
+Maximum       : 1.00 
+Range         : 1.00 
 First Quantile: 0.00 
 Median        : 0.00 
-Third Quantile: 0.00 
-IQR           : 0.00 
-Mean          : 0.00 
-Std Dev       : 0.00 
+Third Quantile: 1.00 
+IQR           : 1.00 
+Mean          : 0.27 
+Std Dev       : 0.44 
 
 Summary Statistics for STU_APPLIED 
 
-Minimum       : 170.00 
-Maximum       : 169325.84 
-Range         : 169155.84 
-First Quantile: 2218.18 
-Median        : 6938.60 
-Third Quantile: 27618.07 
-IQR           : 25399.89 
-Mean          : 19614.28 
-Std Dev       : 30244.75 
+Minimum       : 105.00 
+Maximum       : 221057.35 
+Range         : 220952.35 
+First Quantile: 1653.17 
+Median        : 3524.05 
+Third Quantile: 10085.49 
+IQR           : 8432.32 
+Mean          : 9411.67 
+Std Dev       : 16729.05 
 
 Summary Statistics for MD_EARN_WNE_P10 
 
-Minimum       : 19900.00 
-Maximum       : 79400.00 
-Range         : 59500.00 
-First Quantile: 34275.00 
-Median        : 40500.00 
-Third Quantile: 46500.00 
-IQR           : 12225.00 
-Mean          : 42093.62 
-Std Dev       : 10801.06 
+Minimum       : 12000.00 
+Maximum       : 118800.00 
+Range         : 106800.00 
+First Quantile: 35400.00 
+Median        : 40400.00 
+Third Quantile: 46450.00 
+IQR           : 11050.00 
+Mean          : 41940.51 
+Std Dev       : 10385.56 
 
 Summary Statistics for C100_4 
 
-Minimum       : 0.05 
-Maximum       : 0.85 
-Range         : 0.80 
-First Quantile: 0.15 
-Median        : 0.32 
-Third Quantile: 0.50 
-IQR           : 0.35 
-Mean          : 0.34 
-Std Dev       : 0.21 
+Minimum       : 0.00 
+Maximum       : 1.00 
+Range         : 1.00 
+First Quantile: 0.21 
+Median        : 0.36 
+Third Quantile: 0.53 
+IQR           : 0.32 
+Mean          : 0.38 
+Std Dev       : 0.22 
 
 Summary Statistics for PCTFLOAN 
 
-Minimum       : 0.09 
-Maximum       : 0.93 
-Range         : 0.84 
-First Quantile: 0.41 
-Median        : 0.54 
-Third Quantile: 0.66 
-IQR           : 0.24 
-Mean          : 0.54 
-Std Dev       : 0.16 
+Minimum       : 0.00 
+Maximum       : 0.98 
+Range         : 0.98 
+First Quantile: 0.49 
+Median        : 0.62 
+Third Quantile: 0.73 
+IQR           : 0.23 
+Mean          : 0.60 
+Std Dev       : 0.17 
 
 Summary Statistics for MAJOR_CITY 
 
@@ -376,23 +376,23 @@ Minimum       : 0.00
 Maximum       : 1.00 
 Range         : 1.00 
 First Quantile: 0.00 
-Median        : 1.00 
+Median        : 0.00 
 Third Quantile: 1.00 
 IQR           : 1.00 
-Mean          : 0.51 
-Std Dev       : 0.50 
+Mean          : 0.40 
+Std Dev       : 0.49 
 
 Summary Statistics for MINORATIO 
 
-Minimum       : 0.15 
+Minimum       : 0.00 
 Maximum       : 1.00 
-Range         : 0.85 
-First Quantile: 0.34 
-Median        : 0.52 
-Third Quantile: 0.74 
-IQR           : 0.39 
-Mean          : 0.54 
-Std Dev       : 0.24 
+Range         : 1.00 
+First Quantile: 0.24 
+Median        : 0.35 
+Third Quantile: 0.52 
+IQR           : 0.29 
+Mean          : 0.40 
+Std Dev       : 0.22 
 
 Summary Statistics for WEST 
 
@@ -400,83 +400,83 @@ Minimum       : 0.00
 Maximum       : 1.00 
 Range         : 1.00 
 First Quantile: 0.00 
-Median        : 1.00 
-Third Quantile: 1.00 
-IQR           : 1.00 
-Mean          : 0.56 
-Std Dev       : 0.50 
+Median        : 0.00 
+Third Quantile: 0.00 
+IQR           : 0.00 
+Mean          : 0.14 
+Std Dev       : 0.34 
 
 Summary Statistics for MIDWEST 
 
 Minimum       : 0.00 
-Maximum       : 0.00 
-Range         : 0.00 
+Maximum       : 1.00 
+Range         : 1.00 
 First Quantile: 0.00 
 Median        : 0.00 
-Third Quantile: 0.00 
-IQR           : 0.00 
-Mean          : 0.00 
-Std Dev       : 0.00 
+Third Quantile: 1.00 
+IQR           : 1.00 
+Mean          : 0.26 
+Std Dev       : 0.44 
 
 Summary Statistics for NORTHEAST 
 
 Minimum       : 0.00 
-Maximum       : 0.00 
-Range         : 0.00 
+Maximum       : 1.00 
+Range         : 1.00 
 First Quantile: 0.00 
 Median        : 0.00 
-Third Quantile: 0.00 
-IQR           : 0.00 
-Mean          : 0.00 
-Std Dev       : 0.00 
+Third Quantile: 1.00 
+IQR           : 1.00 
+Mean          : 0.27 
+Std Dev       : 0.44 
 
 Summary Statistics for STU_APPLIED 
 
-Minimum       : 170.00 
-Maximum       : 169325.84 
-Range         : 169155.84 
-First Quantile: 2218.18 
-Median        : 6938.60 
-Third Quantile: 27618.07 
-IQR           : 25399.89 
-Mean          : 19614.28 
-Std Dev       : 30244.75 
+Minimum       : 105.00 
+Maximum       : 221057.35 
+Range         : 220952.35 
+First Quantile: 1653.17 
+Median        : 3524.05 
+Third Quantile: 10085.49 
+IQR           : 8432.32 
+Mean          : 9411.67 
+Std Dev       : 16729.05 
 
 Summary Statistics for MD_EARN_WNE_P10 
 
-Minimum       : 19900.00 
-Maximum       : 79400.00 
-Range         : 59500.00 
-First Quantile: 34275.00 
-Median        : 40500.00 
-Third Quantile: 46500.00 
-IQR           : 12225.00 
-Mean          : 42093.62 
-Std Dev       : 10801.06 
+Minimum       : 12000.00 
+Maximum       : 118800.00 
+Range         : 106800.00 
+First Quantile: 35400.00 
+Median        : 40400.00 
+Third Quantile: 46450.00 
+IQR           : 11050.00 
+Mean          : 41940.51 
+Std Dev       : 10385.56 
 
 Summary Statistics for C100_4 
 
-Minimum       : 0.05 
-Maximum       : 0.85 
-Range         : 0.80 
-First Quantile: 0.15 
-Median        : 0.32 
-Third Quantile: 0.50 
-IQR           : 0.35 
-Mean          : 0.34 
-Std Dev       : 0.21 
+Minimum       : 0.00 
+Maximum       : 1.00 
+Range         : 1.00 
+First Quantile: 0.21 
+Median        : 0.36 
+Third Quantile: 0.53 
+IQR           : 0.32 
+Mean          : 0.38 
+Std Dev       : 0.22 
 
 Summary Statistics for PCTFLOAN 
 
-Minimum       : 0.09 
-Maximum       : 0.93 
-Range         : 0.84 
-First Quantile: 0.41 
-Median        : 0.54 
-Third Quantile: 0.66 
-IQR           : 0.24 
-Mean          : 0.54 
-Std Dev       : 0.16 
+Minimum       : 0.00 
+Maximum       : 0.98 
+Range         : 0.98 
+First Quantile: 0.49 
+Median        : 0.62 
+Third Quantile: 0.73 
+IQR           : 0.23 
+Mean          : 0.60 
+Std Dev       : 0.17 
 
 Summary Statistics for MAJOR_CITY 
 
@@ -484,23 +484,23 @@ Minimum       : 0.00
 Maximum       : 1.00 
 Range         : 1.00 
 First Quantile: 0.00 
-Median        : 1.00 
+Median        : 0.00 
 Third Quantile: 1.00 
 IQR           : 1.00 
-Mean          : 0.51 
-Std Dev       : 0.50 
+Mean          : 0.40 
+Std Dev       : 0.49 
 
 Summary Statistics for MINORATIO 
 
-Minimum       : 0.15 
+Minimum       : 0.00 
 Maximum       : 1.00 
-Range         : 0.85 
-First Quantile: 0.34 
-Median        : 0.52 
-Third Quantile: 0.74 
-IQR           : 0.39 
-Mean          : 0.54 
-Std Dev       : 0.24 
+Range         : 1.00 
+First Quantile: 0.24 
+Median        : 0.35 
+Third Quantile: 0.52 
+IQR           : 0.29 
+Mean          : 0.40 
+Std Dev       : 0.22 
 
 Summary Statistics for WEST 
 
@@ -508,83 +508,83 @@ Minimum       : 0.00
 Maximum       : 1.00 
 Range         : 1.00 
 First Quantile: 0.00 
-Median        : 1.00 
-Third Quantile: 1.00 
-IQR           : 1.00 
-Mean          : 0.56 
-Std Dev       : 0.50 
+Median        : 0.00 
+Third Quantile: 0.00 
+IQR           : 0.00 
+Mean          : 0.14 
+Std Dev       : 0.34 
 
 Summary Statistics for MIDWEST 
 
 Minimum       : 0.00 
-Maximum       : 0.00 
-Range         : 0.00 
+Maximum       : 1.00 
+Range         : 1.00 
 First Quantile: 0.00 
 Median        : 0.00 
-Third Quantile: 0.00 
-IQR           : 0.00 
-Mean          : 0.00 
-Std Dev       : 0.00 
+Third Quantile: 1.00 
+IQR           : 1.00 
+Mean          : 0.26 
+Std Dev       : 0.44 
 
 Summary Statistics for NORTHEAST 
 
 Minimum       : 0.00 
-Maximum       : 0.00 
-Range         : 0.00 
+Maximum       : 1.00 
+Range         : 1.00 
 First Quantile: 0.00 
 Median        : 0.00 
-Third Quantile: 0.00 
-IQR           : 0.00 
-Mean          : 0.00 
-Std Dev       : 0.00 
+Third Quantile: 1.00 
+IQR           : 1.00 
+Mean          : 0.27 
+Std Dev       : 0.44 
 
 Summary Statistics for STU_APPLIED 
 
-Minimum       : 170.00 
-Maximum       : 169325.84 
-Range         : 169155.84 
-First Quantile: 2218.18 
-Median        : 6938.60 
-Third Quantile: 27618.07 
-IQR           : 25399.89 
-Mean          : 19614.28 
-Std Dev       : 30244.75 
+Minimum       : 105.00 
+Maximum       : 221057.35 
+Range         : 220952.35 
+First Quantile: 1653.17 
+Median        : 3524.05 
+Third Quantile: 10085.49 
+IQR           : 8432.32 
+Mean          : 9411.67 
+Std Dev       : 16729.05 
 
 Summary Statistics for MD_EARN_WNE_P10 
 
-Minimum       : 19900.00 
-Maximum       : 79400.00 
-Range         : 59500.00 
-First Quantile: 34275.00 
-Median        : 40500.00 
-Third Quantile: 46500.00 
-IQR           : 12225.00 
-Mean          : 42093.62 
-Std Dev       : 10801.06 
+Minimum       : 12000.00 
+Maximum       : 118800.00 
+Range         : 106800.00 
+First Quantile: 35400.00 
+Median        : 40400.00 
+Third Quantile: 46450.00 
+IQR           : 11050.00 
+Mean          : 41940.51 
+Std Dev       : 10385.56 
 
 Summary Statistics for C100_4 
 
-Minimum       : 0.05 
-Maximum       : 0.85 
-Range         : 0.80 
-First Quantile: 0.15 
-Median        : 0.32 
-Third Quantile: 0.50 
-IQR           : 0.35 
-Mean          : 0.34 
-Std Dev       : 0.21 
+Minimum       : 0.00 
+Maximum       : 1.00 
+Range         : 1.00 
+First Quantile: 0.21 
+Median        : 0.36 
+Third Quantile: 0.53 
+IQR           : 0.32 
+Mean          : 0.38 
+Std Dev       : 0.22 
 
 Summary Statistics for PCTFLOAN 
 
-Minimum       : 0.09 
-Maximum       : 0.93 
-Range         : 0.84 
-First Quantile: 0.41 
-Median        : 0.54 
-Third Quantile: 0.66 
-IQR           : 0.24 
-Mean          : 0.54 
-Std Dev       : 0.16 
+Minimum       : 0.00 
+Maximum       : 0.98 
+Range         : 0.98 
+First Quantile: 0.49 
+Median        : 0.62 
+Third Quantile: 0.73 
+IQR           : 0.23 
+Mean          : 0.60 
+Std Dev       : 0.17 
 
 Summary Statistics for MAJOR_CITY 
 
@@ -592,23 +592,23 @@ Minimum       : 0.00
 Maximum       : 1.00 
 Range         : 1.00 
 First Quantile: 0.00 
-Median        : 1.00 
+Median        : 0.00 
 Third Quantile: 1.00 
 IQR           : 1.00 
-Mean          : 0.51 
-Std Dev       : 0.50 
+Mean          : 0.40 
+Std Dev       : 0.49 
 
 Summary Statistics for MINORATIO 
 
-Minimum       : 0.15 
+Minimum       : 0.00 
 Maximum       : 1.00 
-Range         : 0.85 
-First Quantile: 0.34 
-Median        : 0.52 
-Third Quantile: 0.74 
-IQR           : 0.39 
-Mean          : 0.54 
-Std Dev       : 0.24 
+Range         : 1.00 
+First Quantile: 0.24 
+Median        : 0.35 
+Third Quantile: 0.52 
+IQR           : 0.29 
+Mean          : 0.40 
+Std Dev       : 0.22 
 
 Summary Statistics for WEST 
 
@@ -616,83 +616,83 @@ Minimum       : 0.00
 Maximum       : 1.00 
 Range         : 1.00 
 First Quantile: 0.00 
-Median        : 1.00 
-Third Quantile: 1.00 
-IQR           : 1.00 
-Mean          : 0.56 
-Std Dev       : 0.50 
+Median        : 0.00 
+Third Quantile: 0.00 
+IQR           : 0.00 
+Mean          : 0.14 
+Std Dev       : 0.34 
 
 Summary Statistics for MIDWEST 
 
 Minimum       : 0.00 
-Maximum       : 0.00 
-Range         : 0.00 
+Maximum       : 1.00 
+Range         : 1.00 
 First Quantile: 0.00 
 Median        : 0.00 
-Third Quantile: 0.00 
-IQR           : 0.00 
-Mean          : 0.00 
-Std Dev       : 0.00 
+Third Quantile: 1.00 
+IQR           : 1.00 
+Mean          : 0.26 
+Std Dev       : 0.44 
 
 Summary Statistics for NORTHEAST 
 
 Minimum       : 0.00 
-Maximum       : 0.00 
-Range         : 0.00 
+Maximum       : 1.00 
+Range         : 1.00 
 First Quantile: 0.00 
 Median        : 0.00 
-Third Quantile: 0.00 
-IQR           : 0.00 
-Mean          : 0.00 
-Std Dev       : 0.00 
+Third Quantile: 1.00 
+IQR           : 1.00 
+Mean          : 0.27 
+Std Dev       : 0.44 
 
 Summary Statistics for STU_APPLIED 
 
-Minimum       : 170.00 
-Maximum       : 169325.84 
-Range         : 169155.84 
-First Quantile: 2218.18 
-Median        : 6938.60 
-Third Quantile: 27618.07 
-IQR           : 25399.89 
-Mean          : 19614.28 
-Std Dev       : 30244.75 
+Minimum       : 105.00 
+Maximum       : 221057.35 
+Range         : 220952.35 
+First Quantile: 1653.17 
+Median        : 3524.05 
+Third Quantile: 10085.49 
+IQR           : 8432.32 
+Mean          : 9411.67 
+Std Dev       : 16729.05 
 
 Summary Statistics for MD_EARN_WNE_P10 
 
-Minimum       : 19900.00 
-Maximum       : 79400.00 
-Range         : 59500.00 
-First Quantile: 34275.00 
-Median        : 40500.00 
-Third Quantile: 46500.00 
-IQR           : 12225.00 
-Mean          : 42093.62 
-Std Dev       : 10801.06 
+Minimum       : 12000.00 
+Maximum       : 118800.00 
+Range         : 106800.00 
+First Quantile: 35400.00 
+Median        : 40400.00 
+Third Quantile: 46450.00 
+IQR           : 11050.00 
+Mean          : 41940.51 
+Std Dev       : 10385.56 
 
 Summary Statistics for C100_4 
 
-Minimum       : 0.05 
-Maximum       : 0.85 
-Range         : 0.80 
-First Quantile: 0.15 
-Median        : 0.32 
-Third Quantile: 0.50 
-IQR           : 0.35 
-Mean          : 0.34 
-Std Dev       : 0.21 
+Minimum       : 0.00 
+Maximum       : 1.00 
+Range         : 1.00 
+First Quantile: 0.21 
+Median        : 0.36 
+Third Quantile: 0.53 
+IQR           : 0.32 
+Mean          : 0.38 
+Std Dev       : 0.22 
 
 Summary Statistics for PCTFLOAN 
 
-Minimum       : 0.09 
-Maximum       : 0.93 
-Range         : 0.84 
-First Quantile: 0.41 
-Median        : 0.54 
-Third Quantile: 0.66 
-IQR           : 0.24 
-Mean          : 0.54 
-Std Dev       : 0.16 
+Minimum       : 0.00 
+Maximum       : 0.98 
+Range         : 0.98 
+First Quantile: 0.49 
+Median        : 0.62 
+Third Quantile: 0.73 
+IQR           : 0.23 
+Mean          : 0.60 
+Std Dev       : 0.17 
 
 Summary Statistics for MAJOR_CITY 
 
@@ -700,23 +700,23 @@ Minimum       : 0.00
 Maximum       : 1.00 
 Range         : 1.00 
 First Quantile: 0.00 
-Median        : 1.00 
+Median        : 0.00 
 Third Quantile: 1.00 
 IQR           : 1.00 
-Mean          : 0.51 
-Std Dev       : 0.50 
+Mean          : 0.40 
+Std Dev       : 0.49 
 
 Summary Statistics for MINORATIO 
 
-Minimum       : 0.15 
+Minimum       : 0.00 
 Maximum       : 1.00 
-Range         : 0.85 
-First Quantile: 0.34 
-Median        : 0.52 
-Third Quantile: 0.74 
-IQR           : 0.39 
-Mean          : 0.54 
-Std Dev       : 0.24 
+Range         : 1.00 
+First Quantile: 0.24 
+Median        : 0.35 
+Third Quantile: 0.52 
+IQR           : 0.29 
+Mean          : 0.40 
+Std Dev       : 0.22 
 
 Summary Statistics for WEST 
 
@@ -724,83 +724,83 @@ Minimum       : 0.00
 Maximum       : 1.00 
 Range         : 1.00 
 First Quantile: 0.00 
-Median        : 1.00 
-Third Quantile: 1.00 
-IQR           : 1.00 
-Mean          : 0.56 
-Std Dev       : 0.50 
+Median        : 0.00 
+Third Quantile: 0.00 
+IQR           : 0.00 
+Mean          : 0.14 
+Std Dev       : 0.34 
 
 Summary Statistics for MIDWEST 
 
 Minimum       : 0.00 
-Maximum       : 0.00 
-Range         : 0.00 
+Maximum       : 1.00 
+Range         : 1.00 
 First Quantile: 0.00 
 Median        : 0.00 
-Third Quantile: 0.00 
-IQR           : 0.00 
-Mean          : 0.00 
-Std Dev       : 0.00 
+Third Quantile: 1.00 
+IQR           : 1.00 
+Mean          : 0.26 
+Std Dev       : 0.44 
 
 Summary Statistics for NORTHEAST 
 
 Minimum       : 0.00 
-Maximum       : 0.00 
-Range         : 0.00 
+Maximum       : 1.00 
+Range         : 1.00 
 First Quantile: 0.00 
 Median        : 0.00 
-Third Quantile: 0.00 
-IQR           : 0.00 
-Mean          : 0.00 
-Std Dev       : 0.00 
+Third Quantile: 1.00 
+IQR           : 1.00 
+Mean          : 0.27 
+Std Dev       : 0.44 
 
 Summary Statistics for STU_APPLIED 
 
-Minimum       : 170.00 
-Maximum       : 169325.84 
-Range         : 169155.84 
-First Quantile: 2218.18 
-Median        : 6938.60 
-Third Quantile: 27618.07 
-IQR           : 25399.89 
-Mean          : 19614.28 
-Std Dev       : 30244.75 
+Minimum       : 105.00 
+Maximum       : 221057.35 
+Range         : 220952.35 
+First Quantile: 1653.17 
+Median        : 3524.05 
+Third Quantile: 10085.49 
+IQR           : 8432.32 
+Mean          : 9411.67 
+Std Dev       : 16729.05 
 
 Summary Statistics for MD_EARN_WNE_P10 
 
-Minimum       : 19900.00 
-Maximum       : 79400.00 
-Range         : 59500.00 
-First Quantile: 34275.00 
-Median        : 40500.00 
-Third Quantile: 46500.00 
-IQR           : 12225.00 
-Mean          : 42093.62 
-Std Dev       : 10801.06 
+Minimum       : 12000.00 
+Maximum       : 118800.00 
+Range         : 106800.00 
+First Quantile: 35400.00 
+Median        : 40400.00 
+Third Quantile: 46450.00 
+IQR           : 11050.00 
+Mean          : 41940.51 
+Std Dev       : 10385.56 
 
 Summary Statistics for C100_4 
 
-Minimum       : 0.05 
-Maximum       : 0.85 
-Range         : 0.80 
-First Quantile: 0.15 
-Median        : 0.32 
-Third Quantile: 0.50 
-IQR           : 0.35 
-Mean          : 0.34 
-Std Dev       : 0.21 
+Minimum       : 0.00 
+Maximum       : 1.00 
+Range         : 1.00 
+First Quantile: 0.21 
+Median        : 0.36 
+Third Quantile: 0.53 
+IQR           : 0.32 
+Mean          : 0.38 
+Std Dev       : 0.22 
 
 Summary Statistics for PCTFLOAN 
 
-Minimum       : 0.09 
-Maximum       : 0.93 
-Range         : 0.84 
-First Quantile: 0.41 
-Median        : 0.54 
-Third Quantile: 0.66 
-IQR           : 0.24 
-Mean          : 0.54 
-Std Dev       : 0.16 
+Minimum       : 0.00 
+Maximum       : 0.98 
+Range         : 0.98 
+First Quantile: 0.49 
+Median        : 0.62 
+Third Quantile: 0.73 
+IQR           : 0.23 
+Mean          : 0.60 
+Std Dev       : 0.17 
 
 Summary Statistics for MAJOR_CITY 
 
@@ -808,23 +808,23 @@ Minimum       : 0.00
 Maximum       : 1.00 
 Range         : 1.00 
 First Quantile: 0.00 
-Median        : 1.00 
+Median        : 0.00 
 Third Quantile: 1.00 
 IQR           : 1.00 
-Mean          : 0.51 
-Std Dev       : 0.50 
+Mean          : 0.40 
+Std Dev       : 0.49 
 
 Summary Statistics for MINORATIO 
 
-Minimum       : 0.15 
+Minimum       : 0.00 
 Maximum       : 1.00 
-Range         : 0.85 
-First Quantile: 0.34 
-Median        : 0.52 
-Third Quantile: 0.74 
-IQR           : 0.39 
-Mean          : 0.54 
-Std Dev       : 0.24 
+Range         : 1.00 
+First Quantile: 0.24 
+Median        : 0.35 
+Third Quantile: 0.52 
+IQR           : 0.29 
+Mean          : 0.40 
+Std Dev       : 0.22 
 
 Summary Statistics for WEST 
 
@@ -832,33 +832,33 @@ Minimum       : 0.00
 Maximum       : 1.00 
 Range         : 1.00 
 First Quantile: 0.00 
-Median        : 1.00 
-Third Quantile: 1.00 
-IQR           : 1.00 
-Mean          : 0.56 
-Std Dev       : 0.50 
+Median        : 0.00 
+Third Quantile: 0.00 
+IQR           : 0.00 
+Mean          : 0.14 
+Std Dev       : 0.34 
 
 Summary Statistics for MIDWEST 
 
 Minimum       : 0.00 
-Maximum       : 0.00 
-Range         : 0.00 
+Maximum       : 1.00 
+Range         : 1.00 
 First Quantile: 0.00 
 Median        : 0.00 
-Third Quantile: 0.00 
-IQR           : 0.00 
-Mean          : 0.00 
-Std Dev       : 0.00 
+Third Quantile: 1.00 
+IQR           : 1.00 
+Mean          : 0.26 
+Std Dev       : 0.44 
 
 Summary Statistics for NORTHEAST 
 
 Minimum       : 0.00 
-Maximum       : 0.00 
-Range         : 0.00 
+Maximum       : 1.00 
+Range         : 1.00 
 First Quantile: 0.00 
 Median        : 0.00 
-Third Quantile: 0.00 
-IQR           : 0.00 
-Mean          : 0.00 
-Std Dev       : 0.00 
+Third Quantile: 1.00 
+IQR           : 1.00 
+Mean          : 0.27 
+Std Dev       : 0.44 
 

@@ -6,8 +6,8 @@ overall_test_set = read.csv("data/data-sets/train-test-data-set/overall-test-set
 overall_data_set_regresssion = read.csv("data/data-sets/train-test-data-set/overall-data-set-regression.csv")
 
 # Fit lasso model to training set
-ind_var <- c(24, 25, 26, 28, 29, 45, 46, 47, 48)
-dependent_train <- as.matrix(overall_train_set[44])
+ind_var <- c("ln_MD_EARN_WNE_P10", "ln_PCTFLOAN", "ln_C100_4", "ln_COSTT4_A", "MAJOR_CITY", "MINORATIO", "WEST", "MIDWEST", "NORTHEAST")
+dependent_train <- as.matrix(overall_train_set["ln_STU_APPLIED"])
 regressor_train <- as.matrix(overall_train_set[ind_var])
 grid <- 10^seq(10, -2, length = 1000)
 set.seed(1235)
@@ -22,11 +22,11 @@ dev.off()
 # Use the best fitted lambda on test set to calculate MSE
 test_set_input <- as.matrix(overall_test_set[, ind_var])
 lasso_test_predict <- predict(lasso_mod, s = best_lambda_lasso, newx = test_set_input)
-lasso_test <- as.matrix(overall_test_set[,44])
+lasso_test <- as.matrix(overall_test_set[,"ln_STU_APPLIED"])
 MSE_lasso <- mean((lasso_test - lasso_test_predict)^2)
 
 # Fit the model in the original dataset to find estimated coefficients
-dependent_full <- as.matrix(overall_data_set_regresssion[44])
+dependent_full <- as.matrix(overall_data_set_regresssion["ln_STU_APPLIED"])
 regressor_full <- as.matrix(overall_data_set_regresssion[ind_var])
 lasso_full_log_fit <- glmnet(regressor_full, dependent_full, alpha = 1, lambda = best_lambda_lasso)
 lasso_fitted_coef <- coef(lasso_full_log_fit)

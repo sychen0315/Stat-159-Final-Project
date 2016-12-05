@@ -28,7 +28,7 @@ plsr_script = code/scripts/plsr-regression-overall.R
 ols_cluster = code/scripts/ols-regression-cluster.R
 
 # All target
-all: data_clean data_categorize eda regressions session report slides
+all: data data_clean data_categorize eda regressions session report slides
 
 # Data target: Download data from the url
 data:
