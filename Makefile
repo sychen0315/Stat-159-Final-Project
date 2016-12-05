@@ -84,10 +84,10 @@ regressions:
 	make ols_cluster
 
 # Report target: Produce reports by compiling Rmarkdown to pdf
-report: report/sections/*.Rmd
-	cat report/sections/*.Rmd > report/report.Rmd
-	cd report && Rscript -e "library(rmarkdown); render('report.Rmd', 'pdf_document')"
-
+report: report/sections/*.Rnw
+	cat report/sections/*.Rnw > report/report.Rnw
+	cd report && Rscript -e "library(knitr); knit2pdf('report.Rnw', output = 'report.tex')"
+	
 # slides target: Generate slides
 slides:
 	Rscript -e "library(rmarkdown); render('slides/slides.Rmd', 'ioslides_presentation')"
