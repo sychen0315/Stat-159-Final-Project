@@ -1,6 +1,7 @@
 \documentclass{article}
 \usepackage{amsmath}
 \usepackage{graphicx}
+\usepackage{float}
 
 \title{Final Project Report}
 \author{Aoyi Shan, Siyu Chen, Yukun He, Shuotong Wu}
@@ -12,6 +13,7 @@ library(knitr)
 opts_chunk$set(fig.align='center', fig.show='hold')
 options(formatR.arrow=TRUE,width=90)
 @
+
 \SweaveOpts{concordance=TRUE}
 
 \maketitle

@@ -1,6 +1,9 @@
 \documentclass{article}
+
 \usepackage{amsmath}
 \usepackage{graphicx}
+\usepackage[margin=0.75in]{geometry}
+\usepackage{float}
 
 \title{Final Project Report}
 \author{Aoyi Shan, Siyu Chen, Yukun He, Shuotong Wu}
@@ -8,6 +11,7 @@
 
 \usepackage{Sweave}
 \begin{document}
+
 \input{report-concordance}
 
 \maketitle
@@ -20,42 +24,6 @@ In this project, our objective is to explore the differences between similar sch
 
 
 
-\section{Method}
-
-\subsection{Least Squares Method}
-
-OLS estimators are considered as our base case in this project. OLS estimators are obtained by minimizing the sum of squares $RSS = \sum_{i=1}^n(y_i - \beta_0 - \sum_{j=1}^p(\beta_{j}x_{ij}))^2$ where $\beta_0, ..., \beta_p$ are our coefficient estimates. This is the most common regression method, and it works the best when we have homoscedastic and uncorrelated errors within the data.
-
-\subsection{Shrinkage Method}
-
-Similar to the OLS method, shrinkage method also fits a model containing all independent variables but with a focus on constrains the coefficient estimates toward 0. By shrinking the coefficient estimates, the variance in estimators is significantly reduced compared to that of OLS. 
-
-\subsection{Ridge Regression }
-
-Instead of minimizing RSS, Ridge regression minimizes $RSS + \lambda \sum bj^2$. This regression abandons the requirement of an unbiased estimator in order to obtain a more precise prediction intervals. The addition term is a shrinkage penalty and since it's a sum of coefficient estimators, it will be small when $\beta$s are all close to 0. Here, $\lambda$ is called a tuning parameter and it controls how much RSS and shrinkage penalty affects the regression model. When $\lambda = 0$, ridge regression is the same as the least squares models. Because each $\lambda$ corresponds to a different set of coefficient estimates, we usually try a wide range of $\lambda$s and pick the best tuning parameter with the smallest MSE. 
-
-One of the main feature of ridge regression is the bias-variance trade-off. When $\lambda = 0$, which is the least square model, the variance is high the estimators are unbiased. As lambda increases, variance decreases significantly but bias only sightly increase. Since $MSE = variance + squared bias$ along with the relative effect of the change, when $\lambda$ is smaller than 10, the variance drops rapidly, with very little increase in bias, so MSE decreases. 
-
-\subsection{Lasso Regression}
-
-The major difference between Lasso and Ridge is that Lasso method aims to minimize $RSS$ + $\lambda \sum |{\beta_j}|$. This is to compensate for the fact that ridge regression with always generate a model with all predictors since it doesn't involve a process of variable reduction. Therefore, lasso improves on this by allowing some of the coefficient estimates to be exactly 0 if the tunning parameter is sufficiently large. Therefore, this variable selection process makes the model much easier to interpret with a reduced amount of predictors. 
-
-\subsection{Comparison between Ridge and Lasso}
-
-In general, lasso is expected to outperform ridge when we have a small amount of predictors having significant coefficients, and the rest close to 0. Ridge regression will perform between when the response is affected by many regressors with equal-sized coefficients. 
-
-
-\subsection{Dimension Reduction Methods}
-
-Dimension reduction method involves a transformation of variables before we fit in the least squares model. Instead of estimating $p + 1$ coefficients $\beta_0, ..., \beta_p$ when we have p regressors, it transform the data to $Z1, ..., Z_m, M < p$ where $Z_m$ represent linear combinations of the original predictors, so that we only need to estimate $M + 1$ coefficients $\theta_0, \theta_1, ..., \theta_M$. 
-
-\subsection{Principal Components Regression}
-
-In principal components regression, we first perform principal components analysis on the original data which constructs M principal components, $Z_1, ..., Z_m$. Then, we use these components as the predictors and fit the least squares model to obtain coefficient estimates. The key assumption we hold in this regression model is that the directions in which $X_1, ..., X_p$ show the most variation are the directions that are associated with Y. If the assumption holds, then fitting a least squares model to $Z_1, ..., Z_m$ will lead to better results than fitting a least squares model to $X_1, ..., X_p$, since most or all of the information in the data that relates to the response is contained in $Z_1, ..., Z_m$. With fewer predictors, we can also reduce the risk of overfitting. PCR performs the best when the first few principal components are sufficient to capture most of the variation in the predictors and their relationship with the response.
-
-\subsection{Partial Least Squares}
-
-In comparison to PCR regression, which uses unsupervised method to identify the principal components, partial least squares method takes the advantage of a supervised learning process. It uses the response variable Y to identify new vectors that are not only similar to existing regressors, but also select the ones that are related to the response. Therefore, as indicated in the textbook, the PLS approach attempts to find directions that help explain both the response and the predictors. 
 
 
 \section{Analysis}
@@ -70,7 +38,7 @@ Then, we divide our dataset into 8 separate clusters according to region and its
 
 \begin{Schunk}
 \begin{Soutput}
-\begin{table}[H]
+\begin{table}[ht]
 \centering
 \begin{tabular}{rrrrrrrrr}
   \hline
@@ -110,7 +78,7 @@ ANOVA is designed to test whether there are any statistically significant differ
 
 \begin{Schunk}
 \begin{Soutput}
-\begin{table}[H]
+\begin{table}[ht]
 \centering
 \begin{tabular}{lrrrrr}
   \hline
@@ -153,7 +121,7 @@ We use 6 main variables as regressors in the regression:
 
 \begin{Schunk}
 \begin{Soutput}
-\begin{table}[H]
+\begin{table}[ht]
 \centering
 \begin{tabular}{rrrrr}
   \hline
@@ -182,7 +150,7 @@ In addition, since our data set is large enough, we will first split the set int
 
 \begin{Schunk}
 \begin{Soutput}
-\begin{table}[H]
+\begin{table}[ht]
 \centering
 \begin{tabular}{rrrrr}
   \hline
@@ -229,366 +197,4 @@ For ridge and lasso regression method, we used cv.glmnet() in R package "glmnet"
 
 Similarly, for pcr and plsr regression method, we used function pcr() and plsr() in "pls" package to perform the 10-fold cross-validation. We also use the best fitted m from the train set to build the model and obtain the MSE from the test set.
 
-
-\begin{Schunk}
-\begin{Soutput}
-\begin{table}[H]
-\centering
-\begin{tabular}{rrrrrr}
-  \hline
- & ols & ridge & lasso & pcr & plsr \\ 
-  \hline
-ln\_MD\_EARN\_WNE\_P10 & 2.90140 & 2.87159 & 2.82848 & 2.96763 & 2.90339 \\ 
-  ln\_PCTFLOAN & -0.36113 & -0.35705 & -0.33851 & -0.35031 & -0.36169 \\ 
-  ln\_C100\_4 & 0.27808 & 0.27483 & 0.26621 & 0.26582 & 0.27818 \\ 
-  ln\_COSTT4\_A & -1.33248 & -1.31397 & -1.29670 & -1.33504 & -1.33405 \\ 
-  MAJOR\_CITY & 0.16237 & 0.16129 & 0.14505 & 0.19294 & 0.16156 \\ 
-  MINORATIO & 0.97941 & 0.96724 & 0.94000 & 0.61573 & 0.97012 \\ 
-  WEST & -0.12554 & -0.12172 & -0.05341 & -0.14452 & -0.12407 \\ 
-  MIDWEST & -0.04997 & -0.05096 & -0.00315 & -0.14481 & -0.04819 \\ 
-  NORTHEAST & -0.10121 & -0.09904 & -0.04259 & -0.15651 & -0.10642 \\ 
-   \hline
-\end{tabular}
-\caption{Regression Coefficients for 5 Regression Methods} 
-\end{table}
-\end{Soutput}
-\begin{Soutput}
-\begin{table}[H]
-\centering
-\begin{tabular}{rr}
-  \hline
- & MSE \\ 
-  \hline
-ols & 0.97751 \\ 
-  ridge & 0.97495 \\ 
-  lasso & 0.96921 \\ 
-  pcr & 0.97788 \\ 
-  plsr & 0.97624 \\ 
-   \hline
-\end{tabular}
-\caption{MSE of 5 Regression Methods} 
-\end{table}
-\end{Soutput}
-\end{Schunk}
-
-We notice that all regression methods have similar MSE with lasso resulting the smallest. After interpreting the coefficients, we decide to use ols on the regression that we will run for each cluster for two main reasons:
-
-1. lm() provides us with a p-value associated with each coefficient. This gives us information regarding whether the impact of a certain variable is significant which plays a vital role in determining our advice to schools in a certain cluster. In contrast, due to the way Ridge and Lasso regression are designed, although they give out better prediction, but the SE associated with each coefficient is unreliable, so we will lose this information if we go with those regression methods.
-
-2. We notice that some of our regression variables are correlated. Therefore, ridge and lasso regression, aiming to reduce the dimension by eliminating unnecessary variables, can cause a problem. If both variables can affect the school competitiveness through the same channel, we don't want the regression randomly drop one since they explain the same portion of change in Y. Instead, we want to make the decision on our own based on the budget required for each change or whether it is practical to execute for a certain institution.
-
-Therefore, weighing all the pros and cons for each regression method, we decide to use OLS to run the regression for each cluster.
-
-Here is a summary of all the coefficients and our advice for institutions in different areas.
-
-\begin{Schunk}
-\begin{Soutput}
-\begin{table}[H]
-\centering
-\begin{tabular}{rrrrr}
-  \hline
- & Estimate & Std. Error & t value & Pr($>$$|$t$|$) \\ 
-  \hline
-(Intercept) & -7.66 & 4.79 & -1.60 & 0.11 \\ 
-  ln\_MD\_EARN\_WNE\_P10 & 2.66 & 0.46 & 5.79 & 0.00 \\ 
-  ln\_PCTFLOAN & -2.16 & 0.39 & -5.51 & 0.00 \\ 
-  ln\_C100\_4 & 0.19 & 0.05 & 3.65 & 0.00 \\ 
-  ln\_COSTT4\_A & -1.29 & 0.27 & -4.78 & 0.00 \\ 
-  MINORATIO & 0.19 & 0.50 & 0.38 & 0.71 \\ 
-   \hline
-\end{tabular}
-\caption{Regression Coefficients WM Cluster} 
-\end{table}
-\end{Soutput}
-\end{Schunk}
-
-1. For schools located in the west major cities:
-
-All the coefficients are significant except minority ratio. This can be largely explained by the fact that this cluster has the highest average minority ratio among all clusters, meaning those institutions already have a very diverse student population. Therefore, further improving this aspect won't have a significant impact on the school's competitiveness.
-
-The most significant regressors is median earnings 10 years after graduation. Most cities on the West Coast are where well-paid technology companies and banking industry clutered. Therefore, there is a possibility that people decide to attend a university on the West Coast in order to get a job with high pay. So during the application process, it is reasonable if they pay extra attention to their future career development and the salary level of previous graduates serve as a plausible measure.
-
-\begin{Schunk}
-\begin{Soutput}
-\begin{table}[H]
-\centering
-\begin{tabular}{rrrrr}
-  \hline
- & Estimate & Std. Error & t value & Pr($>$$|$t$|$) \\ 
-  \hline
-(Intercept) & -9.49 & 5.21 & -1.82 & 0.07 \\ 
-  ln\_MD\_EARN\_WNE\_P10 & 3.31 & 0.49 & 6.73 & 0.00 \\ 
-  ln\_PCTFLOAN & -0.16 & 0.12 & -1.35 & 0.18 \\ 
-  ln\_C100\_4 & 0.31 & 0.07 & 4.45 & 0.00 \\ 
-  ln\_COSTT4\_A & -1.68 & 0.24 & -6.95 & 0.00 \\ 
-  MINORATIO & 0.50 & 0.56 & 0.90 & 0.37 \\ 
-   \hline
-\end{tabular}
-\caption{Regression Coefficients WN Cluster} 
-\end{table}
-\end{Soutput}
-\end{Schunk}
-
-2. For schools located on the West coast countryside:
-
-This cluster is our smallest one, so the coefficient might not be as accurate as clusters with larger population. However, from the EDA stage, we notice that WN cluster has the lowest average percentage of students with loans. This perfectly explains the fact that a 1\% increase in this percentage won't have a significant effect on school competitiveness because their current level of students with debt is very low.
-
-The most significant factor here is similar to that of group WM, which is median earnings. And this finding shows that there exists similarities between schools within the same region, possibly due to local culture and regional economic development.
-
-\begin{Schunk}
-\begin{Soutput}
-\begin{table}[H]
-\centering
-\begin{tabular}{rrrrr}
-  \hline
- & Estimate & Std. Error & t value & Pr($>$$|$t$|$) \\ 
-  \hline
-(Intercept) & -6.28 & 5.40 & -1.16 & 0.25 \\ 
-  ln\_MD\_EARN\_WNE\_P10 & 2.13 & 0.49 & 4.33 & 0.00 \\ 
-  ln\_PCTFLOAN & -1.51 & 0.36 & -4.19 & 0.00 \\ 
-  ln\_C100\_4 & 0.15 & 0.06 & 2.52 & 0.01 \\ 
-  ln\_COSTT4\_A & -0.89 & 0.31 & -2.85 & 0.00 \\ 
-  MINORATIO & 1.82 & 0.58 & 3.12 & 0.00 \\ 
-   \hline
-\end{tabular}
-\caption{Regression Coefficients MM Cluster} 
-\end{table}
-\end{Soutput}
-\begin{Soutput}
-\begin{table}[H]
-\centering
-\begin{tabular}{rrrrr}
-  \hline
- & Estimate & Std. Error & t value & Pr($>$$|$t$|$) \\ 
-  \hline
-(Intercept) & -12.51 & 3.39 & -3.69 & 0.00 \\ 
-  ln\_MD\_EARN\_WNE\_P10 & 3.51 & 0.32 & 11.08 & 0.00 \\ 
-  ln\_PCTFLOAN & -0.35 & 0.08 & -4.19 & 0.00 \\ 
-  ln\_C100\_4 & 0.27 & 0.05 & 5.84 & 0.00 \\ 
-  ln\_COSTT4\_A & -1.62 & 0.16 & -10.31 & 0.00 \\ 
-  MINORATIO & 1.00 & 0.39 & 2.56 & 0.01 \\ 
-   \hline
-\end{tabular}
-\caption{Regression Coefficients MN Cluster} 
-\end{table}
-\end{Soutput}
-\end{Schunk}
-
-3. For schools located in the Midwest major cities and countryside
-
-Those two clusters generate very similar results with all the coefficients being significant, especially MN cluster. According to the EDA, MN is the region with the lowest average number of students applied. Therefore, it makes sense for all the varaibles to show statistical significance since they have a lot of room for improvement. The most significant coefficient in both clusters, median earning, can be interpreted as if we can increase the earnings after graduation by 1\%, we predict the students applied will increase by 2.13\% and 3.51\% in schools located in the midwest cities and countryside, holding all other variables constant. In addition, they have relative low minority ratio among all clusters, therefore boosting their minority ratio by 1\% is expected to bring an additional 1.82\% and 1\% in MM and MN cluster respectively, holding all other variables constant.
-
-
-\begin{Schunk}
-\begin{Soutput}
-\begin{table}[H]
-\centering
-\begin{tabular}{rrrrr}
-  \hline
- & Estimate & Std. Error & t value & Pr($>$$|$t$|$) \\ 
-  \hline
-(Intercept) & -10.51 & 3.46 & -3.04 & 0.00 \\ 
-  ln\_MD\_EARN\_WNE\_P10 & 2.14 & 0.29 & 7.40 & 0.00 \\ 
-  ln\_PCTFLOAN & -1.00 & 0.19 & -5.23 & 0.00 \\ 
-  ln\_C100\_4 & 0.06 & 0.07 & 0.87 & 0.39 \\ 
-  ln\_COSTT4\_A & -0.46 & 0.21 & -2.20 & 0.03 \\ 
-  MINORATIO & 1.11 & 0.45 & 2.44 & 0.02 \\ 
-   \hline
-\end{tabular}
-\caption{Regression Coefficients NM Cluster} 
-\end{table}
-\end{Soutput}
-\end{Schunk}
-
-4. For schools located in the northeast major cities:
-
-All the coefficients are significant besides that of graduation rate. This cluster has the highest 4-year graduation rate, which explains why an additional boost in this rate won't bring as much increase in school competitiveness as other variables. Similarly to the West region, Northeast has prosperous economy and harbour millions of high-tech and finance related-companies. Therefore, it is not surprising to see that the effect of pay after graduation is has a t-value that is significantly higher than other factors, and we expect a 1\% increase in graduation pay is associated with a 2.14\% increase in number of students applied, holding all other variables constant.
-
-\begin{Schunk}
-\begin{Soutput}
-\begin{table}[H]
-\centering
-\begin{tabular}{rrrrr}
-  \hline
- & Estimate & Std. Error & t value & Pr($>$$|$t$|$) \\ 
-  \hline
-(Intercept) & -0.17 & 2.89 & -0.06 & 0.95 \\ 
-  ln\_MD\_EARN\_WNE\_P10 & 1.79 & 0.24 & 7.45 & 0.00 \\ 
-  ln\_PCTFLOAN & -0.48 & 0.07 & -6.78 & 0.00 \\ 
-  ln\_C100\_4 & 0.67 & 0.09 & 7.40 & 0.00 \\ 
-  ln\_COSTT4\_A & -1.05 & 0.14 & -7.39 & 0.00 \\ 
-  MINORATIO & 1.80 & 0.27 & 6.72 & 0.00 \\ 
-   \hline
-\end{tabular}
-\caption{Regression Coefficients NN Cluster} 
-\end{table}
-\end{Soutput}
-\end{Schunk}
-
-5. For schools located in the northeast countryside:
-
-With a relatively low minority ratio to start with, improving minority ratio will bring the largest increase in school competitiveness. For each 1\% increase in minority ratio, we expect the number of students applied will increase by 1.79\%. Similarly, due to the regional effect we mentioned for the northeast area, we also have a large value of coefficient for median earning. Each 1\% increase in median earning is expected to add 1.8\% in number of students applied, holding all other variables constant.
-
-\begin{Schunk}
-\begin{Soutput}
-\begin{table}[H]
-\centering
-\begin{tabular}{rrrrr}
-  \hline
- & Estimate & Std. Error & t value & Pr($>$$|$t$|$) \\ 
-  \hline
-(Intercept) & -0.71 & 4.56 & -0.16 & 0.88 \\ 
-  ln\_MD\_EARN\_WNE\_P10 & 2.11 & 0.46 & 4.61 & 0.00 \\ 
-  ln\_PCTFLOAN & -1.62 & 0.29 & -5.59 & 0.00 \\ 
-  ln\_C100\_4 & 0.21 & 0.05 & 4.03 & 0.00 \\ 
-  ln\_COSTT4\_A & -1.38 & 0.22 & -6.34 & 0.00 \\ 
-  MINORATIO & 0.74 & 0.31 & 2.39 & 0.02 \\ 
-   \hline
-\end{tabular}
-\caption{Regression Coefficients SM Cluster} 
-\end{table}
-\end{Soutput}
-\begin{Soutput}
-\begin{table}[H]
-\centering
-\begin{tabular}{rrrrr}
-  \hline
- & Estimate & Std. Error & t value & Pr($>$$|$t$|$) \\ 
-  \hline
-(Intercept) & -1.60 & 3.35 & -0.48 & 0.63 \\ 
-  ln\_MD\_EARN\_WNE\_P10 & 2.45 & 0.36 & 6.88 & 0.00 \\ 
-  ln\_PCTFLOAN & -0.85 & 0.24 & -3.53 & 0.00 \\ 
-  ln\_C100\_4 & 0.26 & 0.05 & 5.12 & 0.00 \\ 
-  ln\_COSTT4\_A & -1.61 & 0.17 & -9.27 & 0.00 \\ 
-  MINORATIO & 0.83 & 0.27 & 3.05 & 0.00 \\ 
-   \hline
-\end{tabular}
-\caption{Regression Coefficients SN Cluster} 
-\end{table}
-\end{Soutput}
-\end{Schunk}
-
-6. For schools located in the south major cities and countryside:
-
-SM and SN have similar statistics in terms of graduation rate and the number of students with student loans.
-
-This cluster has the lowest average of number of students applied and median earnings among all clusters with the second highest coast of attendence. Therefore, all the coefficients are significant with coefficients of median earnings and cost of attendence. If the school can implement programs to improve the earnings of their graduates by 1\%, we expect there will be 2.45\% more students applied, holding all other variables constant. If the school will be able to reduce the cost of living by 1\%, they can expect to receive 1.61\% more applications each year.
-
-
-
-3. For schools located in the Midwest major cities and countryside
-
-Those two clusters generate very similar results with all the coefficients being significant, especially MN cluster. According to the EDA, MN is the region with the lowest average number of students applied. Therefore, it makes sense for all the varaibles to show statistical significance since they have a lot of room for improvement. The most significant coefficient in both clusters, median earning, can be interpreted as if we can increase the earnings after graduation by 1\%, we predict the students applied will increase by 2.13\% and 3.51\% in schools located in the midwest cities and countryside, holding all other variables constant. In addition, they have relative low minority ratio among all clusters, therefore boosting their minority ratio by 1\% is expected to bring an additional 1.82\% and 1\% in MM and MN cluster respectively, holding all other variables constant.
-
-
-\begin{Schunk}
-\begin{Soutput}
-\begin{table}[H]
-\centering
-\begin{tabular}{rrrrr}
-  \hline
- & Estimate & Std. Error & t value & Pr($>$$|$t$|$) \\ 
-  \hline
-(Intercept) & -10.51 & 3.46 & -3.04 & 0.00 \\ 
-  ln\_MD\_EARN\_WNE\_P10 & 2.14 & 0.29 & 7.40 & 0.00 \\ 
-  ln\_PCTFLOAN & -1.00 & 0.19 & -5.23 & 0.00 \\ 
-  ln\_C100\_4 & 0.06 & 0.07 & 0.87 & 0.39 \\ 
-  ln\_COSTT4\_A & -0.46 & 0.21 & -2.20 & 0.03 \\ 
-  MINORATIO & 1.11 & 0.45 & 2.44 & 0.02 \\ 
-   \hline
-\end{tabular}
-\caption{Regression Coefficients NM Cluster} 
-\end{table}
-\end{Soutput}
-\end{Schunk}
-
-4. For schools located in the northeast major cities:
-
-All the coefficients are significant besides that of graduation rate. This cluster has the highest 4-year graduation rate, which explains why an additional boost in this rate won't bring as much increase in school competitiveness as other variables. Similarly to the West region, Northeast has prosperous economy and harbour millions of high-tech and finance related-companies. Therefore, it is not surprising to see that the effect of pay after graduation is has a t-value that is significantly higher than other factors, and we expect a 1\% increase in graduation pay is associated with a 2.14\% increase in number of students applied, holding all other variables constant.
-
-\begin{Schunk}
-\begin{Soutput}
-\begin{table}[H]
-\centering
-\begin{tabular}{rrrrr}
-  \hline
- & Estimate & Std. Error & t value & Pr($>$$|$t$|$) \\ 
-  \hline
-(Intercept) & -0.17 & 2.89 & -0.06 & 0.95 \\ 
-  ln\_MD\_EARN\_WNE\_P10 & 1.79 & 0.24 & 7.45 & 0.00 \\ 
-  ln\_PCTFLOAN & -0.48 & 0.07 & -6.78 & 0.00 \\ 
-  ln\_C100\_4 & 0.67 & 0.09 & 7.40 & 0.00 \\ 
-  ln\_COSTT4\_A & -1.05 & 0.14 & -7.39 & 0.00 \\ 
-  MINORATIO & 1.80 & 0.27 & 6.72 & 0.00 \\ 
-   \hline
-\end{tabular}
-\caption{Regression Coefficients NN Cluster} 
-\end{table}
-\end{Soutput}
-\end{Schunk}
-
-5. For schools located in the northeast countryside:
-
-With a relatively low minority ratio to start with, improving minority ratio will bring the largest increase in school competitiveness. For each 1\% increase in minority ratio, we expect the number of students applied will increase by 1.79\%. Similarly, due to the regional effect we mentioned for the northeast area, we also have a large value of coefficient for median earning. Each 1\% increase in median earning is expected to add 1.8\% in number of students applied, holding all other variables constant.
-
-\begin{Schunk}
-\begin{Soutput}
-\begin{table}[H]
-\centering
-\begin{tabular}{rrrrr}
-  \hline
- & Estimate & Std. Error & t value & Pr($>$$|$t$|$) \\ 
-  \hline
-(Intercept) & -0.71 & 4.56 & -0.16 & 0.88 \\ 
-  ln\_MD\_EARN\_WNE\_P10 & 2.11 & 0.46 & 4.61 & 0.00 \\ 
-  ln\_PCTFLOAN & -1.62 & 0.29 & -5.59 & 0.00 \\ 
-  ln\_C100\_4 & 0.21 & 0.05 & 4.03 & 0.00 \\ 
-  ln\_COSTT4\_A & -1.38 & 0.22 & -6.34 & 0.00 \\ 
-  MINORATIO & 0.74 & 0.31 & 2.39 & 0.02 \\ 
-   \hline
-\end{tabular}
-\caption{Regression Coefficients SM Cluster} 
-\end{table}
-\end{Soutput}
-\begin{Soutput}
-\begin{table}[H]
-\centering
-\begin{tabular}{rrrrr}
-  \hline
- & Estimate & Std. Error & t value & Pr($>$$|$t$|$) \\ 
-  \hline
-(Intercept) & -1.60 & 3.35 & -0.48 & 0.63 \\ 
-  ln\_MD\_EARN\_WNE\_P10 & 2.45 & 0.36 & 6.88 & 0.00 \\ 
-  ln\_PCTFLOAN & -0.85 & 0.24 & -3.53 & 0.00 \\ 
-  ln\_C100\_4 & 0.26 & 0.05 & 5.12 & 0.00 \\ 
-  ln\_COSTT4\_A & -1.61 & 0.17 & -9.27 & 0.00 \\ 
-  MINORATIO & 0.83 & 0.27 & 3.05 & 0.00 \\ 
-   \hline
-\end{tabular}
-\caption{Regression Coefficients SN Cluster} 
-\end{table}
-\end{Soutput}
-\end{Schunk}
-
-6. For schools located in the south major cities and countryside:
-
-SM and SN have similar statistics in terms of graduation rate and the number of students with student loans.
-
-This cluster has the lowest average of number of students applied and median earnings among all clusters with the second highest coast of attendence. Therefore, all the coefficients are significant with coefficients of median earnings and cost of attendence. If the school can implement programs to improve the earnings of their graduates by 1\%, we expect there will be 2.45\% more students applied, holding all other variables constant. If the school will be able to reduce the cost of living by 1\%, they can expect to receive 1.61\% more applications each year.
-
-
-
-\section{Conclusion}
-
-Those regression results and intepretations give us great insights in developing strategies to boost the number of students applied, therefore improving school competitivenss. 
-
-Combining all the findings we had from analysis section, we conclude 3 main sugguestions:
-
-1. Based on our overall sample of 1555 institutions, median earnings, completion rate in 4 years, its proximity to major city and minority ratio all have a positive impact on the number of students applied, while percentage of students with loans and cost of attendence negatively correlated to number of applications received. 
-
-2. West coast and northeast region are where well-paid technology and finance firms concentrated and historically have diverse population. Although their average earnings are already higher than other regions, our regression shows that students still place higher weight on median earnings when deciding which school to apply. If those schools want to improve their competitiveness, we believe investing in career development programs is the most effective measure. Concrete steps include: establishing long-term relationships with companies, building an extensive network with alumni and expanding programs that cater to market demand such as admitting more students to computer science, busines and engineering majors. 
-
-3. Schools located at midwest and south region have lower number of students applied, so they have greater space for improvement. In addition, midwest has the lowest minority ratio and south region has the lowest completion rate. So besides implementing better career development programs, which is still a significant factor in the regression, midwest schools should also focus on improving the diversity and institutions located in the south should work on improving completion rate in order to attract more students. Concrete steps to promote diversity includes: improving their student loan system to make sure that minority students have access to the financial resources they need, set certain criteria in the admisssion process with a mindset of promoting diversity and encouraging minority student groups on campus. Concrete steps to improve completion rate includes: personalizing students' experience by reducing class size, introducing freshman interest groups so people can find support from their peers within a small group setting and expanding their academic advising program to address people's academic concerns.  
-
-\end{document}
 
