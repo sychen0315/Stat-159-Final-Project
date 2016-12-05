@@ -1,8 +1,12 @@
-.Rproj.user
-.Rhistory
+*.Rproj.user
+*Rhistory
 .RData
-.Ruserdata
-.DS_Store
+*.Ruserdata
+*.DS_Store
 /data/data-sets/original-data-set/Most-Recent-Cohorts-All-Data-Elements.csv
+*concordance.tex
+*.log
+*.synctex.gz
+*.tex
 
 
