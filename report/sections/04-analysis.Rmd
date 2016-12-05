@@ -3,11 +3,11 @@
 
 ## Exploratory Data Analysis (EDA)
 
-The first step of conducting analysis is to understand the data by conducting exploratory data analysis. To conduct the EDA, we obtained descriptive statistics and summaries of all variables. For the quantitative variables, we wrote a function called output_quantitative_stats() to get minimum, maximum, range, median, first and third quartiles, IQR, Mean and Sd of all the quantitative variables including "UGDS_BLACK", "UGDS_HISP", "UGDS_ASIAN", "UGDS_ASIAN", "UGDS_AIAN", "UGDS_NHPI", "UGDS_2MOR","UGDS_NRA", "UGDS_UNKN","UGDS_WHITE", "UGDS", "ADM_RATE", "COSTT4_A", "MD_EARN_WNE_P10", "C100_4", "PCTFLOAN", "CIP_SUM", "MINORATIO", and "STU_APPLIED". 
+The first step of conducting analysis is to understand the data by conducting exploratory data analysis. To conduct the EDA, we obtained descriptive statistics and summaries of all variables. For the quantitative variables, we wrote a function called output_quantitative_stats() to get minimum, maximum, range, median, first and third quartiles, IQR, Mean and Sd of all the quantitative variables including "UGDS_BLACK", "UGDS_HISP", "UGDS_ASIAN", "UGDS_ASIAN", "UGDS_AIAN", "UGDS_NHPI", "UGDS_2MOR","UGDS_NRA", "UGDS_UNKN","UGDS_WHITE", "UGDS", "ADM_RATE", "COSTT4_A", "MD_EARN_WNE_P10", "C100_4", "PCTFLOAN", "CIP_SUM", "MINORATIO", and "STU_APPLIED".
 
-Similarly, we wrote a function called output_qualitative_stats() to generate a table with both the frequency and the relative frequency of the qualitative variables including "WEST", "MIDWEST", "NORTHEAST", "SOUTH", "MAJOR_CITY", "MINOQ1", "MINOQ2", "MINOQ3",and "MINOQ4". To understand the data better, we also want to generate some plots to visualize the data. We wrote the functions histogram_generator() and boxplot_generator() to generate histograms and boxplots of the quantitative variables and condition_boxplot_generator() to generate conditional boxplots between "STU_APPLIED" and the qualitative variables. To study the association between "STU_APPLIED" and the rest of predictors, we also obtained the correlation matrix of all quantitative variables using function cor(), the scatterplot matrix using function pairs(), the anova between "STU_APPLIED" and all the qualitative variables using function aov().
+Similarly, we wrote a function called output_qualitative_stats() to generate a table with both the frequency and the relative frequency of the qualitative variables including "WEST", "MIDWEST", "NORTHEAST", "SOUTH", "MAJOR_CITY", "MINOQ1", "MINOQ2", "MINOQ3",and "MINOQ4". To understand the data better, we also want to generate some plots to visualize the data. We wrote the functions histogram_generator() and boxplot_generator() to generate histograms and boxplots of the quantitative variables and condition_boxplot_generator() to generate conditional boxplots between "STU_APPLIED" and the qualitative variables. To study the association between "STU_APPLIED" and the rest of predictors, we also obtained the correlation matrix of all quantitative variables using function cor(), the scatterplot matrix using function pairs(), the ANOVA between "STU_APPLIED" and all the qualitative variables using function aov().
 
-Then, we divide our data set into 8 separate clusters according to region and its proximity to major cities. In order to develop strategies to improve competitiveness for each cluster, we first tabulate some key statistics for each cluster.
+Then, we divide our dataset into 8 separate clusters according to region and its proximity to major cities. In order to develop strategies to improve competitiveness for each cluster, we first tabulate some key statistics for each cluster.
 
 ```{r results= 'asis', echo = FALSE}
 library(xtable)
@@ -18,36 +18,180 @@ load("../data/data-outputs/eda-outputs/cluster-eda-stats.RData")
 print(xtable(cluster_eda_stats, caption = 'Cluster Statistics'), comment = FALSE)
 ```
 
-The table contains the number of institutions in each cluster, with Northeast region not located in major city cluster having the most instituions. And since we are interested in predicting students applied by variables such as earnings, graduation rate, minority ratio and percentage of students with loans, we look at the mean for this variable in each cluster first. 
+The table contains the number of institutions in each cluster, with Northeast region not located in major city cluster having the most institutions. And since we are interested in predicting students applied by variables such as earnings, graduation rate, minority ratio and percentage of students with loans, we look at the mean for this variable in each cluster first.
 
-ANOVA is designed to test whether there are any statistically significant differences between the means of independent groups. Since our measure of school competitiveness is the number of students applied, we will test whether the means of students applied is different among clusters to gauge whether our clustering criteria makes sense. 
+ANOVA is designed to test whether there are any statistically significant differences between the means of independent groups. Since our measure of school competitiveness is the number of students applied, we will test whether the means of students applied is different among clusters to gauge whether our clustering criteria makes sense.
 
 ```{r results= 'asis', echo = FALSE}
 load("../data/data-outputs/anova.RData")
 print(xtable(summary(aov_result), caption = 'ANOVA Test Result'), comment = FALSE)
 ```
 
-The test result shows that we have a p-value smaller than 0.01, which means that we can reject the null hypothesis that the means are the same across all 8 clusters. 
+The test result shows that we have a p-value smaller than 0.01, which means that we can reject the null hypothesis that the means are the same across all 8 clusters.
 
-Then, after the premilinary EDA, we start to run regression and explore the relationship between variables. 
+Then, after the preliminary EDA, we start to run regression and explore the relationship between variables.
 
-To start with, we run an OLS regression for all variables that we believe have an impact on number of students applied. 
+To start with, we run an OLS regression for all variables that we believe have an impact on the number of students applied.
 
 Students applied = Median_Earning + Completion_rate + Percentage_with_Student_Loans + Major_City + Minority_Ratio + West + Midwest + Northeast
 
-The dependent variable is number of students applied in the fall term. It is calculated by dividing people admitted during fall term by the admission rate.
+The dependent variable is the number of students applied for the fall term. It is calculated by dividing people admitted during fall term by the admission rate.
 
 We use 6 main variables as regressors in the regression:
 
 1. Median_Earning: Student's median earning 10 years after graduation
 
-2. Completion_rate: Percentage of students graduated within 4 years. 
+2. Completion_rate: Percentage of students graduated within 4 years.
 
 3. Percentage_with_Student_Loans: Percentage of students with Student Loans.
 
-4. Major_City: Whether the institution is located near a major city or countryside. This dummy variable equals 1 if it is located in a major city, 0 if countryside. 
+4. Major_City: Whether the institution is located near a major city or countryside. This dummy variable equals 1 if it is located in a major city, 0 if countryside.
 
-5. Minority_Ratio: THe ratio of non-white students to the total population.
+5. Minority_Ratio: The ratio of non-white students to the total population.
 
-6. West, Midwest, East: Region dummy variables. We divided all schools into 4 regions and if an institution belongs to a certain region, the corresponding dummy varible will be 1, and others be 0. We drop one dummy variable Northeast in the multiple linear regression to avoid perfect collinearity. 
+6. West, Midwest, East: Region dummy variables. We divided all schools into 4 regions and if an institution belongs to a certain region, the corresponding dummy variable will be 1, and others be 0. We drop one dummy variable Northeast in the multiple linear regression to avoid perfect collinearity.
+
+
+```{r results= 'asis', echo = FALSE}
+load("../data/regression-data/overall-ols-model.RData")
+print(xtable(summary(ols_full_fit), caption = 'OLS Regression Output for the Full Data Set'), comment = FALSE)
+```
+
+We noticed that the coefficients are large and each variable comes with different units. In order to make the regression result more interpretable, we take logs of all the quantitative data in the regression. Because we can take log of 0, we replace 0 with 0.0001 in our data set.
+
+In addition, since our data set is large enough, we will first split the set into train set and test set in order to gauge our the performance of our estimated coefficients. We divide the data set according to 3:1 train and test ratio. The train set is used to build the model and test set to calculate the SE.
+
+```{r results= 'asis', echo = FALSE}
+print(xtable(summary(ols_full_log_fit), caption = 'OLS Regression Output After Taking Log'), comment = FALSE)
+```
+
+Based on the regression output, some findings match with our expectations:
+
+1. For every 1% increase in median earning 10 years after graduation, we expect the number of students applied to  increase by `r round(summary(ols_full_log_fit)$coefficients[2, 1], 2)`%, holding other variables constant.
+
+2. Every 1% increase in percentage of students with student loans is associated with a `r -round(summary(ols_full_log_fit)$coefficients[3, 1], 2)` decrease in number of students applied, holding other variables constant.
+
+3. If the 4-year completion rate goes up by 1%, the number of students applied is predicted to increase by `r round(summary(ols_full_log_fit)$coefficients[4, 1], 2)`%, holding other variables constant.
+
+4. If cost of attendence increase by 1%, on average, we expect the number of students applied decrease by `r -round(summary(ols_full_log_fit)$coefficients[5, 1], 2)`%, holding other variables constant.
+
+5. If an institution is located near a major city, the number of students applied will be `r round(summary(ols_full_log_fit)$coefficients[6, 1], 2)`% higher than schools in countryside, holding other variables constant.
+
+6. If the minority ratio increases by 1%, we predict the number of students applied will increase by `r -round(summary(ols_full_log_fit)$coefficients[7, 1], 2)`%.
+
+Those 6 coefficients are all very significant at 1% significance level with p-value close to 0.
+
+Since OLS is the most common and versatile method, it is our first choice. However, in order to decide which method fits our data better, we also apply Ridge regression (RR), Lasso regression (LR), Principal Components regression (PCR) and Partial Least Squares regression (PLSR) method.
+
+In order to improve our accuracy on predicting MSE, we use cross validation. We used sample() function to get a 3:1 train test split of our original data and for reproducibility purpose, we set.seed() before running the simulation.
+
+For ridge and lasso regression method, we used cv.glmnet() in R package "glmnet" to conduct the ten-fold cross-validation on the train set. We then used the best fitted lambda we found from the train set to build a model and calculate MSE from the test set in order to gauge our performance.
+
+Similarly, for pcr and plsr regression method, we used function pcr() and plsr() in "pls" package to perform the 10-fold cross-validation. We also use the best fitted m from the train set to build the model and obtain the MSE from the test set.
+
+
+```{r results= 'asis', echo = FALSE}
+load("../data/regression-data/overall-ridge-model.RData")
+load("../data/regression-data/overall-lasso-model.RData")
+load("../data/regression-data/overall-pcr-model.RData")
+load("../data/regression-data/overall-plsr-model.RData")
+
+reg_coef_mat = cbind(ols_fitted_coef, as.numeric(ridge_fitted_coef), as.numeric(lasso_fitted_coef), c(NA,pcr_fitted_coef), c(NA,plsr_fitted_coef))
+reg_coef_mat = reg_coef_mat[-1,]
+colnames(reg_coef_mat) = c("ols", "ridge", "lasso", "pcr", "plsr")
+print(xtable(reg_coef_mat, caption = 'Regression Coefficients for 5 Regression Methods', digits = c(0,5,5,5,5,5)), comment = FALSE)
+
+MSE_val = as.matrix(c("ols" = MSE_ols, "ridge" = MSE_ridge, "lasso" = MSE_lasso, "pcr" = MSE_pcr, "plsr" = MSE_plsr))
+colnames(MSE_val) = "MSE"
+print(xtable(MSE_val, caption = 'MSE of 5 Regression Methods', digits = 5), comment = FALSE)
+
+par(mfrow = c(1,1))
+plot(reg_coef_mat[,1], xlab = "Coefficients", ylab = "Value", main = "Trend Lines of Coefficients for Different Regression Models")
+lines(reg_coef_mat[,1])
+points(reg_coef_mat[,2],col= "blue")
+lines(reg_coef_mat[,2],col = "blue")
+points(reg_coef_mat[,3], col = "red")
+lines(reg_coef_mat[,3],col = "red")
+points(reg_coef_mat[,4], col = "green")
+lines(reg_coef_mat[,4],col = "green")
+points(reg_coef_mat[,5], col = "yellow")
+lines(reg_coef_mat[,5],col = "yellow")
+legend(7.3,3,c('OLS','Ridge','Lasso','PCR','PLSR'), lty = c(1,1,1,1,1), lwd = c(2.5,2.5,2.5,2.5,2.5), col = c("black","blue","red","green","yellow"),merge = T)
+abline(h = 0, lty = 3)
+```
+
+We notice that all regression methods have similar MSE with lasso resulting the smallest. However, the coefficients are rather different between OLS, pcr, plsr and ridge, lasso. After interpreting the coefficients, we decide to use ols on the regression that we will run for each cluster for two main reasons:
+
+1. lm() provides us with a p-value associated with each coefficient. This gives us information regarding whether the impact of a certain variable is significant which plays a vital role in determining our advice to schools in a certain cluster. In contrast, due to the way Ridge and Lasso regression are designed, although they give out better prediction, but the SE associated with each coefficient is unreliable, so we will lose this information if we go with those regression methods.
+
+2. We notice that some of our regression variables are correlated. Therefore, ridge and lasso regression, aiming to reduce the dimension by eliminating unnecessary variables, can cause a problem. If both variables can affect the school competitiveness through the same channel, we don't want the regression randomly drop one since they explain the same portion of change in Y. Instead, we want to make the decision on our own based on the budget required for each change or whether it is practical to execute for a certain institution.
+
+Therefore, weighing all the pros and cons for each regression method, we decide to use OLS to run the regression for each cluster.
+
+Here is a summary of all the coefficients and our advice for institutions in different areas.
+
+```{r results= 'asis', echo = FALSE}
+load("../data/regression-data/WM-ols-model.RData")
+print(xtable(summary(WM_model)$coefficients, caption = 'Regression Coefficients WM Cluster'), comment = FALSE)
+```
+
+1. For schools located in the west major cities:
+
+All the coefficients are significant except minority ratio. This can be largely explained by the fact that this cluster has the highest average minority ratio among all clusters, meaning those institutions already have a very diverse student population. Therefore, further improving this aspect won't have a significant impact on the school's competitiveness.
+
+The most significant regressors is median earnings 10 years after graduation. Most cities on the West Coast are where well-paid technology companies and banking industry clutered. Therefore, there is a possibility that people decide to attend a university on the West Coast in order to get a job with high pay. So during the application process, it is reasonable if they pay extra attention to their future career development and the salary level of previous graduates serve as a plausible measure.
+
+```{r results= 'asis', echo = FALSE}
+load("../data/regression-data/WN-ols-model.RData")
+print(xtable(summary(WN_model)$coefficients, caption = 'Regression Coefficients WN Cluster'), comment = FALSE)
+```
+
+2. For schools located on the West coast countryside:
+
+This cluster is our smallest one, so the coefficient might not be as accurate as clusters with larger population. However, from the EDA stage, we notice that WN cluster has the lowest average percentage of students with loans. This perfectly explains the fact that a 1% increase in this percentage won't have a significant effect on school competitiveness because their current level of students with debt is very low.
+
+The most significant factor here is similar to that of group WM, which is median earnings. And this finding shows that there exists similarities between schools within the same region, possibly due to local culture and regional economic development.
+
+```{r results= 'asis', echo = FALSE}
+load("../data/regression-data/MM-ols-model.RData")
+print(xtable(summary(MM_model)$coefficients, caption = 'Regression Coefficients MM Cluster'), comment = FALSE)
+load("../data/regression-data/MN-ols-model.RData")
+print(xtable(summary(MN_model)$coefficients, caption = 'Regression Coefficients MN Cluster'), comment = FALSE)
+```
+
+3. For schools located in the Midwest major cities and countryside
+
+Those two clusters generate very similar results with all the coefficients being significant, especially MN cluster. According to the EDA, MN is the region with the lowest average number of students applied. Therefore, it makes sense for all the varaibles to show statistical significance since they have a lot of room for improvement. The most significant coefficient in both clusters, median earning, can be interpreted as if we can increase the earnings after graduation by 1%, we predict the students applied will increase by `r round(summary(MM_model)$coefficients[2, 1], 2)`% and `r round(summary(MN_model)$coefficients[2, 1], 2)`% in schools located in the midwest cities and countryside, holding all other variables constant. In addition, they have relative low minority ratio among all clusters, therefore boosting their minority ratio by 1% is expected to bring an additional `r round(summary(MM_model)$coefficients[6, 1], 2)`% and `r round(summary(MN_model)$coefficients[6, 1], 2)`% in MM and MN cluster respectively, holding all other variables constant.
+
+
+```{r results= 'asis', echo = FALSE}
+load("../data/regression-data/NM-ols-model.RData")
+print(xtable(summary(NM_model)$coefficients, caption = 'Regression Coefficients NM Cluster'), comment = FALSE)
+```
+
+4. For schools located in the northeast major cities:
+
+All the coefficients are significant besides that of graduation rate. This cluster has the highest 4-year graduation rate, which explains why an additional boost in this rate won't bring as much increase in school competitiveness as other variables. Similarly to the West region, Northeast has prosperous economy and harbour millions of high-tech and finance related-companies. Therefore, it is not surprising to see that the effect of pay after graduation is has a t-value that is significantly higher than other factors, and we expect a 1% increase in graduation pay is associated with a `r round(summary(NM_model)$coefficients[2, 1], 2)`% increase in number of students applied, holding all other variables constant.
+
+```{r results= 'asis', echo = FALSE}
+load("../data/regression-data/NN-ols-model.RData")
+print(xtable(summary(NN_model)$coefficients, caption = 'Regression Coefficients NN Cluster'), comment = FALSE)
+```
+
+5. For schools located in the northeast countryside:
+
+With a relatively low minority ratio to start with, improving minority ratio will bring the largest increase in school competitiveness. For each 1% increase in minority ratio, we expect the number of students applied will increase by `r round(summary(NN_model)$coefficients[2, 1], 2)`%. Similarly, due to the regional effect we mentioned for the northeast area, we also have a large value of coefficient for median earning. Each 1% increase in median earning is expected to add `r round(summary(NN_model)$coefficients[6, 1], 2)`% in number of students applied, holding all other variables constant.
+
+```{r results= 'asis', echo = FALSE}
+load("../data/regression-data/SM-ols-model.RData")
+print(xtable(summary(SM_model)$coefficients, caption = 'Regression Coefficients SM Cluster'), comment = FALSE)
+load("../data/regression-data/SN-ols-model.RData")
+print(xtable(summary(SN_model)$coefficients, caption = 'Regression Coefficients SN Cluster'), comment = FALSE)
+```
+
+6. For schools located in the south major cities and countryside:
+
+SM and SN have similar statistics in terms of graduation rate and the number of students with student loans.
+
+This cluster has the lowest average of number of students applied and median earnings among all clusters with the second highest coast of attendence. Therefore, all the coefficients are significant with coefficients of median earnings and cost of attendence. If the school can implement programs to improve the earnings of their graduates by 1%, we expect there will be `r round(summary(SN_model)$coefficients[2, 1], 2)`% more students applied, holding all other variables constant. If the school will be able to reduce the cost of living by 1%, they can expect to receive `r -round(summary(SN_model)$coefficients[5, 1], 2)`% more applications each year.
 
