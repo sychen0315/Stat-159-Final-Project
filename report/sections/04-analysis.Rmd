@@ -194,3 +194,4 @@ print(xtable(summary(SN_model)$coefficients, caption = 'Regression Coefficients 
 SM and SN have similar statistics in terms of graduation rate and the number of students with student loans.
 
 This cluster has the lowest average of number of students applied and median earnings among all clusters with the second highest coast of attendence. Therefore, all the coefficients are significant with coefficients of median earnings and cost of attendence. If the school can implement programs to improve the earnings of their graduates by 1%, we expect there will be `r round(summary(SN_model)$coefficients[2, 1], 2)`% more students applied, holding all other variables constant. If the school will be able to reduce the cost of living by 1%, they can expect to receive `r -round(summary(SN_model)$coefficients[5, 1], 2)`% more applications each year.
+
