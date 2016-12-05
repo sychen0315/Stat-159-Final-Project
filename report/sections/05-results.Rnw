@@ -2,7 +2,7 @@
 
 \section{Results}
 
-<<eda_stats，results= 'asis', echo = FALSE>>=
+<<eda_stats，results=tex, echo = FALSE>>=
 load("../data/regression-data/overall-ols-model.RData")
 print(xtable(summary(ols_full_fit), caption = 'OLS Regression Output for the Full Data Set'), comment = FALSE)
 @
@@ -11,7 +11,7 @@ We noticed that the coefficients are large and each variable comes with differen
 
 In addition, since our data set is large enough, we will first split the set into train set and test set in order to gauge our the performance of our estimated coefficients. We divide the data set according to 3:1 train and test ratio. The train set is used to build the model and test set to calculate the SE.
 
-<<eda_stats，results= 'asis', echo = FALSE>>=
+<<eda_stats，results=tex, echo = FALSE>>=
 print(xtable(summary(ols_full_log_fit), caption = 'OLS Regression Output After Taking Log'), comment = FALSE)
 @
 
@@ -40,7 +40,7 @@ For ridge and lasso regression method, we used cv.glmnet() in R package "glmnet"
 Similarly, for pcr and plsr regression method, we used function pcr() and plsr() in "pls" package to perform the 10-fold cross-validation. We also use the best fitted m from the train set to build the model and obtain the MSE from the test set.
 
 
-<<eda_stats，results= 'asis', echo = FALSE>>=
+<<eda_stats，results=tex, echo = FALSE>>=
 load("../data/regression-data/overall-ridge-model.RData")
 load("../data/regression-data/overall-lasso-model.RData")
 load("../data/regression-data/overall-pcr-model.RData")
@@ -80,7 +80,7 @@ Therefore, weighing all the pros and cons for each regression method, we decide 
 
 Here is a summary of all the coefficients and our advice for institutions in different areas.
 
-<<eda_stats，results= 'asis', echo = FALSE>>=
+<<eda_stats，results=tex, echo = FALSE>>=
 load("../data/regression-data/WM-ols-model.RData")
 print(xtable(summary(WM_model)$coefficients, caption = 'Regression Coefficients WM Cluster'), comment = FALSE)
 @
@@ -91,7 +91,7 @@ All the coefficients are significant except minority ratio. This can be largely 
 
 The most significant regressors is median earnings 10 years after graduation. Most cities on the West Coast are where well-paid technology companies and banking industry clutered. Therefore, there is a possibility that people decide to attend a university on the West Coast in order to get a job with high pay. So during the application process, it is reasonable if they pay extra attention to their future career development and the salary level of previous graduates serve as a plausible measure.
 
-<<eda_stats，results= 'asis', echo = FALSE>>=
+<<eda_stats，results=tex, echo = FALSE>>=
 load("../data/regression-data/WN-ols-model.RData")
 print(xtable(summary(WN_model)$coefficients, caption = 'Regression Coefficients WN Cluster'), comment = FALSE)
 @
@@ -102,7 +102,7 @@ This cluster is our smallest one, so the coefficient might not be as accurate as
 
 The most significant factor here is similar to that of group WM, which is median earnings. And this finding shows that there exists similarities between schools within the same region, possibly due to local culture and regional economic development.
 
-<<eda_stats，results= 'asis', echo = FALSE>>=
+<<eda_stats，results=tex, echo = FALSE>>=
 load("../data/regression-data/MM-ols-model.RData")
 print(xtable(summary(MM_model)$coefficients, caption = 'Regression Coefficients MM Cluster'), comment = FALSE)
 load("../data/regression-data/MN-ols-model.RData")
@@ -114,7 +114,7 @@ print(xtable(summary(MN_model)$coefficients, caption = 'Regression Coefficients 
 Those two clusters generate very similar results with all the coefficients being significant, especially MN cluster. According to the EDA, MN is the region with the lowest average number of students applied. Therefore, it makes sense for all the varaibles to show statistical significance since they have a lot of room for improvement. The most significant coefficient in both clusters, median earning, can be interpreted as if we can increase the earnings after graduation by 1\%, we predict the students applied will increase by \Sexpr{round(summary(MM_model)$coefficients[2, 1], 2)}\% and \Sexpr{ round(summary(MN_model)$coefficients[2, 1], 2)}\% in schools located in the midwest cities and countryside, holding all other variables constant. In addition, they have relative low minority ratio among all clusters, therefore boosting their minority ratio by 1\% is expected to bring an additional \Sexpr{round(summary(MM_model)$coefficients[6, 1], 2)}\% and \Sexpr{round(summary(MN_model)$coefficients[6, 1], 2)}\% in MM and MN cluster respectively, holding all other variables constant.
 
 
-<<eda_stats，results= 'asis', echo = FALSE>>=
+<<eda_stats，results=tex, echo = FALSE>>=
 load("../data/regression-data/NM-ols-model.RData")
 print(xtable(summary(NM_model)$coefficients, caption = 'Regression Coefficients NM Cluster'), comment = FALSE)
 @
@@ -123,7 +123,7 @@ print(xtable(summary(NM_model)$coefficients, caption = 'Regression Coefficients 
 
 All the coefficients are significant besides that of graduation rate. This cluster has the highest 4-year graduation rate, which explains why an additional boost in this rate won't bring as much increase in school competitiveness as other variables. Similarly to the West region, Northeast has prosperous economy and harbour millions of high-tech and finance related-companies. Therefore, it is not surprising to see that the effect of pay after graduation is has a t-value that is significantly higher than other factors, and we expect a 1\% increase in graduation pay is associated with a \Sexpr{round(summary(NM_model)$coefficients[2, 1], 2)}\% increase in number of students applied, holding all other variables constant.
 
-<<eda_stats，results= 'asis', echo = FALSE>>=
+<<eda_stats，results=tex, echo = FALSE>>=
 load("../data/regression-data/NN-ols-model.RData")
 print(xtable(summary(NN_model)$coefficients, caption = 'Regression Coefficients NN Cluster'), comment = FALSE)
 @
@@ -132,7 +132,7 @@ print(xtable(summary(NN_model)$coefficients, caption = 'Regression Coefficients 
 
 With a relatively low minority ratio to start with, improving minority ratio will bring the largest increase in school competitiveness. For each 1\% increase in minority ratio, we expect the number of students applied will increase by \Sexpr{round(summary(NN_model)$coefficients[2, 1], 2)}\%. Similarly, due to the regional effect we mentioned for the northeast area, we also have a large value of coefficient for median earning. Each 1\% increase in median earning is expected to add \Sexpr{round(summary(NN_model)$coefficients[6, 1], 2)}\% in number of students applied, holding all other variables constant.
 
-<<eda_stats，results= 'asis', echo = FALSE>>=
+<<eda_stats，results=tex, echo = FALSE>>=
 load("../data/regression-data/SM-ols-model.RData")
 print(xtable(summary(SM_model)$coefficients, caption = 'Regression Coefficients SM Cluster'), comment = FALSE)
 load("../data/regression-data/SN-ols-model.RData")
@@ -152,7 +152,7 @@ This cluster has the lowest average of number of students applied and median ear
 Those two clusters generate very similar results with all the coefficients being significant, especially MN cluster. According to the EDA, MN is the region with the lowest average number of students applied. Therefore, it makes sense for all the varaibles to show statistical significance since they have a lot of room for improvement. The most significant coefficient in both clusters, median earning, can be interpreted as if we can increase the earnings after graduation by 1\%, we predict the students applied will increase by \Sexpr{round(summary(MM_model)$coefficients[2, 1], 2)}\% and \Sexpr{ round(summary(MN_model)$coefficients[2, 1], 2)}\% in schools located in the midwest cities and countryside, holding all other variables constant. In addition, they have relative low minority ratio among all clusters, therefore boosting their minority ratio by 1\% is expected to bring an additional \Sexpr{round(summary(MM_model)$coefficients[6, 1], 2)}\% and \Sexpr{ round(summary(MN_model)$coefficients[6, 1], 2)}\% in MM and MN cluster respectively, holding all other variables constant.
 
 
-<<eda_stats，results= 'asis', echo = FALSE>>=
+<<eda_stats，results=tex, echo = FALSE>>=
 load("../data/regression-data/NM-ols-model.RData")
 print(xtable(summary(NM_model)$coefficients, caption = 'Regression Coefficients NM Cluster'), comment = FALSE)
 @
@@ -161,7 +161,7 @@ print(xtable(summary(NM_model)$coefficients, caption = 'Regression Coefficients 
 
 All the coefficients are significant besides that of graduation rate. This cluster has the highest 4-year graduation rate, which explains why an additional boost in this rate won't bring as much increase in school competitiveness as other variables. Similarly to the West region, Northeast has prosperous economy and harbour millions of high-tech and finance related-companies. Therefore, it is not surprising to see that the effect of pay after graduation is has a t-value that is significantly higher than other factors, and we expect a 1\% increase in graduation pay is associated with a \Sexpr{round(summary(NM_model)$coefficients[2, 1], 2)}\% increase in number of students applied, holding all other variables constant.
 
-<<eda_stats，results= 'asis', echo = FALSE>>=
+<<eda_stats，results=tex, echo = FALSE>>=
 load("../data/regression-data/NN-ols-model.RData")
 print(xtable(summary(NN_model)$coefficients, caption = 'Regression Coefficients NN Cluster'), comment = FALSE)
 @
@@ -170,7 +170,7 @@ print(xtable(summary(NN_model)$coefficients, caption = 'Regression Coefficients 
 
 With a relatively low minority ratio to start with, improving minority ratio will bring the largest increase in school competitiveness. For each 1\% increase in minority ratio, we expect the number of students applied will increase by \Sexpr{round(summary(NN_model)$coefficients[2, 1], 2)}\%. Similarly, due to the regional effect we mentioned for the northeast area, we also have a large value of coefficient for median earning. Each 1\% increase in median earning is expected to add \Sexpr{ round(summary(NN_model)$coefficients[6, 1], 2)}\% in number of students applied, holding all other variables constant.
 
-<<eda_stats，results= 'asis', echo = FALSE>>=
+<<eda_stats，results=tex, echo = FALSE>>=
 load("../data/regression-data/SM-ols-model.RData")
 print(xtable(summary(SM_model)$coefficients, caption = 'Regression Coefficients SM Cluster'), comment = FALSE)
 load("../data/regression-data/SN-ols-model.RData")
