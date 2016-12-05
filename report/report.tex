@@ -1,5 +1,11 @@
 \documentclass{article}
 
+
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[margin=0.75in]{geometry}
+\usepackage{float}
+
 \usepackage[sc]{mathpazo}
 \usepackage[T1]{fontenc}
 \usepackage{float}
@@ -21,6 +27,7 @@
 
 \usepackage{Sweave}
 \begin{document}
+
 \input{report-concordance}
 
 \title{Final Project Report}
@@ -115,7 +122,6 @@ In principal components regression, we first perform principal components analys
 \subsubsection{Partial Least Squares}
 
 In comparison to PCR regression, which uses unsupervised method to identify the principal components, partial least squares method takes the advantage of a supervised learning process. It uses the response variable Y to identify new vectors that are not only similar to existing regressors, but also select the ones that are related to the response. Therefore, as indicated in the textbook, the PLS approach attempts to find directions that help explain both the response and the predictors. 
-
 
 \section{Analysis}
 

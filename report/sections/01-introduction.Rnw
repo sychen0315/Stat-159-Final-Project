@@ -1,5 +1,6 @@
 \documentclass{article}
 
+
 \usepackage[sc]{mathpazo}
 \usepackage[T1]{fontenc}
 \usepackage{float}
@@ -25,6 +26,7 @@ library(knitr)
 opts_chunk$set(fig.align='center', fig.show='hold')
 options(formatR.arrow=TRUE,width=90)
 @
+
 \SweaveOpts{concordance=TRUE}
 
 \title{Final Project Report}

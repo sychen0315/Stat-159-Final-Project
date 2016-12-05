@@ -42,3 +42,4 @@ We categorize data into 8 groups. Data is first divided by region then further g
 \subsection{Train Test Split \& Method Determination}
 
 We have 1555 valid entries after data cleaning. We use 3:1 train test split ratio for the overall dataset and try to find the best regression method. Also, since we are taking log of STU\_APPLIED, MD\_EARN\_WNE\_P10, PCTFLOAN, C100\_4, COSTT4\_A to perform regression. We also replace the 0 values in those columns to 0.001 so that we could take log. The regression methods we try are introduced in Method section and further discussed in Analysis section.\\	
+
