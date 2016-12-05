@@ -4,7 +4,7 @@
 load("../data/regression-data/overall-ols-model.RData")
 print(xtable(summary(ols_full_fit), caption = 'OLS Regression Output for the Full Data Set'), comment = FALSE)
 @
-
+  
 We noticed that the coefficients are large and each variable comes with different units. In order to make the regression result more interpretable, we take logs of all the quantitative data in the regression. Because we can take log of 0, we replace 0 with 0.0001 in our data set.
 
 In addition, since our data set is large enough, we will first split the set into train set and test set in order to gauge our the performance of our estimated coefficients. We divide the data set according to 3:1 train and test ratio. The train set is used to build the model and test set to calculate the SE.
