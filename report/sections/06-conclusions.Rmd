@@ -2,12 +2,15 @@
 
 # Conclusion
 
-Those regression results and intepretations give us great insights to develop strategies to increaes the number of students applied, therefore improving school competitivenss. 
+Those regression results and intepretations give us great insights in developing strategies to boost the number of students applied, therefore improving school competitivenss. 
 
 Combining all the findings we had from analysis section, we conclude 5 main sugguestions:
 
-1. For all 1555 institutions that we analyze, median earnings, completion rate in 4 years, its proximity to major city and minority ratio all have a positive impact on the number of students applied, while percentage of students with loans and cost of attendence negatively correlated to number of applications received. 
+1. Based on our overall sample of 1555 institutions, median earnings, completion rate in 4 years, its proximity to major city and minority ratio all have a positive impact on the number of students applied, while percentage of students with loans and cost of attendence negatively correlated to number of applications received. 
 
-2. West coast and northeast region are where well-paid technology and finance firms concentrated and historically has a more diverse culture. Therefore, our regression shows that students place higher weight on median earnings 10 years after graduation and lower rate on minority ratio. For those schools to increase their competitiveness, we believe focus on career development programs can be the most effective measure. 
+2. West coast and northeast region are where well-paid technology and finance firms concentrated and historically have diverse population. Although their average earnings are already higher than other regions, our regression shows that students still place higher weight on median earnings when deciding which school to apply. If those schools want to improve their competitiveness, we believe investing in career development programs is the most effective measure. Concrete steps include: establishing long-term relationships with companies, building an extensive network with alumni and expanding programs that cater to market demand such as admitting more students to computer science, busines and engineering majors. 
 
-3. 
+3. Schools located at midwest and south region have lower number of students applied, so they have greater space for improvement. In addition, midwest has the lowest minority ratio and south region has the lowest completion rate. So besides implementing better career development programs, which is still a significant factor in the regression, midwest schools should also focus on improving the diversity and institutions located in the south should work on improving completion rate in order to attract more students. Concrete steps to promote diversity includes: improving their student loan system to make sure that minority students have access to the financial resources they need, set certain criteria in the admisssion process with a mindset of promoting diversity and encouraging minority student groups on campus. Concrete steps to improve completion rate includes: personalizing students' experience by reducing class size, introducing freshman interest groups so people can find support from their peers within a small group setting and expanding their academic advising program to address people's academic concerns.  
+
+
+
