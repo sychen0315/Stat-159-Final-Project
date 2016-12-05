@@ -9,5 +9,7 @@
 *.log
 *.synctex.gz
 *.tex
-
-
+report/report.synctex.gz
+report/report.log
+report/report-concordance.tex
+report/report.tex

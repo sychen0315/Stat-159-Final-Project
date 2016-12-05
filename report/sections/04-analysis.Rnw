@@ -1,17 +1,15 @@
-
-
 \section{Analysis}
 
 \subsection{Exploratory Data Analysis (EDA)}
 
-The first step of conducting analysis is to understand the data by conducting exploratory data analysis. To conduct the EDA, we obtained descriptive statistics and summaries of all variables. For the quantitative variables, we wrote a function called output\_quantitative\_stats() to get minimum, maximum, range, median, first and third quartiles, IQR, Mean and Sd of all the quantitative variables including UGDS for all races, UGDS, ADM\_RATE, COSTT4\_A, MD\_EARN, C100\_4, PCTFLOAN, CIP\_SUM, MINORATIO and STU\_APPLIED.
+The first step of conducting analysis is to understand the data by conducting exploratory data analysis. To conduct the EDA, we obtained descriptive statistics and summaries of all variables. For the quantitative variables, we wrote a function called output\_quantitative\_stats() to get minimum, maximum, range, median, first and third quartiles, IQR, Mean and Sd of all the quantitative variables including UGDS for all races, UGDS, ADM\_RATE, COSTT4\_A, MD\_EARN, C100\_4, PCTFLOAN, CIP\_SUM, MINORATIO and STU\_APPLIED.\\
 
-Similarly, we wrote a function called output\_qualitative\_stats() to generate a table with both the frequency and the relative frequency of the qualitative variables including WEST,  MIDWEST, NORTHEAST, SOUTH, MAJOR\_CITY, MINOQ1, MINOQ2, MINOQ3, and MINOQ4. To understand the data better, we also want to generate some plots to visualize the data. We wrote the functions histogram\_generator() and boxplot\_generator() to generate histograms and boxplots of the quantitative variables and condition\_boxplot\_generator() to generate conditional boxplots between STU\_APPLIED and the qualitative variables. To study the association between STU\_APPLIED and the rest of predictors, we also obtained the correlation matrix of all quantitative variables using function cor(), the scatterplot matrix using function pairs(), the ANOVA between STU\_APPLIED and all the qualitative variables using function aov().
+Similarly, we wrote a function called output\_qualitative\_stats() to generate a table with both the frequency and the relative frequency of the qualitative variables including WEST,  MIDWEST, NORTHEAST, SOUTH, MAJOR\_CITY, MINOQ1, MINOQ2, MINOQ3, and MINOQ4. To understand the data better, we also want to generate some plots to visualize the data. We wrote the functions histogram\_generator() and boxplot\_generator() to generate histograms and boxplots of the quantitative variables and condition\_boxplot\_generator() to generate conditional boxplots between STU\_APPLIED and the qualitative variables. To study the association between STU\_APPLIED and the rest of predictors, we also obtained the correlation matrix of all quantitative variables using function cor(), the scatterplot matrix using function pairs(), the ANOVA between STU\_APPLIED and all the qualitative variables using function aov().\\
 
-Then, we divide our dataset into 8 separate clusters according to region and its proximity to major cities. In order to develop strategies to improve competitiveness for each cluster, we first tabulate some key statistics for each cluster.
+Then, we divide our dataset into 8 separate clusters according to region and its proximity to major cities. In order to develop strategies to improve competitiveness for each cluster, we first tabulate some key statistics for each cluster.\\
 
-<<eda_stats，results=tex, echo = FALSE>>=
-library(xtable)
+<<eda_stats, echo = FALSE, results=tex>>=
+  library(xtable)
 library(Matrix)
 options(xtable.comment = FALSE,
         xtable.table.placement = "H")
@@ -19,35 +17,37 @@ load("../data/data-outputs/eda-outputs/cluster-eda-stats.RData")
 print(xtable(cluster_eda_stats, caption = 'Cluster Statistics'), comment = FALSE)
 @
 
-The table contains the number of institutions in each cluster, with Northeast region not located in major city cluster having the most institutions. And since we are interested in predicting students applied by variables such as earnings, graduation rate, minority ratio and percentage of students with loans, we look at the mean for this variable in each cluster first.
+The table contains the number of institutions in each cluster, with Northeast region not located in major city cluster having the most institutions. And since we are interested in predicting students applied by variables such as earnings, graduation rate, minority ratio and percentage of students with loans, we look at the mean for this variable in each cluster first.\\
 
-ANOVA is designed to test whether there are any statistically significant differences between the means of independent groups. Since our measure of school competitiveness is the number of students applied, we will test whether the means of students applied is different among clusters to gauge whether our clustering criteria makes sense.
+ANOVA is designed to test whether there are any statistically significant differences between the means of independent groups. Since our measure of school competitiveness is the number of students applied, we will test whether the means of students applied is different among clusters to gauge whether our clustering criteria makes sense.\\
 
-<<eda_stats，results=tex, echo = FALSE>>=
-load("../data/data-outputs/anova.RData")
+<<eda_stats, echo = FALSE, results=tex>>=
+  load("../data/data-outputs/anova.RData")
 print(xtable(summary(aov_result), caption = 'ANOVA Test Result'), comment = FALSE)
 @
+  
+The test result shows that we have a p-value smaller than 0.01, which means that we can reject the null hypothesis that the means are the same across all 8 clusters.\\
 
-The test result shows that we have a p-value smaller than 0.01, which means that we can reject the null hypothesis that the means are the same across all 8 clusters.
+\subsection{Regression Analysis}
+Then, after the preliminary EDA, we start to run regression and explore the relationship between variables.\\
 
-Then, after the preliminary EDA, we start to run regression and explore the relationship between variables.
-
-To start with, we run an OLS regression for all variables that we believe have an impact on the number of students applied.
-
+To start with, we run an OLS regression for all variables that we believe have an impact on the number of students applied.\\
+\begin{center}
 $Students\_applied = Median\_Earning + Completion\_rate + Percentage\_with\_Student\_Loans + Major\_City + Minority\_Ratio + West + Midwest + Northeast$
-
-The dependent variable is the number of students applied for the fall term. It is calculated by dividing people admitted during fall term by the admission rate.
+\end{center}
+The dependent variable is the number of students applied for the fall term. It is calculated by dividing people admitted during fall term by the admission rate.\\
 
 We use 6 main variables as regressors in the regression:
+\begin{enumerate} 
+  \item Median Earning: Student's median earning 10 years after graduation
 
-1. Median Earning: Student's median earning 10 years after graduation
+  \item Completion rate: Percentage of students graduated within 4 years.
 
-2. Completion rate: Percentage of students graduated within 4 years.
+  \item Percentage with Student Loans: Percentage of students with Student Loans.
 
-3. Percentage with Student Loans: Percentage of students with Student Loans.
+  \item Major City: Whether the institution is located near a major city or countryside. This dummy variable equals 1 if it is located in a major city, 0 if countryside.
 
-4. Major City: Whether the institution is located near a major city or countryside. This dummy variable equals 1 if it is located in a major city, 0 if countryside.
+  \item Minority Ratio: The ratio of non-white students to the total population.
 
-5. Minority Ratio: The ratio of non-white students to the total population.
-
-6. West, Midwest, East: Region dummy variables. We divided all schools into 4 regions and if an institution belongs to a certain region, the corresponding dummy variable will be 1, and others be 0. We drop one dummy variable Northeast in the multiple linear regression to avoid perfect collinearity.
+  \item West, Midwest, East: Region dummy variables. We divided all schools into 4 regions and if an institution belongs to a certain region, the corresponding dummy variable will be 1, and others be 0. We drop one dummy variable Northeast in the multiple linear regression to avoid perfect collinearity.
+\end{enumerate}
