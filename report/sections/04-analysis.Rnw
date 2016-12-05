@@ -13,6 +13,7 @@ Then, we divide our dataset into 8 separate clusters according to region and its
 <<eda_stats，results=tex, echo = FALSE>>=
 library(xtable)
 library(Matrix)
+library(knitr)
 options(xtable.comment = FALSE,
         xtable.table.placement = "H")
 load("../data/data-outputs/eda-outputs/cluster-eda-stats.RData")
