@@ -74,7 +74,7 @@ To reproduce the analysis:
 
 1. Clone this project.
 
-2. Navigate to the folder stat159-fall2016-project2.
+2. Navigate to the folder Stat-159-Final-Project.
 
 3. Run `make` in the terminal to regenerate all the output files, graphs and report. 
 
@@ -83,9 +83,27 @@ To reproduce the analysis:
   `make data` to download the data Credit.csv.
   
   `make data_clean` to clean the raw data and separate it into test and train set for model fitting.
-  
+
+  `make data_categorize` to separate the clean data into 8 clusters.
+
+  `make train_test_split` to split the clean data into train set and test set.
+
   `make eda` to perform exploratory data analysis and generate summary statistics and correlation information.
-  
+
+  `make ols` to run ols regression and generate ols estimators.
+
+  `make ridge` to run ridge regression and generate ridge estimators.
+
+  `make lasso` to run lasso regression and generate lasso estimators.
+
+  `make pcr` to run pcr regression and generate pcr estimators.
+
+  `make plsr` to run plsr regression and generate plsr estimators.
+
+  `make ols_cluster` to run ols regression over clustered data.
+
+  `make regressions` to run all 6 regressions.
+
   `make session` to generate session-info.txt including R's session information and version of tools used in the project
   
   `make report` to combine different sections of the report into one Rmd file and generate the pdf version.
