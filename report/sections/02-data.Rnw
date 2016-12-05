@@ -1,2 +1,43 @@
 \section{Data}
 
+\subsection{Original Dataset Source}
+
+The dataset we use is from College Scorecard :
+
+\hyperref[https://collegescorecard.ed.gov/](https://collegescorecard.ed.gov/)
+
+College Scorecard is developed by the U.S. Department of Education to "key indicators about the cost and value of institutions across the country to help students choose a school that is well-suited to meet their needs, priced affordably, and is consistent with their educational and career goals".
+
+The sources of data behind College Scorecard are available at:
+
+\hyperref[https://collegescorecard.ed.gov/data/](https://collegescorecard.ed.gov/data/)
+
+We choose the most recent data, which can be downloaded \hyperref[https://ed-public-download.apps.cloud.gov/downloads/Most-Recent-Cohorts-All-Data-Elements.csv](https://ed-public-download.apps.cloud.gov/downloads/Most-Recent-Cohorts-All-Data-Elements.csv)
+
+\subsection{Data Cleaning}
+
+We first prepare the following datasets besides the original dataset to facilitate data cleaning process. The first is the states shown as abbreivations divided into four regional groups: West, MidWest, Northeast, and South based on location in United States. The second one contains the information of major cities in United States, including state, location, population density, etc. We get the major cities list from \hyperref[wikipedia](https://en.wikipedia.org/wiki/List_of_United_States_cities_by_population)
+
+We first calculate the sum of CIP, which includes the precentage of degrees awared in each field of study and whether the insitituion offers the program.
+
+We then determine the way we assess a school's competitiveness. We select the following columns: Number of undergraduate student(UGDS), admission rate(ADM_RATE), average cost of attendence, tuition and fees(COSTT4_A), Mean and median earnings(MD_EARN_WNE_P10), completion rates for first-time, full-time students(C100_4) , percent of undergraduates receiving federal loans(PCTFLOAN).
+
+We look at null values in each column we need and save the result to see what can we do with null values and we decide to remove all the rows which contains at least one null values.
+
+We divide the schools by regions: west, midwest, northeat and south and divide by whehter the schools is in major cities or not.
+
+As for minority, we basically calculate the sum of percentages of different minorty groups. By looking at the result summary, we divide the schools into 4 groups: less than 1st quartile , 1st quartile to median, median to 3rd quartile and larger than 3rd quartile.
+
+We also calculate the number of students applied by dividing number of undergrads by admission rate.
+
+We combine all the columns mentioned above and discard other columns that we do not need to construct the clean dataset for modeling.
+
+One more thing about this dataset is that if some data is protected for privacy purpose, it's shown as PrivacySuppresed and we also eliminate columns which contains it.
+
+\subsection{Categorization}
+
+We categorize data into 8 groups. Data is first divided by region then further grouped by whether it's in major cities or not. Hence, we have the following 8 groups: West schools in Major city, West schools not in major city, Midwest schools in Major city, Midwest schools not in major city, North schools in Major city, North schools not in major city, South schools in Major city, South schools not in major city. We are going to fit models on each of the 8 categories.
+
+\subsection{Train Test Split & Method Determination}
+
+We have 1555 valid entries after data cleaning. We use 3:1 train test split ratio for the overall dataset and try to find the best regression method. Also, since we are taking log of STU_APPLIED, MD_EARN_WNE_P10, PCTFLOAN, C100_4, COSTT4_A to perform regression. We also replace the 0 values in those columns to 0.001 so that we could take log. The regression methods we try are introduced in Method section and further discussed in Analysis section.	
