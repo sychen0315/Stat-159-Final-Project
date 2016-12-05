@@ -68,7 +68,7 @@ install.packages("leaflet")
 install.packages("RColorBrewer")
 install.packages("dplyr")
 install.packages("lattice")
-````
+```
 
 To reproduce the analysis:
 
