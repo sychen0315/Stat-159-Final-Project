@@ -95,23 +95,19 @@
 
 <slide class=''><hgroup><h2>Introduction</h2></hgroup><article  id="introduction">
 
-</article></slide><slide class=''><hgroup><h2>Data</h2></hgroup><article  id="data">
+<p>In this project, our objective is to explore the differences between similar schools in terms of demographics and programs offered and how those differences contribute to school competitiveness based on the dataset available on College Scorecard. The client of our consulting project is a group of school administrators, and our data analysis is aimed to provide them with suggestions regarding what factors should they focus on and how to maximize their returns on investment in order to improve their school competitiveness.</p>
 
-<ul class = 'build'>
-<li>The data we used in this project is provided by <em><strong>College Scorecard</strong></em></li>
-<li>The data set can be downloaded from <a href='https://collegescorecard.ed.gov/data/' title=''>https://collegescorecard.ed.gov/data/</a></li>
-<li>Data Cleaning:
+</article></slide><slide class=''><hgroup><h2>Data Cleaning</h2></hgroup><article  id="data-cleaning">
 
 <ul class = 'build'>
 <li>1.Select the following columns: Number of undergraduate student(UGDS), admission rate(ADM_RATE), average cost of attendence, tuition and fees(COSTT4_A), Mean and median earnings(MD_EARN_WNE_P10), completion rates for first-time, full-time students(C100_4) , percent of undergraduates receiving federal loans(PCTFLOAN), minority ratio(calculated by the sum of percentages of different minorty groups), students applied(calculated by dividing number of undergrads by admission rate)</li>
-</ul></li>
 </ul>
 
-</article></slide><slide class=''><hgroup><h2>Data</h2></hgroup><article  id="data-1">
+</article></slide><slide class=''><hgroup><h2>Data Cleaning</h2></hgroup><article  id="data-cleaning-1">
 
 <ul class = 'build'>
 <li>2.Remove all the rows which contains at least one null values</li>
-<li>3.Divide the schools by regions: west, midwest, northeat and south and divide by whehter the schools is in major cities or not</li>
+<li>3.Divide the schools by regions: west, midwest, northeat and south and divide by whether the schools is in major cities or not</li>
 <li>4.Eliminate columns which contains PrivacySuppresed</li>
 </ul>
 
@@ -125,7 +121,7 @@
 </article></slide><slide class=''><hgroup><h2>Train Test Split &amp; Method Determination:</h2></hgroup><article  id="train-test-split-method-determination">
 
 <ul class = 'build'>
-<li>1555 valid entries remained after data cleaning</li>
+<li>1579 valid entries remained after data cleaning</li>
 <li>Use 3:1 train test split ratio for the overall dataset and try to find the best regression method</li>
 <li>Take log of STU_APPLIED, MD_EARN_WNE_P10, PCTFLOAN, C100_4, COSTT4_A to perform regression and replace 0 in those columns with 0.001</li>
 </ul>
@@ -148,49 +144,37 @@ Cluster Statistics
 
 <th>
 
-WM
+Size
 
 </th>
 
 <th>
 
-WN
+STU_APP_avg
 
 </th>
 
 <th>
 
-MM
+MD_EARN_avg
 
 </th>
 
 <th>
 
-MN
+C100_4_avg
 
 </th>
 
 <th>
 
-NM
+LOAN_avg
 
 </th>
 
 <th>
 
-NN
-
-</th>
-
-<th>
-
-SM
-
-</th>
-
-<th>
-
-SN
+MINORITY_avg
 
 </th>
 
@@ -200,13 +184,7 @@ SN
 
 <td align="right">
 
-Size
-
-</td>
-
-<td align="right">
-
-117.00
+WN
 
 </td>
 
@@ -218,111 +196,7 @@ Size
 
 <td align="right">
 
-149.00
-
-</td>
-
-<td align="right">
-
-261.00
-
-</td>
-
-<td align="right">
-
-127.00
-
-</td>
-
-<td align="right">
-
-292.00
-
-</td>
-
-<td align="right">
-
-230.00
-
-</td>
-
-<td align="right">
-
-284.00
-
-</td>
-
-</tr>
-
-<tr>
-
-<td align="right">
-
-STU_APP_avg
-
-</td>
-
-<td align="right">
-
-16505.36
-
-</td>
-
-<td align="right">
-
 11347.99
-
-</td>
-
-<td align="right">
-
-8033.18
-
-</td>
-
-<td align="right">
-
-6553.14
-
-</td>
-
-<td align="right">
-
-13623.85
-
-</td>
-
-<td align="right">
-
-7271.64
-
-</td>
-
-<td align="right">
-
-11538.00
-
-</td>
-
-<td align="right">
-
-7786.49
-
-</td>
-
-</tr>
-
-<tr>
-
-<td align="right">
-
-MD_EARN_avg
-
-</td>
-
-<td align="right">
-
-43744.44
 
 </td>
 
@@ -334,111 +208,7 @@ MD_EARN_avg
 
 <td align="right">
 
-40934.23
-
-</td>
-
-<td align="right">
-
-40521.84
-
-</td>
-
-<td align="right">
-
-47893.70
-
-</td>
-
-<td align="right">
-
-45403.42
-
-</td>
-
-<td align="right">
-
-40241.30
-
-</td>
-
-<td align="right">
-
-37694.37
-
-</td>
-
-</tr>
-
-<tr>
-
-<td align="right">
-
-C100_4_avg
-
-</td>
-
-<td align="right">
-
-0.38
-
-</td>
-
-<td align="right">
-
 0.35
-
-</td>
-
-<td align="right">
-
-0.36
-
-</td>
-
-<td align="right">
-
-0.39
-
-</td>
-
-<td align="right">
-
-0.49
-
-</td>
-
-<td align="right">
-
-0.46
-
-</td>
-
-<td align="right">
-
-0.32
-
-</td>
-
-<td align="right">
-
-0.32
-
-</td>
-
-</tr>
-
-<tr>
-
-<td align="right">
-
-PCTFLOAN_avg
-
-</td>
-
-<td align="right">
-
-0.56
 
 </td>
 
@@ -450,13 +220,133 @@ PCTFLOAN_avg
 
 <td align="right">
 
+0.46
+
+</td>
+
+</tr>
+
+<tr>
+
+<td align="right">
+
+MM
+
+</td>
+
+<td align="right">
+
+149.00
+
+</td>
+
+<td align="right">
+
+8033.18
+
+</td>
+
+<td align="right">
+
+40934.23
+
+</td>
+
+<td align="right">
+
+0.36
+
+</td>
+
+<td align="right">
+
 0.65
 
 </td>
 
 <td align="right">
 
+0.33
+
+</td>
+
+</tr>
+
+<tr>
+
+<td align="right">
+
+MN
+
+</td>
+
+<td align="right">
+
+261.00
+
+</td>
+
+<td align="right">
+
+6553.14
+
+</td>
+
+<td align="right">
+
+40521.84
+
+</td>
+
+<td align="right">
+
+0.39
+
+</td>
+
+<td align="right">
+
 0.62
+
+</td>
+
+<td align="right">
+
+0.27
+
+</td>
+
+</tr>
+
+<tr>
+
+<td align="right">
+
+NM
+
+</td>
+
+<td align="right">
+
+127.00
+
+</td>
+
+<td align="right">
+
+13623.85
+
+</td>
+
+<td align="right">
+
+47893.70
+
+</td>
+
+<td align="right">
+
+0.49
 
 </td>
 
@@ -468,19 +358,7 @@ PCTFLOAN_avg
 
 <td align="right">
 
-0.61
-
-</td>
-
-<td align="right">
-
-0.60
-
-</td>
-
-<td align="right">
-
-0.62
+0.45
 
 </td>
 
@@ -490,13 +368,25 @@ PCTFLOAN_avg
 
 <td align="right">
 
-MINORITY_avg
+NN
 
 </td>
 
 <td align="right">
 
-0.54
+292.00
+
+</td>
+
+<td align="right">
+
+7271.64
+
+</td>
+
+<td align="right">
+
+45403.42
 
 </td>
 
@@ -508,19 +398,7 @@ MINORITY_avg
 
 <td align="right">
 
-0.33
-
-</td>
-
-<td align="right">
-
-0.27
-
-</td>
-
-<td align="right">
-
-0.45
+0.61
 
 </td>
 
@@ -530,9 +408,89 @@ MINORITY_avg
 
 </td>
 
+</tr>
+
+<tr>
+
+<td align="right">
+
+SM
+
+</td>
+
+<td align="right">
+
+230.00
+
+</td>
+
+<td align="right">
+
+11538.00
+
+</td>
+
+<td align="right">
+
+40241.30
+
+</td>
+
+<td align="right">
+
+0.32
+
+</td>
+
+<td align="right">
+
+0.60
+
+</td>
+
 <td align="right">
 
 0.53
+
+</td>
+
+</tr>
+
+<tr>
+
+<td align="right">
+
+SN
+
+</td>
+
+<td align="right">
+
+284.00
+
+</td>
+
+<td align="right">
+
+7786.49
+
+</td>
+
+<td align="right">
+
+37694.37
+
+</td>
+
+<td align="right">
+
+0.32
+
+</td>
+
+<td align="right">
+
+0.62
 
 </td>
 
@@ -681,15 +639,404 @@ Residuals
 <li>Fit the model we select to the entire data set</li>
 </ul>
 
-</article></slide><slide class=''><hgroup><h2>Analysis</h2></hgroup><article  id="analysis">
+</article></slide><slide class=''><hgroup><h2>Analysis </h2><h3> OLS Regression</h3></hgroup><article  id="analysis-ols-regression">
 
-<p>OLS Regression: Students applied = Median_Earning + Completion_rate + Percentage_with_Student_Loans + Major_City + Minority_Ratio + West + Midwest + Northeast</p>
+<p>Students applied = Median_Earning + Completion_rate + Percentage_with_Student_Loans + Major_City + Minority_Ratio + West + Midwest + Northeast</p>
 
-<p>We use 6 main variables as regressors in the regression: - 1. Median_Earning: Student&#39;s median earning 10 years after graduation - 2. Completion_rate: Percentage of students graduated within 4 years. - 3. Percentage_with_Student_Loans: Percentage of students with Student Loans. - 4. Major_City: Whether the institution is located near a major city or countryside. This dummy variable equals 1 if it is located in a major city, 0 if countryside. - 5. Minority_Ratio: The ratio of non-white students to the total population. - 6. West, Midwest, East: Region dummy variables. We divided all schools into 4 regions and if an institution belongs to a certain region, the corresponding dummy variable will be 1, and others be 0. We drop one dummy variable Northeast in the multiple linear regression to avoid perfect collinearity.</p>
+</article></slide><slide class=''><hgroup><h2>6 main variables in the regression</h2></hgroup><article  id="main-variables-in-the-regression">
+
+<ul class = 'build'>
+<li>Median_Earning: Student&#39;s median earning 10 years after graduation</li>
+<li>Completion_rate: Percentage of students graduated within 4 years</li>
+<li>Percentage_with_Student_Loans: Percentage of students with Student Loans</li>
+<li>Major_City: Whether the institution is located near a major city or countryside</li>
+<li>Minority_Ratio: The ratio of non-white students to the total population</li>
+<li>West, Midwest, East: Region dummy variables</li>
+</ul>
 
 </article></slide><slide class=''><hgroup><h2>OLS Regression Model</h2></hgroup><article  id="ols-regression-model">
 
+<table border="1">
 
+<caption align="bottom">
+
+OLS Regression Output for the Full Data Set
+
+</caption>
+
+<tr>
+
+<th>
+
+</th>
+
+<th>
+
+Estimate
+
+</th>
+
+<th>
+
+Std. Error
+
+</th>
+
+<th>
+
+t value
+
+</th>
+
+<th>
+
+Pr(&gt;|t|)
+
+</th>
+
+</tr>
+
+<tr>
+
+<td align="right">
+
+(Intercept)
+
+</td>
+
+<td align="right">
+
+7646.394
+
+</td>
+
+<td align="right">
+
+2374.478
+
+</td>
+
+<td align="right">
+
+3.220
+
+</td>
+
+<td align="right">
+
+0.001
+
+</td>
+
+</tr>
+
+<tr>
+
+<td align="right">
+
+MD_EARN_WNE_P10
+
+</td>
+
+<td align="right">
+
+0.479
+
+</td>
+
+<td align="right">
+
+0.041
+
+</td>
+
+<td align="right">
+
+11.776
+
+</td>
+
+<td align="right">
+
+0.000
+
+</td>
+
+</tr>
+
+<tr>
+
+<td align="right">
+
+PCTFLOAN
+
+</td>
+
+<td align="right">
+
+-28506.465
+
+</td>
+
+<td align="right">
+
+2208.785
+
+</td>
+
+<td align="right">
+
+-12.906
+
+</td>
+
+<td align="right">
+
+0.000
+
+</td>
+
+</tr>
+
+<tr>
+
+<td align="right">
+
+C100_4
+
+</td>
+
+<td align="right">
+
+20369.250
+
+</td>
+
+<td align="right">
+
+2471.950
+
+</td>
+
+<td align="right">
+
+8.240
+
+</td>
+
+<td align="right">
+
+0.000
+
+</td>
+
+</tr>
+
+<tr>
+
+<td align="right">
+
+COSTT4_A
+
+</td>
+
+<td align="right">
+
+-0.468
+
+</td>
+
+<td align="right">
+
+0.038
+
+</td>
+
+<td align="right">
+
+-12.213
+
+</td>
+
+<td align="right">
+
+0.000
+
+</td>
+
+</tr>
+
+<tr>
+
+<td align="right">
+
+MAJOR_CITY
+
+</td>
+
+<td align="right">
+
+2874.578
+
+</td>
+
+<td align="right">
+
+739.992
+
+</td>
+
+<td align="right">
+
+3.885
+
+</td>
+
+<td align="right">
+
+0.000
+
+</td>
+
+</tr>
+
+<tr>
+
+<td align="right">
+
+MINORATIO
+
+</td>
+
+<td align="right">
+
+14298.136
+
+</td>
+
+<td align="right">
+
+1799.613
+
+</td>
+
+<td align="right">
+
+7.945
+
+</td>
+
+<td align="right">
+
+0.000
+
+</td>
+
+</tr>
+
+<tr>
+
+<td align="right">
+
+WEST
+
+</td>
+
+<td align="right">
+
+998.549
+
+</td>
+
+<td align="right">
+
+1143.076
+
+</td>
+
+<td align="right">
+
+0.874
+
+</td>
+
+<td align="right">
+
+0.382
+
+</td>
+
+</tr>
+
+<tr>
+
+<td align="right">
+
+MIDWEST
+
+</td>
+
+<td align="right">
+
+451.462
+
+</td>
+
+<td align="right">
+
+964.141
+
+</td>
+
+<td align="right">
+
+0.468
+
+</td>
+
+<td align="right">
+
+0.640
+
+</td>
+
+</tr>
+
+<tr>
+
+<td align="right">
+
+NORTHEAST
+
+</td>
+
+<td align="right">
+
+-994.027
+
+</td>
+
+<td align="right">
+
+973.104
+
+</td>
+
+<td align="right">
+
+-1.022
+
+</td>
+
+<td align="right">
+
+0.307
+
+</td>
+
+</tr>
+
+</table>
 
 </article></slide><slide class=''><hgroup><h2>Comparing 5 Regression Models</h2></hgroup><article  id="comparing-5-regression-models">
 

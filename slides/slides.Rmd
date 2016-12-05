@@ -9,25 +9,25 @@ output:
 
 ## Introduction
 
-## Data
+In this project, our objective is to explore the differences between similar schools in terms of demographics and programs offered and how those differences contribute to school competitiveness based on the dataset available on College Scorecard. The client of our consulting project is a group of school administrators, and our data analysis is aimed to provide them with suggestions regarding what factors should they focus on and how to maximize their returns on investment in order to improve their school competitiveness. 
 
-- The data we used in this project is provided by _**College Scorecard**_
-- The data set can be downloaded from <https://collegescorecard.ed.gov/data/>
-- Data Cleaning:
-     - 1.Select the following columns: Number of undergraduate student(UGDS), admission rate(ADM_RATE), average cost of attendence, tuition and fees(COSTT4_A), Mean and median earnings(MD_EARN_WNE_P10), completion rates for first-time, full-time students(C100_4) , percent of undergraduates receiving federal loans(PCTFLOAN), minority ratio(calculated by the sum of percentages of different minorty groups), students applied(calculated by dividing number of undergrads by admission rate)
+## Data Cleaning
 
-## Data
+- 1.Select the following columns: 
+  Number of undergraduate student(UGDS), admission rate(ADM_RATE), average cost of attendence, tuition and fees(COSTT4_A), Mean and median earnings(MD_EARN_WNE_P10), completion rates for first-time, full-time students(C100_4) , percent of undergraduates receiving federal loans(PCTFLOAN), minority ratio(calculated by the sum of percentages of different minorty groups), students applied(calculated by dividing number of undergrads by admission rate)
+
+## Data Cleaning
 - 2.Remove all the rows which contains at least one null values
-- 3.Divide the schools by regions: west, midwest, northeat and south and divide by whehter the schools is in major cities or not
+- 3.Divide the schools by regions: west, midwest, northeat and south and divide by whether the schools is in major cities or not
 - 4.Eliminate columns which contains PrivacySuppresed
 
 ## Categorization:
 - Data is first divided by region then further grouped by whether it's in major cities or not
 - Categorize data into 8 groups: 
-West schools in Major city, West schools not in major city, Midwest schools in Major city, Midwest schools not in major city, North schools in Major city, North schools not in major city, South schools in Major city, South schools not in major city
+  West schools in Major city, West schools not in major city, Midwest schools in Major city, Midwest schools not in major city, North schools in Major city, North schools not in major city, South schools in Major city, South schools not in major city
      
 ## Train Test Split & Method Determination:
-- 1555 valid entries remained after data cleaning
+- 1579 valid entries remained after data cleaning
 - Use 3:1 train test split ratio for the overall dataset and try to find the best regression method
 - Take log of STU_APPLIED, MD_EARN_WNE_P10, PCTFLOAN, C100_4, COSTT4_A to perform regression and replace 0 in those columns with 0.001 
 
@@ -40,7 +40,9 @@ options(xtable.comment = FALSE,
         xtable.table.placement = "H")
 load("../data/data-outputs/eda-outputs/cluster-eda-stats.RData")
 foodata = t(cluster_eda_stats[,2:ncol(cluster_eda_stats)])
-print(xtable(cluster_eda_stats[c(1,2,6,10,14,18), ], caption = 'Cluster Statistics'), comment = FALSE, type = "HTML")
+foodata = foodata[, c(1,2,6,10,14,18)]
+colnames(foodata)[5] = "LOAN_avg" 
+print(xtable(foodata, caption = 'Cluster Statistics'), comment = FALSE, type = "HTML")
 ```
 
 ## ANOVA Test
@@ -56,24 +58,23 @@ print(xtable(summary(aov_result), caption = 'ANOVA Test Result'), comment = FALS
 - Calculate MSE in the overall test set 
 - Fit the model we select to the entire data set
      
-## Analysis
+## Analysis | OLS Regression
 
-OLS Regression:
 Students applied = Median_Earning + Completion_rate + Percentage_with_Student_Loans + Major_City + Minority_Ratio + West + Midwest + Northeast
 
 ## 6 main variables in the regression
-- 1. Median_Earning: Student's median earning 10 years after graduation
-- 2. Completion_rate: Percentage of students graduated within 4 years.
-- 3. Percentage_with_Student_Loans: Percentage of students with Student Loans.
-- 4. Major_City: Whether the institution is located near a major city or countryside. This dummy variable equals 1 if it is located in a major city, 0 if countryside.
-- 5. Minority_Ratio: The ratio of non-white students to the total population.
-- 6. West, Midwest, East: Region dummy variables.
+- Median_Earning: Student's median earning 10 years after graduation
+- Completion_rate: Percentage of students graduated within 4 years
+- Percentage_with_Student_Loans: Percentage of students with Student Loans
+- Major_City: Whether the institution is located near a major city or countryside
+- Minority_Ratio: The ratio of non-white students to the total population
+- West, Midwest, East: Region dummy variables
 
 ## OLS Regression Model
 
 ```{r results= 'asis', echo = FALSE}
 load("../data/regression-data/overall-ols-model.RData")
-print(xtable(summary(ols_full_fit), caption = 'OLS Regression Output for the Full Data Set'), comment = FALSE)
+print(xtable(summary(ols_full_fit), caption = 'OLS Regression Output for the Full Data Set',digits = c(0,3,3,3,3)), comment = FALSE, type = "HTML")
 ```
 
 ## Comparing 5 Regression Models
