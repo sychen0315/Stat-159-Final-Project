@@ -149,6 +149,13 @@ We use 6 main variables as regressors in the regression:
 6. West, Midwest, East: Region dummy variables. We divided all schools into 4 regions and if an institution belongs to a certain region, the corresponding dummy varible will be 1, and others be 0. We drop one dummy variable Northeast in the multiple linear regression to avoid perfect collinearity. 
 
 
+---
+output: pdf_document
+---
+
+# Results
+
+
 ```{r results= 'asis', echo = FALSE}
 load("../data/regression-data/overall-ols-model.RData")
 print(xtable(summary(ols_full_fit), caption = 'OLS Regression Output for the Full Data Set'), comment = FALSE)
@@ -293,19 +300,15 @@ SM and SN have similar statistics in terms of graduation rate and number of stud
 This cluster has the lowest average of number of students applied and median earnings among all clusters with the second highest coast of attendence. Therefore, all the coefficients are significant with coefficients of median earnings and cost of attendence. If the school can implement programs to improve the earnings of their graduates by 1%, we expect there will be `r round(summary(SN_model)$coefficients[2, 1], 2)`% more students applied, holding all other variables constant. If the school will be able to reduce the cost of living by 1%, they can expect to receive `r -round(summary(SN_model)$coefficients[5, 1], 2)`% more applications each year. 
 
 
-
-
  
 
 
 
 
 
----
-output: pdf_document
----
 
-# Results
+
+# Conclusion
 
 Those regression results and intepretations give us great insights to develop strategies to increaes the number of students applied, therefore improving school competitivenss. 
 
@@ -313,8 +316,4 @@ Combining all the findings we had from analysis section, we conclude 5 main sugg
 
 1. For all 1555 institutions that we analyze, median earnings, completion rate in 4 years, its proximity to major city and minority ratio all have a positive impact on the number of students applied, while percentage of students with loans and cost of attendence negatively correlated to number of applications received. 
 
-2. 
-
-
-# Conclusion
-
+2. For institutions located on the west coast and northeast region, students place higher weight on median earnings 10 years after graduation and lower rate on minority ratio. Therefore, our suggestions to schools in those regions would be focus on improving career related programs, such as 
