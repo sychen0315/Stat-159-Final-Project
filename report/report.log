@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.9.12)  5 DEC 2016 11:46
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.9.12)  5 DEC 2016 12:08
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -113,27 +113,7 @@ Package: ltxcmds 2016/05/16 v1.23 LaTeX kernel commands for general use (HO)
 \Gin@req@height=\dimen112
 \Gin@req@width=\dimen113
 )
-(/usr/local/texlive/2016basic/texmf-dist/tex/latex/microtype/microtype.sty
-Package: microtype 2016/05/14 v2.6a Micro-typographical refinements (RS)
-\MT@toks=\toks20
-\MT@count=\count100
-LaTeX Info: Redefining \textls on input line 774.
-\MT@outer@kern=\dimen114
-LaTeX Info: Redefining \textmicrotypecontext on input line 1310.
-\MT@listname@count=\count101
-
-(/usr/local/texlive/2016basic/texmf-dist/tex/latex/microtype/microtype-pdftex.d
-ef
-File: microtype-pdftex.def 2016/05/14 v2.6a Definitions specific to pdftex (RS)
-
-LaTeX Info: Redefining \lsstyle on input line 916.
-LaTeX Info: Redefining \lslig on input line 916.
-\MT@outer@space=\skip46
-)
-Package microtype Info: Loading configuration file microtype.cfg.
- (/usr/local/texlive/2016basic/texmf-dist/tex/latex/microtype/microtype.cfg
-File: microtype.cfg 2016/05/14 v2.6a microtype main configuration file (RS)
-)) (/Library/Frameworks/R.framework/Resources/share/texmf/tex/latex/Sweave.sty
+(/Library/Frameworks/R.framework/Resources/share/texmf/tex/latex/Sweave.sty
 Package: Sweave 
 
 (/usr/local/texlive/2016basic/texmf-dist/tex/latex/base/ifthen.sty
@@ -144,11 +124,11 @@ Package: fancyvrb 2008/02/07
 
 Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix 
 <2008/02/07> (tvz)
-\FV@CodeLineNo=\count102
+\FV@CodeLineNo=\count100
 \FV@InFile=\read1
 \FV@TabBox=\box28
-\c@FancyVerbLine=\count103
-\FV@StepNumber=\count104
+\c@FancyVerbLine=\count101
+\FV@StepNumber=\count102
 \FV@OutFile=\write3
 )
 (/usr/local/texlive/2016basic/texmf-dist/tex/latex/base/textcomp.sty
@@ -258,39 +238,39 @@ File: t1aer.fd 1997/11/16 Font definitions for T1/aer.
 (./report.aux)
 \openout1 = `report.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 11.
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 11.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 10.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 10.
 
 (/usr/local/texlive/2016basic/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    ... okay on input line 10.
 
 (/usr/local/texlive/2016basic/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count105
-\scratchdimen=\dimen115
+\scratchcounter=\count103
+\scratchdimen=\dimen114
 \scratchbox=\box29
-\nofMPsegments=\count106
-\nofMParguments=\count107
-\everyMPshowfont=\toks21
-\MPscratchCnt=\count108
-\MPscratchDim=\dimen116
-\MPnumerator=\count109
-\makeMPintoPDFobject=\count110
-\everyMPtoPDFconversion=\toks22
+\nofMPsegments=\count104
+\nofMParguments=\count105
+\everyMPshowfont=\toks20
+\MPscratchCnt=\count106
+\MPscratchDim=\dimen115
+\MPnumerator=\count107
+\makeMPintoPDFobject=\count108
+\everyMPtoPDFconversion=\toks21
 ) (/usr/local/texlive/2016basic/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
 Package: pdftexcmds 2016/05/10 v0.21 Utility functions of pdfTeX for LuaTeX (HO
 )
@@ -336,86 +316,42 @@ G,.JBIG2,.JB2,.eps]
 (/usr/local/texlive/2016basic/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
-))
-LaTeX Info: Redefining \microtypecontext on input line 11.
-Package microtype Info: Generating PDF output.
-Package microtype Info: Character protrusion enabled (level 2).
-Package microtype Info: Using default protrusion set `alltext'.
-Package microtype Info: Automatic font expansion enabled (level 2),
-(microtype)             stretch: 20, shrink: 20, step: 1, non-selected.
-Package microtype Info: Using default expansion set `basictext'.
-Package microtype Info: No adjustment of tracking.
-Package microtype Info: No adjustment of interword spacing.
-Package microtype Info: No adjustment of character kerning.
- (/usr/local/texlive/2016basic/texmf-dist/tex/latex/microtype/mt-cmr.cfg
-File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman 
-(RS)
-)
-(./report-concordance.tex) [1
-
-{/usr/local/texlive/2016basic/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2
-]
-Overfull \hbox (11.90114pt too wide) in paragraph at lines 62--63
-\OML/cmm/m/it/10 (-17) UGDS[]HPI$\T1/aer/m/n/10 (-17) , $\OML/cmm/m/it/10 (-17)
- UGDS[]MOR$\T1/aer/m/n/10 (-17) ,$\OML/cmm/m/it/10 (-17) UGDS[]RA$\T1/aer/m/n/1
-0 (-17) , $\OML/cmm/m/it/10 (-17) UGDS[]NKN$\T1/aer/m/n/10 (-17) ,$\OML/cmm/m/i
-t/10 (-17) UGDS[]HITE$\T1/aer/m/n/10 (-17) , $\OML/cmm/m/it/10 (-17) UGDS$\T1/a
-er/m/n/10 (-17) ,
+)) (./report-concordance.tex)
+Overfull \hbox (13.46478pt too wide) in paragraph at lines 17--18
+\T1/aer/m/n/10 i-tive-ness. The re-quire-ment for this project can be found at 
+https://github.com/ucb-
  []
 
 
-Overfull \hbox (6.40083pt too wide) in paragraph at lines 62--63
-\OML/cmm/m/it/10 (-15) ADM[]ATE$\T1/aer/m/n/10 (-15) , $\OML/cmm/m/it/10 (-15) 
-COSTT\OT1/cmr/m/n/10 (-15) 4[]$\T1/aer/m/n/10 (-15) , $\OML/cmm/m/it/10 (-15) M
-D[]ARN[]NE[]\OT1/cmr/m/n/10 (-15) 10$\T1/aer/m/n/10 (-15) , $\OML/cmm/m/it/10 (
--15) C\OT1/cmr/m/n/10 (-15) 100[]$\T1/aer/m/n/10 (-15) , $\OML/cmm/m/it/10 (-15
-) PCTFLOAN$\T1/aer/m/n/10 (-15) , $\OML/cmm/m/it/10 (-15) CIP[]UM$\T1/aer/m/n/1
-0 (-15) ,
+Overfull \hbox (7.84569pt too wide) in paragraph at lines 17--18
+\T1/aer/m/n/10 stat159/stat159-fall-2016/blob/master/projects/proj03/stat159-fi
+nal-project.pdf. 
  []
 
+[1
 
-Overfull \hbox (19.76247pt too wide) in paragraph at lines 64--65
-\T1/aer/m/n/10 (-20) variables including $\OML/cmm/m/it/10 (-20) WEST$\T1/aer/m
-/n/10 (-20) , $\OML/cmm/m/it/10 (-20) MIDWEST$\T1/aer/m/n/10 (-20) , $\OML/cmm/
-m/it/10 (-20) NORTHEAST$\T1/aer/m/n/10 (-20) , $\OML/cmm/m/it/10 (-20) SOUTH$\T
-1/aer/m/n/10 (-20) , $\OML/cmm/m/it/10 (-20) MAJOR[]ITY$\T1/aer/m/n/10 (-20) ,
- []
-
-
-Overfull \hbox (2.41719pt too wide) in paragraph at lines 64--65
-\OML/cmm/m/it/10 (-15) MINOQ\OT1/cmr/m/n/10 (-15) 1$\T1/aer/m/n/10 (-15) , $\OM
-L/cmm/m/it/10 (-15) MINOQ\OT1/cmr/m/n/10 (-15) 2$\T1/aer/m/n/10 (-15) , $\OML/c
-mm/m/it/10 (-15) MINOQ\OT1/cmr/m/n/10 (-15) 3$\T1/aer/m/n/10 (-15) ,and $\OML/c
-mm/m/it/10 (-15) MINOQ\OT1/cmr/m/n/10 (-15) 4$\T1/aer/m/n/10 (-15) . To underst
-and the data better,
- []
-
-[3]
-LaTeX Font Info:    Try loading font information for T1+aett on input line 69.
+{/usr/local/texlive/2016basic/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+[2]
+LaTeX Font Info:    Try loading font information for T1+aett on input line 72.
  (/usr/local/texlive/2016basic/texmf-dist/tex/latex/ae/t1aett.fd
 File: t1aett.fd 1997/11/16 Font definitions for T1/aett.
-)
-Package microtype Info: Loading generic settings for font family
-(microtype)             `aett' (encoding: T1).
-(microtype)             For optimal results, create family-specific settings.
-(microtype)             See the microtype manual for details.
- [4]
-Overfull \hbox (44.57594pt too wide) in paragraph at lines 131--132
-[]$\OML/cmm/m/it/10 (-20) Studentsapplied \OT1/cmr/m/n/10 (-20) = \OML/cmm/m/it
-/10 (-20) Median[]arning \OT1/cmr/m/n/10 (-20) + \OML/cmm/m/it/10 (-20) Complet
-ion[]ate \OT1/cmr/m/n/10 (-20) + \OML/cmm/m/it/10 (-20) Percentage[]ith[]tudent
-[]oans \OT1/cmr/m/n/10 (-20) +
+) [3]
+[4]
+Overfull \hbox (81.62807pt too wide) in paragraph at lines 134--135
+[]$\OML/cmm/m/it/10 Students[]applied \OT1/cmr/m/n/10 = \OML/cmm/m/it/10 Median
+[]Earning \OT1/cmr/m/n/10 + \OML/cmm/m/it/10 Completion[]rate \OT1/cmr/m/n/10 +
+ \OML/cmm/m/it/10 Percentage[]with[]Student[]Loans \OT1/cmr/m/n/10 +
  []
 
 [5] [6] [7] [8] [9] [10] [11] [12] [13] [14] [15] [16] (./report.aux) ) 
 Here is how much of TeX's memory you used:
- 5088 strings out of 494447
- 76828 string characters out of 6166766
- 165008 words of memory out of 5000000
- 8052 multiletter control sequences out of 15000+600000
- 44099 words of font info for 278 fonts, out of 8000000 for 9000
+ 3312 strings out of 494447
+ 46434 string characters out of 6166766
+ 100471 words of memory out of 5000000
+ 6571 multiletter control sequences out of 15000+600000
+ 27562 words of font info for 60 fonts, out of 8000000 for 9000
  319 hyphenation exceptions out of 8191
- 38i,6n,38p,1144b,297s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 37i,6n,23p,1144b,284s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/lo
 cal/texlive/2016basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></us
 r/local/texlive/2016basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb>
@@ -428,10 +364,10 @@ ts/cm/cmr17.pfb></usr/local/texlive/2016basic/texmf-dist/fonts/type1/public/ams
 fonts/cm/cmr7.pfb></usr/local/texlive/2016basic/texmf-dist/fonts/type1/public/a
 msfonts/cm/cmsy10.pfb></usr/local/texlive/2016basic/texmf-dist/fonts/type1/publ
 ic/amsfonts/cm/cmtt10.pfb>
-Output written on report.pdf (16 pages, 175783 bytes).
+Output written on report.pdf (16 pages, 164789 bytes).
 PDF statistics:
  97 PDF objects out of 1000 (max. 8388607)
  67 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 29189 words of extra memory for PDF output out of 29859 (max. 10000000)
+ 5 words of extra memory for PDF output out of 10000 (max. 10000000)
 
