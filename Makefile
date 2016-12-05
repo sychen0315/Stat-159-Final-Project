@@ -27,6 +27,10 @@ plsr_script = code/scripts/plsr-regression-overall.R
 
 ols_cluster = code/scripts/ols-regression-cluster.R
 
+sections = report/sections/*
+reportrnw = report/report.Rnw
+reportpdf = report/report.pdf
+
 # All target
 all: data data_clean data_categorize eda regressions session report slides
 
@@ -83,11 +87,17 @@ regressions:
 	make plsr
 	make ols_cluster
 
-# Report target: Produce reports by compiling Rmarkdown to pdf
-report: report/sections/*.Rnw
-	cat report/sections/*.Rnw > report/report.Rnw
-	cd report && Rscript -e "library(knitr); Sweave2knitr('report.Rnw', output = 'report.tex')"
-	
+# Report target: generate the final reports report.pdf from report.Rnw which will be creates from the section files pasted together.
+report: $(reportrnw) $(reportpdf)
+
+# This target will take in all the sections of the report and create the file report.Rnw which will paste all the files together.
+$(reportrnw): $(sections)
+	cat $(sections) > $(reportrnw)
+
+# This target will take the Rnw file report.Rnw and will knit the pdf document report.pdf
+$(reportpdf): $(reportrnw)
+	Rscript -e "library(knitr); knit2pdf('$(reportrnw)', output = 'report.tex')"
+
 # Slides target: Generate slides
 slides:
 	Rscript -e "library(rmarkdown); render('slides/slides.Rmd', 'ioslides_presentation')"

@@ -8,7 +8,7 @@ Similarly, we wrote a function called output\_qualitative\_stats() to generate a
 
 Then, we divide our dataset into 8 separate clusters according to region and its proximity to major cities. In order to develop strategies to improve competitiveness for each cluster, we first tabulate some key statistics for each cluster.\\
 
-<<eda_stats, echo = FALSE, results=tex>>=
+<<eda_stats1, echo = FALSE, results=tex>>=
   library(xtable)
 library(Matrix)
 library(knitr)
@@ -22,7 +22,7 @@ The table contains the number of institutions in each cluster, with Northeast re
 
 ANOVA is designed to test whether there are any statistically significant differences between the means of independent groups. Since our measure of school competitiveness is the number of students applied, we will test whether the means of students applied is different among clusters to gauge whether our clustering criteria makes sense.\\
 
-<<eda_stats, echo = FALSE, results=tex>>=
+<<eda_stats2, echo = FALSE, results=tex>>=
   load("../data/data-outputs/anova.RData")
 print(xtable(summary(aov_result), caption = 'ANOVA Test Result'), comment = FALSE)
 @
