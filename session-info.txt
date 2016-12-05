@@ -16,6 +16,7 @@ Git Version
 git version 2.9.3
 
 
+
 pandoc Version
 --------------
 pandoc 1.17.1
@@ -67,7 +68,7 @@ Platform: x86_64-apple-darwin16.0.0 (64-bit)
 Running under: OS X 10.12.1 (Sierra)
 
 locale:
-[1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
+[1] C/UTF-8/C/C/C/C
 
 attached base packages:
 [1] methods   stats     graphics  grDevices utils     datasets  base     
@@ -93,11 +94,11 @@ loaded via a namespace (and not attached):
  system   x86_64, darwin16.0.0        
  ui       unknown                     
  language (EN)                        
- collate  en_US.UTF-8                 
+ collate  C                           
  tz       America/Los_Angeles         
  date     2016-12-04                  
 
- package      * version date       source        
+ package      * version date       source 
  assertthat     0.1     2013-12-06 CRAN (R 3.3.1)
  codetools      0.2-15  2016-10-05 CRAN (R 3.3.1)
  colorspace     1.2-7   2016-10-11 CRAN (R 3.3.1)
