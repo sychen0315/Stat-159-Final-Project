@@ -11,10 +11,32 @@ output:
 
 - The client of our consulting project: a group of school administrators
 - Consulting Topic: 
-  - To explore the differences between similar schools in terms of demographics and programs offered and how those differences contribute to school competitiveness 
-- 
+    - Explore the differences between similar schools in terms of demographics and programs offered
+    - Explore how those differences contribute to school competitiveness 
+  
+## Analysis Workflow and Components | Data cleaning and EDA
 
-and our data analysis is aimed to provide them with suggestions regarding what factors should they focus on and how to maximize their returns on investment in order to improve their school competitiveness. 
+  - Select the related variables
+  - Deal with NA values
+  - Transform variables as needed
+  - Obtain descriptive statistics, summaries and plots of all the related variables
+
+## Analysis Workflow and Components | Method
+
+- OLS
+- Shrinkage Method
+    - Ridge
+    - Lasso
+- Dimension Reduction Methods
+    - PCR
+    - PLSR
+  
+## Analysis Workflow and Components | Analysis
+
+  - Cluster analysis
+  - Anova test
+  - Regression models
+  - Shiny application
 
 ## Data Cleaning
 
