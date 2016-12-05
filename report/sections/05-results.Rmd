@@ -5,7 +5,6 @@ output: pdf_document
 
 # Results
 
-
 ```{r results= 'asis', echo = FALSE}
 load("../data/regression-data/overall-ols-model.RData")
 print(xtable(summary(ols_full_fit), caption = 'OLS Regression Output for the Full Data Set'), comment = FALSE)
