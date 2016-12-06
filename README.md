@@ -108,6 +108,8 @@ To reproduce the analysis:
   
   `make report` to combine different sections of the report into one Rmd file and generate the pdf version.
   
+  `make shiny` to launch our shiny app in the browser.
+  
   `make slides` to generate the slides.
   
   `make clean` to delete the pdf version of the report. 
