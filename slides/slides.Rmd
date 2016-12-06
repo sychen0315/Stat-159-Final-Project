@@ -29,19 +29,26 @@ runtime: shiny
 ## Data Cleaning
 
 - Select the following columns: 
-    - Number of undergraduate student (UGDS)
-    - admission rate (ADM_RATE)
-    - average cost of attendence, tuition and fees (COSTT4_A)
-    - Mean and median earnings (MD_EARN_WNE_P10)
-    - completion rates within 4 years (C100_4)
-    - percent of undergraduates receiving federal loans (PCTFLOAN)
-    - minority ratio (calculated by the sum of percentages of different minorty groups)
-    - students applied (calculated by dividing number of undergrads by admission rate)
-- Remove rows that contain at least one null values
+    - Number of undergraduate students (UGDS)
+    - Admission rate (ADM_RATE)
+    - Average cost of attendence, tuition and fees (COSTT4_A)
+    - Median earnings 10 years after graduation (MD_EARN_WNE_P10)
+    - Completion rate within 4 years (C100_4)
+    - Percentage of undergraduates receiving federal loans (PCTFLOAN)
+    - Minority ratio (calculated by summing up the percentage of different minority groups)
+    - Students applied (calculated by dividing number of undergrads admitted by admission rate)
+- Remove observations that contain at least one null values
+
+## Train Test Split & Method Determination:
+- 1579 valid entries left after data cleaning
+- In order to perform cross validation, we run simulations to split the data into train and test set at a ratio of 3:1
+- Replace 0 in those columns with 0.001 and add columns of log of STU_APPLIED, MD_EARN_WNE_P10, PCTFLOAN, C100_4, COSTT4_A
+- Use five different regression methods on the entire population
+- Select the best method to run regression for each cluster 
 
 ## Categorization:
 
-- Cluster schools by regions: west, midwest, northeat and south and then by whether the schools is located in a major city or countryside
+- Cluster schools by regions: west, midwest, northeast and south and then by whether the schools is located in a major city or countryside
 - This gives us 8 clusters: WM, WN, MM, MN, NM, NN, SM, SN. 
   Where WM stands for schools located in major cities in the west. 
 
@@ -51,17 +58,12 @@ library(xtable)
 library(Matrix)
 load("../data/data-outputs/eda-outputs/cluster-eda-stats.RData")
 foodata = t(cluster_eda_stats[,2:ncol(cluster_eda_stats)])
-foodata = foodata[, c(1,2,6,10,14,18)]
-colnames(foodata)[5] = "LOAN_avg" 
+foodata = foodata[, c(1,2,6,10,14,18,22)]
+colnames(foodata)[6] = "LOAN_avg" 
 print(xtable(foodata), comment = FALSE, type = "HTML")
 ```
      
-## Train Test Split & Method Determination:
-- 1579 valid entries remained after data cleaning
-- Run simulation to split the data into 3: 1 train and test set
-- Replace 0 in those columns with 0.001 and add columns of log of STU_APPLIED, MD_EARN_WNE_P10, PCTFLOAN, C100_4, COSTT4_A
-- Use five different regression methods on the entire population
-- Select the best method to run regression for each cluster 
+
 
 ## OLS Regression Model
 
@@ -99,15 +101,14 @@ print(xtable(summary(SN_model)$coefficients), comment = FALSE, type = "HTML")
 ```
 
 
-
 - Significant coefficients for all variables (lowest average number of students applied)
-- Significant coefficient for minority ratio (Low minority ratio)
+- Significant coefficient for Cost of attendence (The lowest cost of attendence among all clusters)
 
 ## Conclusion
 
 - Overall regression
 
-  - Based on our overall sample of 1555 institutions, median earnings, completion rate in 4 years, its proximity to major city and minority ratio all have a positive impact on the number of students applied, while percentage of students with loans and cost of attendence negatively correlated to number of applications received. 
+  - Based on our overall sample of 1555 institutions, median earnings, completion rate in 4 years, its proximity to major city and minority ratio all have a positive impact on the number of students applied, while percentage of students with loans and cost of attendence are negatively correlated to number of applications received. 
 
 ## Conclusion 
 
@@ -124,13 +125,13 @@ print(xtable(summary(SN_model)$coefficients), comment = FALSE, type = "HTML")
 - Midwest and South Region
 
  - Significant coefficients for earnings as well
- - Second most important factor for Midwest region is minority ratio, so should focus on promote diversity
-    - Offer student loans to minority students to make sure they have access to financial resources
-    - Adjust admission process accordingly
-    - Encourage minority student groups on campus
- - Second most important factor for South region is graduation rate, so should focus on improve completiton rate
-    - Aim to offer personalized experience for each student by reducing class size
-    - Expand academic advising program to address people's academic concerns in time and reach out to people who have unsatisfactory academic record
+ - Second most important factor for Midwest region is minority ratio, so those schools should focus on promoting diversity
+    - Offering student loans to minority students to make sure they have access to financial resources
+    - Adjusting admission process accordingly
+    - Encouraging minority student groups on campus
+ - Second most important factor for South region is graduation rate, so should focus on improve completion rate
+    - Aiming to offer personalized experience for each student by reducing class size
+    - Expanding academic advising program to address people's academic concerns in time and reaching out to people who have unsatisfactory academic records
 
 ## Shiny Demo
 
