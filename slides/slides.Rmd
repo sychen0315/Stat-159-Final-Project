@@ -70,7 +70,7 @@ print(xtable(foodata), comment = FALSE, type = "HTML")
 - 
 ```{r results= 'asis', echo = FALSE}
 load("../data/regression-data/overall-ols-model.RData")
-print(xtable(summary(ols_full_fit), digits = c(0,3,3,3,3)), comment = FALSE, type = "HTML")
+print(xtable(summary(ols_full_log_fit), digits = c(0,3,3,3,3)), comment = FALSE, type = "HTML")
 ```
 
 ## Cluster Regression Model
@@ -90,12 +90,12 @@ print(xtable(summary(WM_model)$coefficients), comment = FALSE, type = "HTML")
 
 ## Cluster Regression Model
 
-- Cluster MN regression result:
+- Cluster SN regression result:
 
 - 
 ```{r results= 'asis', echo = FALSE}
-load("../data/regression-data/MN-ols-model.RData")
-print(xtable(summary(MN_model)$coefficients), comment = FALSE, type = "HTML")
+load("../data/regression-data/SN-ols-model.RData")
+print(xtable(summary(SN_model)$coefficients), comment = FALSE, type = "HTML")
 ```
 
 

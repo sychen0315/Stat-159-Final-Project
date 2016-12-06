@@ -21,7 +21,7 @@ for (i in quantitative_variables) {
 sink()
 
 sink(file = qualitative_output_file)
-qualitative_variables <- c("WEST", "MIDWEST", "NORTHEAST", "SOUTH","MAJOR_CITY","MINOQ1","MINOQ2","MINOQ3","MINOQ4")
+qualitative_variables <- c("WEST", "MIDWEST", "NORTHEAST", "SOUTH","MAJOR_CITY")
 for (i in qualitative_variables) {
   output_qualitative_stats(clean_data[,i], i, qualitative_output_file)
 }
@@ -39,14 +39,14 @@ for (i in quantitative_variables) {
 }
 
 
-matrix_variables <- c("UGDS","ADM_RATE","COSTT4_A","MD_EARN_WNE_P10",
-                      "C100_4","PCTFLOAN","CIP_SUM","MINORATIO","STU_APPLIED")
+matrix_variables <- c("UGDS","ADM_RATE","COSTT4_A","MD_EARN_WNE_P10", "COSTT4_A",
+                      "C100_4","PCTFLOAN","MINORATIO","STU_APPLIED")
 png("images/eda-images/scatterplot-matrix/scatterplot-matrix.png")
 pairs(clean_data[, matrix_variables])
 dev.off()
 
 sink(file = anova_output_file)
-fit <- aov(STU_APPLIED ~ WEST + MIDWEST + NORTHEAST + SOUTH + MAJOR_CITY+MINOQ1+MINOQ2+MINOQ3+MINOQ4, data = clean_data)
+fit <- aov(STU_APPLIED ~ WEST + MIDWEST + NORTHEAST + SOUTH + MAJOR_CITY, data = clean_data)
 summary(fit)
 sink()
 
@@ -67,7 +67,7 @@ as.character(clean_data[clean_data$STU_APPLIED> 100000, ][['INSTNM']])
 sink()
 
 
-regression_variables <- c("STU_APPLIED", "MD_EARN_WNE_P10", "C100_4",
+regression_variables <- c("STU_APPLIED", "MD_EARN_WNE_P10", "C100_4", "COSTT4_A", 
 "PCTFLOAN",  "MAJOR_CITY", "MINORATIO", "WEST", "MIDWEST", "NORTHEAST")
 
 sink(file = cluster_output_file)
@@ -87,6 +87,10 @@ MD_EARN_WNE_P10_mean <- NULL
 MD_EARN_WNE_P10_sd <- NULL
 MD_EARN_WNE_P10_min <- NULL
 MD_EARN_WNE_P10_max <- NULL
+COSTT4_A_mean <- NULL
+COSTT4_A_sd <- NULL
+COSTT4_A_min <- NULL
+COSTT4_A_max <- NULL
 C100_4_mean <- NULL
 C100_4_sd <- NULL
 C100_4_min <- NULL
@@ -111,6 +115,10 @@ for (i in 1:8) {
   MD_EARN_WNE_P10_sd[i] <- sd(categorized_data[categorized_data$cluster==i,]$MD_EARN_WNE_P10)
   MD_EARN_WNE_P10_min[i] <- min(categorized_data[categorized_data$cluster==i,]$MD_EARN_WNE_P10)
   MD_EARN_WNE_P10_max[i] <- max(categorized_data[categorized_data$cluster==i,]$MD_EARN_WNE_P10)
+  COSTT4_A_mean[i] <- mean(categorized_data[categorized_data$cluster==i,]$COSTT4_A)
+  COSTT4_A_sd[i] <- sd(categorized_data[categorized_data$cluster==i,]$COSTT4_A)
+  COSTT4_A_min[i] <- min(categorized_data[categorized_data$cluster==i,]$COSTT4_A)
+  COSTT4_A_max[i] <- max(categorized_data[categorized_data$cluster==i,]$COSTT4_A)
   C100_4_mean[i] <- mean(categorized_data[categorized_data$cluster==i,]$C100_4)
   C100_4_sd[i] <- sd(categorized_data[categorized_data$cluster==i,]$C100_4)
   C100_4_min[i] <- min(categorized_data[categorized_data$cluster==i,]$C100_4)
@@ -128,8 +136,9 @@ for (i in 1:8) {
 cluster_eda_stats = rbind(Size = NUM_OF_SCHOOLS, STU_APP_avg = STU_APPLIED_mean, 
                           STU_APP_sd = STU_APPLIED_sd,STU_APP_min = STU_APPLIED_min,
                           STU_APP_max = STU_APPLIED_max, MD_EARN_avg = MD_EARN_WNE_P10_mean, MD_EARN_sd = MD_EARN_WNE_P10_sd,
-                          MD_EARN_min = MD_EARN_WNE_P10_min,
-                          MD_EARN_max = MD_EARN_WNE_P10_max,C100_4_avg = C100_4_mean,C100_4_sd = C100_4_sd, C100_4_min = C100_4_min,C100_4_max = C100_4_max, 
+                          MD_EARN_min = MD_EARN_WNE_P10_min, MD_EARN_max = MD_EARN_WNE_P10_max,
+                          COSTT4_mean = COSTT4_A_mean, COSTT4_sd = COSTT4_A_sd, COSTT4_min = COSTT4_A_min, COSTT4_max = COSTT4_A_max,
+                          C100_4_avg = C100_4_mean,C100_4_sd = C100_4_sd, C100_4_min = C100_4_min,C100_4_max = C100_4_max, 
                           PCTFLOAN_avg = PCTFLOAN_mean,
                           PCTFLOAN_sd =  PCTFLOAN_sd,PCTFLOAN_min = PCTFLOAN_min, PCTFLOAN_max = PCTFLOAN_max,MINORITY_avg = MINORATIO_mean, MINORITY_sd = MINORATIO_sd,MINORITY_min = MINORATIO_min,
                           MINORITY_max = MINORATIO_max)

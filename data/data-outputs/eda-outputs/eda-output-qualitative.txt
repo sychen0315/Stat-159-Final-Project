@@ -18,19 +18,3 @@ Relative Frequency    0.6744775   0.3255225
                              0           1
 Frequency          956.0000000 623.0000000
 Relative Frequency   0.6054465   0.3945535
-[1] "Summary Statistics for MINOQ1"
-                             0          1
-Frequency          1201.000000 378.000000
-Relative Frequency    0.760608   0.239392
-[1] "Summary Statistics for MINOQ2"
-                              0           1
-Frequency          1180.0000000 399.0000000
-Relative Frequency    0.7473084   0.2526916
-[1] "Summary Statistics for MINOQ3"
-                              0           1
-Frequency          1173.0000000 406.0000000
-Relative Frequency    0.7428752   0.2571248
-[1] "Summary Statistics for MINOQ4"
-                              0           1
-Frequency          1183.0000000 396.0000000
-Relative Frequency    0.7492084   0.2507916
