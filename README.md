@@ -27,26 +27,47 @@ stat159-fall2016-project2/
     data/
       README.md
       data-sets/
-        ...
-      eda-outputs/
-	      ...
+        cleaned-data-set/
+          ...
+        original-data-set/
+          ...
+        train-test-data-set/
+          ...
+      data-outputs/
+        anova.RData
+        col-NULL-num.txt
+        mean-difference-anova.txt
+        eda-outputs/
+	        ...
       regression-data/
 	      ...
     images/
       README.md
       eda-images/
-        ...
+        boxplot/
+          ...
+        conditional-boxplot/
+          ...
+        histogram/
+          ...
+        scatterplot-matrix/
+          ...
       regression-plot/
         ...
+      map-images/
+       ...
     slides/
       slides.html
       slides.Rmd
     report/
-      report.Rmd
+      Proposal.pdf
+      report.Rnw
       report.pdf
       sections/
         ...
-    shinyapp/
+    shiny-apps/
+      README.md
+      app.R
 ```
 
 ## Reproduction Steps
@@ -126,14 +147,6 @@ Statistics, B.A. | Business Administration, B.S.
 
 Email: aoyi95@berkeley.edu
 
-Yukun(Diane) He
-
-UC Berkeley Class of 2017
-
-Statistics, B.A.
-
-Email: yukunhe@berkeley.edu
-
 Siyu Chen
 
 UC Berkeley Class of 2017
@@ -141,6 +154,14 @@ UC Berkeley Class of 2017
 Civil Engineering, B.S.
 
 Email: siyu.chen@berkeley.edu
+
+Yukun(Diane) He
+
+UC Berkeley Class of 2017
+
+Statistics, B.A.
+
+Email: yukunhe@berkeley.edu
 
 Shuotong Wu
 

@@ -97,7 +97,7 @@ $(reportrnw): $(sections)
 # This target will take the Rnw file report.Rnw and will knit the pdf document report.pdf
 $(reportpdf): $(reportrnw)
 	# R -e "library(knitr); Sweave2knitr("report/report.rnw")"
-	#Rscript -e "library(knitr); knit('report/report-knitr.rnw')"
+	# Rscript -e "library(knitr); knit('report/report-knitr.rnw')"
 	# pdflatex report/report.tex
 	cd report;R -e "library(knitr); Sweave2knitr('report.rnw')"; Rscript -e "library(knitr); knit('report-knitr.rnw')"; pdflatex report-knitr.tex; mv report-knitr.pdf report.pdf
 
