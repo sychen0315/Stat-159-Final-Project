@@ -14,3 +14,7 @@ report/report.log
 report/report-concordance.tex
 report/report.tex
 report/Rplots.pdf
+report/figure/
+report/report-knitr.aux
+report/report-knitr.out
+report/report-knitr.rnw

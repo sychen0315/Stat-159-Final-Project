@@ -28,7 +28,7 @@ plsr_script = code/scripts/plsr-regression-overall.R
 ols_cluster = code/scripts/ols-regression-cluster.R
 
 sections = report/sections/*
-reportrnw = report/report.Rnw
+reportrnw = report/report.rnw
 reportpdf = report/report.pdf
 
 # All target
@@ -96,7 +96,11 @@ $(reportrnw): $(sections)
 
 # This target will take the Rnw file report.Rnw and will knit the pdf document report.pdf
 $(reportpdf): $(reportrnw)
-	Rscript -e "library(knitr); knit2pdf("$(reportrnw)", output = 'report.tex')"
+	# R -e "library(knitr); Sweave2knitr("report/report.rnw")"
+	#Rscript -e "library(knitr); knit('report/report-knitr.rnw')"
+	# pdflatex report/report.tex
+	cd report;R -e "library(knitr); Sweave2knitr('report.rnw')"; Rscript -e "library(knitr); knit('report-knitr.rnw')"; pdflatex report-knitr.tex; mv report-knitr.pdf report.pdf
+
 
 # Slides target: Generate slides
 slides:
