@@ -96,7 +96,7 @@ $(reportrnw): $(sections)
 
 # This target will take the Rnw file report.Rnw and will knit the pdf document report.pdf
 $(reportpdf): $(reportrnw)
-	Rscript -e "library(knitr); knit2pdf('$(reportrnw)', output = 'report.tex')"
+	Rscript -e "library(knitr); knit2pdf("$(reportrnw)", output = 'report.tex')"
 
 # Slides target: Generate slides
 slides:

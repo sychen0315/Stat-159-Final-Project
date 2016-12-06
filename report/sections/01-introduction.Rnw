@@ -25,6 +25,10 @@
 library(knitr)
 opts_chunk$set(fig.align='center', fig.show='hold')
 options(formatR.arrow=TRUE,width=90)
+library(xtable)
+library(Matrix)
+options(xtable.comment = FALSE,
+        xtable.table.placement = "H")
 @
 
 \SweaveOpts{concordance=TRUE}

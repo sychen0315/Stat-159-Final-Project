@@ -1,11 +1,6 @@
 \documentclass{article}
 
 
-\usepackage{amsmath}
-\usepackage{graphicx}
-\usepackage[margin=0.75in]{geometry}
-\usepackage{float}
-
 \usepackage[sc]{mathpazo}
 \usepackage[T1]{fontenc}
 \usepackage{float}
@@ -30,6 +25,10 @@
 library(knitr)
 opts_chunk$set(fig.align='center', fig.show='hold')
 options(formatR.arrow=TRUE,width=90)
+library(xtable)
+library(Matrix)
+options(xtable.comment = FALSE,
+        xtable.table.placement = "H")
 @
 
 \SweaveOpts{concordance=TRUE}
@@ -44,7 +43,6 @@ options(formatR.arrow=TRUE,width=90)
 \section{Introduction}
 
 In this project, our objective is to explore the differences between similar schools in terms of demographics and programs offered and how those differences contribute to school competitiveness based on the dataset available on \href{https://collegescorecard.ed.gov/data/}{College Scorecard}. The client of our consulting project is a group of school administrators, and our data analysis is aimed to provide them with suggestions regarding what factors should they focus on and how to maximize their returns on investment in order to improve their school competitiveness. The requirement for this project can be found  \href{https://github.com/ucb-stat159/stat159-fall-2016/blob/master/projects/proj03/stat159-final-project.pdf}{here}.
-
 \section{Data}
 
 \subsection{Original Dataset Source}
@@ -125,8 +123,7 @@ In principal components regression, we first perform principal components analys
 
 \subsubsection{Partial Least Squares}
 
-In comparison to PCR regression, which uses unsupervised method to identify the principal components, partial least squares method takes the advantage of a supervised learning process. It uses the response variable Y to identify new vectors that are not only similar to existing regressors, but also select the ones that are related to the response. Therefore, as indicated in the textbook, the PLS approach attempts to find directions that help explain both the response and the predictors. 
-
+In comparison to PCR regression, which uses unsupervised method to identify the principal components, partial least squares method takes the advantage of a supervised learning process. It uses the response variable Y to identify new vectors that are not only similar to existing regressors, but also select the ones that are related to the response. Therefore, as indicated in the textbook, the PLS approach attempts to find directions that help explain both the response and the predictors.
 \section{Analysis}
 
 \subsection{Exploratory Data Analysis (EDA)}
@@ -137,22 +134,16 @@ Similarly, we wrote a function called output\_qualitative\_stats() to generate a
 
 Then, we divide our dataset into 8 separate clusters according to region and its proximity to major cities. In order to develop strategies to improve competitiveness for each cluster, we first tabulate some key statistics for each cluster.\\
 
-<<eda_stats, echo = FALSE, results=tex>>=
-  library(xtable)
-library(Matrix)
-options(xtable.comment = FALSE,
-        xtable.table.placement = "H")
+<<eda_stats1, echo = FALSE, results=tex>>=
 load("../data/data-outputs/eda-outputs/cluster-eda-stats.RData")
-library(knitr)
 print(xtable(cluster_eda_stats, caption = 'Cluster Statistics'), comment = FALSE)
-opts_chunk$set(fig.pos='H')
 @
 
 The table contains the number of institutions in each cluster, with Northeast region not located in major city cluster having the most institutions. And since we are interested in predicting students applied by variables such as earnings, graduation rate, minority ratio and percentage of students with loans, we look at the mean for this variable in each cluster first.\\
 
 ANOVA is designed to test whether there are any statistically significant differences between the means of independent groups. Since our measure of school competitiveness is the number of students applied, we will test whether the means of students applied is different among clusters to gauge whether our clustering criteria makes sense.\\
 
-<<eda_stats, echo = FALSE, results=tex>>=
+<<eda_stats2, echo = FALSE, results=tex>>=
   load("../data/data-outputs/anova.RData")
 print(xtable(summary(aov_result), caption = 'ANOVA Test Result'), comment = FALSE)
 @
@@ -181,11 +172,9 @@ We use 6 main variables as regressors in the regression:
   \item Minority Ratio: The ratio of non-white students to the total population.
 
   \item West, Midwest, East: Region dummy variables. We divided all schools into 4 regions and if an institution belongs to a certain region, the corresponding dummy variable will be 1, and others be 0. We drop one dummy variable Northeast in the multiple linear regression to avoid perfect collinearity.
-\end{enumerate}
-
-\section{Results}
+\end{enumerate}\section{Results}
 \subsection{overall regression results}
-<<eda_stats, echo = FALSE, results=tex>>=
+<<eda_stats3, echo = FALSE, results=tex>>=
 load("../data/regression-data/overall-ols-model.RData")
 print(xtable(summary(ols_full_fit), caption = 'OLS Regression Output for the Full Data Set'), comment = FALSE)
 @
@@ -194,7 +183,7 @@ We noticed that the coefficients are large and each variable comes with differen
 
 In addition, since our data set is large enough, we will first split the set into train set and test set in order to gauge our the performance of our estimated coefficients. We divide the data set according to 3:1 train and test ratio. The train set is used to build the model and test set to calculate the SE.\\
 
-<<eda_stats, echo = FALSE, results=tex>>=
+<<eda_stats4, echo = FALSE, results=tex>>=
 print(xtable(summary(ols_full_log_fit), caption = 'OLS Regression Output After Taking Log'), comment = FALSE)
 @
 
@@ -224,7 +213,7 @@ For ridge and lasso regression method, we used cv.glmnet() in R package "glmnet"
 Similarly, for pcr and plsr regression method, we used function pcr() and plsr() in "pls" package to perform the 10-fold cross-validation. We also use the best fitted m from the train set to build the model and obtain the MSE from the test set.\\
 
 
-<<eda_stats, echo = FALSE, results=tex>>=
+<<eda_stats5, echo = FALSE, results=tex>>=
 load("../data/regression-data/overall-ridge-model.RData")
 load("../data/regression-data/overall-lasso-model.RData")
 load("../data/regression-data/overall-pcr-model.RData")
@@ -265,7 +254,7 @@ Therefore, weighing all the pros and cons for each regression method, we decide 
 \subsection{cluster regression results}
 Here is a summary of all the coefficients and our advice for institutions in different areas.\\
 
-<<eda_stats, echo = FALSE, results=tex>>=
+<<eda_stats6, echo = FALSE, results=tex>>=
   load("../data/regression-data/WM-ols-model.RData")
 print(xtable(summary(WM_model)$coefficients, caption = 'Regression Coefficients WM Cluster'), comment = FALSE)
 @
@@ -276,7 +265,7 @@ All the coefficients are significant except minority ratio. This can be largely 
 
 The most significant regressors is median earnings 10 years after graduation. Most cities on the West Coast are where well-paid technology companies and banking industry clutered. Therefore, there is a possibility that people decide to attend a university on the West Coast in order to get a job with high pay. So during the application process, it is reasonable if they pay extra attention to their future career development and the salary level of previous graduates serve as a plausible measure.\\
 
-<<eda_stats, echo = FALSE, results=tex>>=
+<<eda_stats7, echo = FALSE, results=tex>>=
   load("../data/regression-data/WN-ols-model.RData")
 print(xtable(summary(WN_model)$coefficients, caption = 'Regression Coefficients WN Cluster'), comment = FALSE)
 @
@@ -287,7 +276,7 @@ This cluster is our smallest one, so the coefficient might not be as accurate as
 
 The most significant factor here is similar to that of group WM, which is median earnings. And this finding shows that there exists similarities between schools within the same region, possibly due to local culture and regional economic development.\\
 
-<<eda_stats, echo = FALSE, results=tex>>=
+<<eda_stats8, echo = FALSE, results=tex>>=
 load("../data/regression-data/MM-ols-model.RData")
 print(xtable(summary(MM_model)$coefficients, caption = 'Regression Coefficients MM Cluster'), comment = FALSE)
 load("../data/regression-data/MN-ols-model.RData")
@@ -299,7 +288,7 @@ print(xtable(summary(MN_model)$coefficients, caption = 'Regression Coefficients 
 Those two clusters generate very similar results with all the coefficients being significant, especially MN cluster. According to the EDA, MN is the region with the lowest average number of students applied. Therefore, it makes sense for all the varaibles to show statistical significance since they have a lot of room for improvement. The most significant coefficient in both clusters, median earning, can be interpreted as if we can increase the earnings after graduation by 1\%, we predict the students applied will increase by \Sexpr{round(summary(MM_model)$coefficients[2, 1], 2)}\% and \Sexpr{ round(summary(MN_model)$coefficients[2, 1], 2)}\% in schools located in the midwest cities and countryside, holding all other variables constant. In addition, they have relative low minority ratio among all clusters, therefore boosting their minority ratio by 1\% is expected to bring an additional \Sexpr{round(summary(MM_model)$coefficients[6, 1], 2)}\% and \Sexpr{round(summary(MN_model)$coefficients[6, 1], 2)}\% in MM and MN cluster respectively, holding all other variables constant.\\
 
 
-<<eda_stats, echo = FALSE, results=tex>>=
+<<eda_stats9, echo = FALSE, results=tex>>=
 load("../data/regression-data/NM-ols-model.RData")
 print(xtable(summary(NM_model)$coefficients, caption = 'Regression Coefficients NM Cluster'), comment = FALSE)
 @
@@ -308,7 +297,7 @@ print(xtable(summary(NM_model)$coefficients, caption = 'Regression Coefficients 
 
 All the coefficients are significant besides that of graduation rate. This cluster has the highest 4-year graduation rate, which explains why an additional boost in this rate won't bring as much increase in school competitiveness as other variables. Similarly to the West region, Northeast has prosperous economy and harbour millions of high-tech and finance related-companies. Therefore, it is not surprising to see that the effect of pay after graduation is has a t-value that is significantly higher than other factors, and we expect a 1\% increase in graduation pay is associated with a \Sexpr{round(summary(NM_model)$coefficients[2, 1], 2)}\% increase in number of students applied, holding all other variables constant.\\
 
-<<eda_stats, echo = FALSE, results=tex>>=
+<<eda_stats10, echo = FALSE, results=tex>>=
   load("../data/regression-data/NN-ols-model.RData")
 print(xtable(summary(NN_model)$coefficients, caption = 'Regression Coefficients NN Cluster'), comment = FALSE)
 @
@@ -317,7 +306,7 @@ print(xtable(summary(NN_model)$coefficients, caption = 'Regression Coefficients 
   
 With a relatively low minority ratio to start with, improving minority ratio will bring the largest increase in school competitiveness. For each 1\% increase in minority ratio, we expect the number of students applied will increase by \Sexpr{round(summary(NN_model)$coefficients[2, 1], 2)}\%. Similarly, due to the regional effect we mentioned for the northeast area, we also have a large value of coefficient for median earning. Each 1\% increase in median earning is expected to add \Sexpr{round(summary(NN_model)$coefficients[6, 1], 2)}\% in number of students applied, holding all other variables constant.\\
 
-<<eda_stats, echo = FALSE, results=tex>>=
+<<eda_stats11, echo = FALSE, results=tex>>=
   load("../data/regression-data/SM-ols-model.RData")
 print(xtable(summary(SM_model)$coefficients, caption = 'Regression Coefficients SM Cluster'), comment = FALSE)
 load("../data/regression-data/SN-ols-model.RData")
@@ -331,6 +320,7 @@ SM and SN have similar statistics in terms of graduation rate and the number of 
 This cluster has the lowest average of number of students applied and median earnings among all clusters with the second highest coast of attendence. Therefore, all the coefficients are significant with coefficients of median earnings and cost of attendence. If the school can implement programs to improve the earnings of their graduates by 1\%, we expect there will be \Sexpr{round(summary(SN_model)$coefficients[2, 1], 2)}\% more students applied, holding all other variables constant. If the school will be able to reduce the cost of living by 1\%, they can expect to receive \Sexpr{-round(summary(SN_model)$coefficients[5, 1], 2)}\% more applications each year.\\
 \end{enumerate}
 
+
 \section{Conclusion}
 
 Those regression results and intepretations give us great insights in developing strategies to boost the number of students applied, therefore improving school competitivenss. \\
@@ -339,10 +329,12 @@ Combining all the findings we had from analysis section, we conclude 3 main sugg
 \subsection{Overall regression results}
 Based on our overall sample of 1555 institutions, median earnings, completion rate in 4 years, its proximity to major city and minority ratio all have a positive impact on the number of students applied, while percentage of students with loans and cost of attendence negatively correlated to number of applications received. 
 
+
 \subsection{West and Northeast Region}
 West coast and northeast region are where well-paid technology and finance firms concentrated and historically have diverse population. Although their average earnings are already higher than other regions, our regression shows that students still place higher weight on median earnings when deciding which school to apply. If those schools want to improve their competitiveness, we believe investing in career development programs is the most effective measure. Concrete steps include: establishing long-term relationships with companies, building an extensive network with alumni and expanding programs that cater to market demand such as admitting more students to computer science, busines and engineering majors. 
 
 \subsection{Midwest and South Region}
+
 Schools located at midwest and south region have lower number of students applied, so they have greater space for improvement. In addition, midwest has the lowest minority ratio and south region has the lowest completion rate. So besides implementing better career development programs, which is still a significant factor in the regression, midwest schools should also focus on improving the diversity and institutions located in the south should work on improving completion rate in order to attract more students. Concrete steps to promote diversity includes: improving their student loan system to make sure that minority students have access to the financial resources they need, set certain criteria in the admisssion process with a mindset of promoting diversity and encouraging minority student groups on campus. Concrete steps to improve completion rate includes: personalizing students' experience by reducing class size, introducing freshman interest groups so people can find support from their peers within a small group setting and expanding their academic advising program to address people's academic concerns.  
 
 

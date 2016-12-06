@@ -9,11 +9,6 @@ Similarly, we wrote a function called output\_qualitative\_stats() to generate a
 Then, we divide our dataset into 8 separate clusters according to region and its proximity to major cities. In order to develop strategies to improve competitiveness for each cluster, we first tabulate some key statistics for each cluster.\\
 
 <<eda_stats1, echo = FALSE, results=tex>>=
-  library(xtable)
-library(Matrix)
-library(knitr)
-options(xtable.comment = FALSE,
-        xtable.table.placement = "H")
 load("../data/data-outputs/eda-outputs/cluster-eda-stats.RData")
 print(xtable(cluster_eda_stats, caption = 'Cluster Statistics'), comment = FALSE)
 @
