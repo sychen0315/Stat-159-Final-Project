@@ -18,12 +18,14 @@ stat159-fall2016-project2/
     session.sh
     code/
       README.md
+      test-that.R
       functions/
-        ...
+        eda-functions.R
+        regression-functions.R
       scripts/
         ...
       tests/
-        ...
+        test-regression.R
     data/
       README.md
       data-sets/
@@ -38,9 +40,9 @@ stat159-fall2016-project2/
         col-NULL-num.txt
         mean-difference-anova.txt
         eda-outputs/
-	        ...
+          ...
       regression-data/
-	      ...
+        ...
     images/
       README.md
       eda-images/
