@@ -1,137 +1,297 @@
 ---
 title: 'Stat159 Final Project'
 author: "Aoyi Shan, Yukun He, Siyu Chen, Shuotong Wu"
-date: "11/20/2016"
+date: "12/5/2016"
 output: 
   ioslides_presentation:
-    incremental: true
+    smaller: true
+runtime: shiny
 ---
 
 ## Introduction
 
 - The client of our consulting project: a group of school administrators
 - Consulting Topic: 
-    - Explore the differences between similar schools in terms of demographics and programs offered
-    - Explore how those differences contribute to school competitiveness 
-  
-## Analysis Workflow and Components | Data cleaning and EDA
-
-  - Select the related variables
-  - Deal with NA values
-  - Transform variables as needed
-  - Obtain descriptive statistics, summaries and plots of all the related variables
-
-## Analysis Workflow and Components | Method
-
-- OLS
-- Shrinkage Method
-    - Ridge
-    - Lasso
-- Dimension Reduction Methods
-    - PCR
-    - PLSR
-  
-## Analysis Workflow and Components | Analysis
-
-  - Cluster analysis
-  - Anova test
-  - Regression models
-  - Shiny application
+    - Exploring the differences between schools in similar geographical location
+    - Analyzing how those differences contribute to school competitiveness 
+    - Offering tailored advice based on school's location regarding how to improve their school competitiveness
+    
+## Project Overview
+  - Data Cleaning
+  - Clustering
+  - Exploratory Data Analysis
+  - Regression method selection
+  - Performing regression for each cluster
+  - Intepretation of regression output
+  - Conclusion
+  - Shiny App Demo
 
 ## Data Cleaning
 
-- 1.Select the following columns: 
-  Number of undergraduate student(UGDS), admission rate(ADM_RATE), average cost of attendence, tuition and fees(COSTT4_A), Mean and median earnings(MD_EARN_WNE_P10), completion rates for first-time, full-time students(C100_4) , percent of undergraduates receiving federal loans(PCTFLOAN), minority ratio(calculated by the sum of percentages of different minorty groups), students applied(calculated by dividing number of undergrads by admission rate)
-
-## Data Cleaning
-- 2.Remove all the rows which contains at least one null values
-- 3.Divide the schools by regions: west, midwest, northeat and south and divide by whether the schools is in major cities or not
-- 4.Eliminate columns which contains PrivacySuppresed
+- Select the following columns: 
+    - Number of undergraduate student (UGDS)
+    - admission rate (ADM_RATE)
+    - average cost of attendence, tuition and fees (COSTT4_A)
+    - Mean and median earnings (MD_EARN_WNE_P10)
+    - completion rates within 4 years (C100_4)
+    - percent of undergraduates receiving federal loans (PCTFLOAN)
+    - minority ratio (calculated by the sum of percentages of different minorty groups)
+    - students applied (calculated by dividing number of undergrads by admission rate)
+- Remove rows that contain at least one null values
 
 ## Categorization:
-- Data is first divided by region then further grouped by whether it's in major cities or not
-- Categorize data into 8 groups: 
-  West schools in Major city, West schools not in major city, Midwest schools in Major city, Midwest schools not in major city, North schools in Major city, North schools not in major city, South schools in Major city, South schools not in major city
-     
-## Train Test Split & Method Determination:
-- 1579 valid entries remained after data cleaning
-- Use 3:1 train test split ratio for the overall dataset and try to find the best regression method
-- Take log of STU_APPLIED, MD_EARN_WNE_P10, PCTFLOAN, C100_4, COSTT4_A to perform regression and replace 0 in those columns with 0.001 
 
-## Cluster Statistics
+- Cluster schools by regions: west, midwest, northeat and south and then by whether the schools is located in a major city or countryside
+- This gives us 8 clusters: WM, WN, MM, MN, NM, NN, SM, SN. 
+  Where WM stands for schools located in major cities in the west. 
 
+- 
 ```{r results= 'asis', echo = FALSE}
 library(xtable)
 library(Matrix)
-options(xtable.comment = FALSE,
-        xtable.table.placement = "H")
 load("../data/data-outputs/eda-outputs/cluster-eda-stats.RData")
 foodata = t(cluster_eda_stats[,2:ncol(cluster_eda_stats)])
 foodata = foodata[, c(1,2,6,10,14,18)]
 colnames(foodata)[5] = "LOAN_avg" 
-print(xtable(foodata, caption = 'Cluster Statistics'), comment = FALSE, type = "HTML")
+print(xtable(foodata), comment = FALSE, type = "HTML")
 ```
-
-## ANOVA Test
-```{r results= 'asis', echo = FALSE}
-load("../data/data-outputs/anova.RData")
-print(xtable(summary(aov_result), caption = 'ANOVA Test Result'), comment = FALSE, type = "HTML")
-```
-
-## Model Building Process
-
-- Use 10-fold cross validation in building each regression model
-- Use the overall train set to fit the model
-- Calculate MSE in the overall test set 
-- Fit the model we select to the entire data set
      
-## Analysis | OLS Regression
-
-Students applied = Median_Earning + Completion_rate + Percentage_with_Student_Loans + Major_City + Minority_Ratio + West + Midwest + Northeast
-
-## 6 main variables in the regression
-- Median_Earning: Student's median earning 10 years after graduation
-- Completion_rate: Percentage of students graduated within 4 years
-- Percentage_with_Student_Loans: Percentage of students with Student Loans
-- Major_City: Whether the institution is located near a major city or countryside
-- Minority_Ratio: The ratio of non-white students to the total population
-- West, Midwest, East: Region dummy variables
+## Train Test Split & Method Determination:
+- 1579 valid entries remained after data cleaning
+- Run simulation to split the data into 3: 1 train and test set
+- Replace 0 in those columns with 0.001 and add columns of log of STU_APPLIED, MD_EARN_WNE_P10, PCTFLOAN, C100_4, COSTT4_A
+- Use five different regression methods on the entire population
+- Select the best method to run regression for each cluster 
 
 ## OLS Regression Model
 
+-  Students applied = Median_Earning + Completion_rate + Percentage_with_Student_Loans + Major_City + Minority_Ratio + West + Midwest + Northeast
+
+- 
 ```{r results= 'asis', echo = FALSE}
 load("../data/regression-data/overall-ols-model.RData")
-print(xtable(summary(ols_full_fit), caption = 'OLS Regression Output for the Full Data Set',digits = c(0,3,3,3,3)), comment = FALSE, type = "HTML")
+print(xtable(summary(ols_full_fit), digits = c(0,3,3,3,3)), comment = FALSE, type = "HTML")
 ```
 
-## Comparing 5 Regression Models
+## Cluster Regression Model
 
+- Take our cluster WM for example, this is the regression result we have:
+
+- 
 ```{r results= 'asis', echo = FALSE}
-load("../data/regression-data/overall-ridge-model.RData")
-load("../data/regression-data/overall-lasso-model.RData")
-load("../data/regression-data/overall-pcr-model.RData")
-load("../data/regression-data/overall-plsr-model.RData")
-
-reg_coef_mat = cbind(ols_fitted_coef, as.numeric(ridge_fitted_coef), as.numeric(lasso_fitted_coef), c(NA,pcr_fitted_coef), c(NA,plsr_fitted_coef))
-reg_coef_mat = reg_coef_mat[-1,]
-colnames(reg_coef_mat) = c("ols", "ridge", "lasso", "pcr", "plsr")
-print(xtable(reg_coef_mat, caption = 'Regression Coefficients for 5 Regression Methods', digits = c(0,5,5,5,5,5)), comment = FALSE)
-
-MSE_val = as.matrix(c("ols" = MSE_ols, "ridge" = MSE_ridge, "lasso" = MSE_lasso, "pcr" = MSE_pcr, "plsr" = MSE_plsr))
-colnames(MSE_val) = "MSE"
-print(xtable(MSE_val, caption = 'MSE of 5 Regression Methods', digits = 5), comment = FALSE)
-
-par(mfrow = c(1,1))
-plot(reg_coef_mat[,1], xlab = "Coefficients", ylab = "Value", main = "Trend Lines of Coefficients for Different Regression Models")
-lines(reg_coef_mat[,1])
-points(reg_coef_mat[,2],col= "blue")
-lines(reg_coef_mat[,2],col = "blue")
-points(reg_coef_mat[,3], col = "red")
-lines(reg_coef_mat[,3],col = "red")
-points(reg_coef_mat[,4], col = "green")
-lines(reg_coef_mat[,4],col = "green")
-points(reg_coef_mat[,5], col = "yellow")
-lines(reg_coef_mat[,5],col = "yellow")
-legend(7.3,3,c('OLS','Ridge','Lasso','PCR','PLSR'), lty = c(1,1,1,1,1), lwd = c(2.5,2.5,2.5,2.5,2.5), col = c("black","blue","red","green","yellow"),merge = T)
-abline(h = 0, lty = 3)
+load("../data/regression-data/WM-ols-model.RData")
+print(xtable(summary(WM_model)$coefficients), comment = FALSE, type = "HTML")
 ```
+
+
+
+- Insignificant coefficient for minority ratio (the cluster has the highest average minority ratio among all clusters)
+- Most significant variable is median earnings 10 years after graduation
+
+## Cluster Regression Model
+
+- Cluster MN regression result:
+
+- 
+```{r results= 'asis', echo = FALSE}
+load("../data/regression-data/MN-ols-model.RData")
+print(xtable(summary(MN_model)$coefficients), comment = FALSE, type = "HTML")
+```
+
+
+
+- Significant coefficients for all variables (lowest average number of students applied)
+- Significant coefficient for minority ratio (Low minority ratio)
+
+## Conclusion
+
+- Overall regression
+
+  - Based on our overall sample of 1555 institutions, median earnings, completion rate in 4 years, its proximity to major city and minority ratio all have a positive impact on the number of students applied, while percentage of students with loans and cost of attendence negatively correlated to number of applications received. 
+
+## Conclusion 
+
+- West and Northeast region
+
+ - Most significant factor: Earnings after graduation
+ - Should invest more in career development programs
+    - Establish long-term relationships with companies and hold regular networking sessions with alumni
+    - Improve career counseling services and actively reach out to juniors and seniors
+    - Expanding programs that cater to market demand
+
+## Conclusion
+
+- Midwest and South Region
+
+ - Significant coefficients for earnings as well
+ - Second most important factor for Midwest region is minority ratio, so should focus on promote diversity
+    - Offer student loans to minority students to make sure they have access to financial resources
+    - Adjust admission process accordingly
+    - Encourage minority student groups on campus
+ - Second most important factor for South region is graduation rate, so should focus on improve completiton rate
+    - Aim to offer personalized experience for each student by reducing class size
+    - Expand academic advising program to address people's academic concerns in time and reach out to people who have unsatisfactory academic record
+
+## Shiny Demo
+
+```{r, echo = FALSE}
+
+library(shiny)
+library(leaflet)
+library(RColorBrewer)
+library(dplyr)
+library(lattice)
+
+clean_data <- read.csv("../data/data-sets/cleaned-data-set/clean-data.csv")
+clean_data$STU_APPLIED <- round(clean_data$STU_APPLIED)
+clean_data$PCTFLOAN <- round(clean_data$PCTFLOAN, 2)
+clean_data$C100_4 <- round(clean_data$C100_4, 2)
+clean_data$MINORATIO <- round(clean_data$MINORATIO, 2)
+clean_data$ln_STU_APPLIED <- log(clean_data$STU_APPLIED)
+clean_data$ln_MD_EARN_WNE_P10 <- log(clean_data$MD_EARN_WNE_P10)
+clean_data$ln_PCTFLOAN <- log(clean_data$PCTFLOAN)
+clean_data$ln_C100_4 <- log(clean_data$C100_4)
+clean_data$ln_COSTT4_A <- log(clean_data$COSTT4_A)
+
+vars2 <- c(
+  "Number of students applied" = "STU_APPLIED",
+  "Median earnings" = "MD_EARN_WNE_P10",
+  "Percentage of loan" = "PCTFLOAN",
+  "Completion rate" = "C100_4",
+  "Cost of attendence" = "COSTT4_A",
+  "Minority ratio" = "MINORATIO"
+)
+
+vars <- c(
+  "Number of students applied" = "STU_APPLIED",
+  "Median earnings" = "MD_EARN_WNE_P10",
+  "Percentage of loan" = "PCTFLOAN",
+  "Completion rate" = "C100_4",
+  "Cost of attendence" = "COSTT4_A",
+  "Major city" = "MAJOR_CITY",
+  "Minority ratio" = "MINORATIO"
+)
+
+
+parameters <- list("STU_APPLIED", "MD_EARN_WNE_P10", "PCTFLOAN", "C100_4", "COSTT4_A", "MAJOR_CITY",
+                "MINORATIO")
+
+ui <- bootstrapPage(
+  tags$style(type = "text/css", "html, body {width:100%;height:100%}"),
+  leafletOutput("map", width = "100%", height = "100%"),
+  absolutePanel(fixed = TRUE,
+                draggable = TRUE, top = 60, left = 20, right = 'auto', bottom = "auto",
+                width = 330, height = "auto",
+                textInput(inputId = "state", "State", value = "CA"),
+                #selectInput("var", "Parameter", parameters),
+                #sliderInput("range", "Percentile", 0, 100,
+                #            value = range(seq(0,100,1)), step = 1
+                #),
+                selectInput("color", "Color", vars),
+                selectInput("size", "Size", vars2, selected = "STU_APPLIED"),
+                #selectInput("colors", "Color Scheme",
+                #            rownames(subset(brewer.pal.info, category %in% c("seq", "div")))
+                #),
+                checkboxInput("legend", "Show legend", TRUE),
+                plotOutput("scatterStuIncome", height = 200)
+  )
+)
+
+
+server <- function(input, output, session) {
+  # Reactive expression for the data subsetted to what the user selected
+  filteredData <- reactive({
+    #clean_data[clean_data[, input$var] >= min_value & clean_data[, input$var] <= max_value , ]
+    clean_data
+    })
+  
+  filteredData2 <- reactive(clean_data[clean_data$STABBR==input$state, ])
+  
+  
+  # This reactive expression represents the palette function,
+  # which changes as the user makes selections in UI.
+  #colorpal <- reactive({
+  #  colorNumeric(input$colors, clean_data$MINORATIO)
+  #})
+  
+  output$map <- renderLeaflet({
+    # Use leaflet() here, and only include aspects of the map that
+    # won't need to change dynamically (at least, not unless the
+    # entire map is being torn down and recreated)
+    
+    leaflet(filteredData2()) %>%  addTiles(
+      urlTemplate = "//{s}.tiles.mapbox.com/v3/jcheng.map-5ebohr46/{z}/{x}/{y}.png",
+      attribution = 'Maps by <a href="http://www.mapbox.com/">Mapbox</a>'
+    ) 
+  })
+  
+  output$scatterStuIncome <- renderPlot({
+    # If no zipcodes are in view, don't plot
+    if (nrow(filteredData2()) == 0)
+      return(NULL)
+    
+    print(xyplot(ln_STU_APPLIED ~ ln_MD_EARN_WNE_P10, data = filteredData2(), 
+                 xlim = range(clean_data$ln_MD_EARN_WNE_P10), ylim = range(clean_data$ln_STU_APPLIED),
+                 type = c("p", "r"),col.line = "darkorange", lwd = 3,
+                 main = "log meadian earnings versus student applied"))
+  })
+  
+  # Incremental changes to the map (in this case, replacing the
+  # circles when a new color is chosen) should be performed in
+  # an observer. Each independent set of things that can change
+  # should be managed in its own observer.
+  observe({
+    colorBy <- input$color
+    sizeBy <- input$size
+    colorData <- clean_data[[colorBy]]
+    pal <- colorBin("Spectral", colorData, 7, pretty = FALSE)
+    radius <- clean_data[[sizeBy]] / max(clean_data[[sizeBy]]) * 30000
+    dt <- filteredData2()
+    leafletProxy("map", data = filteredData()) %>%
+      clearShapes() %>%
+      addCircles(~LONGITUDE,~LATITUDE,radius = radius, stroke=FALSE, fillOpacity=0.4, fillColor=pal(colorData), 
+                 popup = ~paste("<strong>University: </strong>", INSTNM,
+                                "<br><strong>City, State: </strong>", CITY, STABBR,
+                                "<br><strong>Major City: </strong>", MAJOR_CITY,
+                                "<br><strong>Student applied: </strong>", STU_APPLIED,
+                                "<br><strong>Percent of students with loan: </strong>", PCTFLOAN,
+                                "<br><strong>Minority ratio: </strong>", MINORATIO,
+                                "<br><strong>Completion rate: </strong>", C100_4,
+                                "<br><strong>Cost: </strong>", COSTT4_A,
+                                "<br><strong>Median earnings: </strong>", MD_EARN_WNE_P10
+                                
+                   ) 
+      ) 
+  })
+  
+  observe({
+    proxy <- leafletProxy("map", data = filteredData2())
+    proxy %>%
+      fitBounds(~min(LONGITUDE)-2 , ~min(LATITUDE)-1, ~max(LONGITUDE), ~max(LATITUDE))
+    
+  })
+  
+  observe({
+    colorData <- clean_data[[input$color]]
+    pal <- colorBin("Spectral", colorData, 7, pretty = FALSE)
+    proxy <- leafletProxy("map", data = filteredData())
+    dt <- filteredData2()
+    # Remove any existing legend, and only if the legend is
+    # enabled, create a new one.
+    proxy %>% clearControls()
+    if (input$legend) {
+      #pal <- colorpal()
+      proxy %>% addLegend(position = "bottomright",
+                          pal = pal, values = colorData,
+                          title=input$color
+      )
+    }
+  })
+  
+}
+
+shinyApp(ui, server)
+```
+
+
+
